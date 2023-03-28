@@ -9,13 +9,43 @@ const router = createRouter({
       name: 'LoginView',
       component: LoginView
     },
-/*     {
-      path: '/about',
-      name: 'about',
-      component: () => import('../views/AboutView.vue')
+    {
+      path: "/session",
+      name: "LayoutSession",
+      component: () => import('../layouts/LayoutSession.vue'),
+      meta: {requiresAuth: true},  
+      children:[
+        {
+          path: 'user',
+          name: 'user',
+          component: ()=> import('../layouts/userLayout/UserLayout.vue'),
+          meta: {requiresAuth: true},
+          children: [
+            // aqui es donde deben ir todas las vistas que tiene el usuario
+          ]
+        },
+        {
+          path: 'responsable',
+          name: 'responsable',
+          component: () => import('../layouts/ResponsableLayout/ResponsableLayout.vue'),
+          meta: {requiresAuth: true},
+          children: [
+            // aqui es donde deben ir todas las vistas que tiene el responsable
+          ]
+        },
+        {
+          path: 'admin',
+          name: 'admin',
+          component: () => import('../layouts/superAdminLayout/SuperAdminLayout.vue'),
+          meta: {requiresAuth: true},
+          children: [
+            // aqui es donde deben ir todas las vistas que tiene el admin
+          ]
+        }
+      ]
     }
-     */
   ]
-})
+});
+
 
 export default router
