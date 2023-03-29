@@ -1,16 +1,31 @@
-<script>
-export default {
-  data: () => ({
-    firstName: "",
-    firstNameRules: [
-      (value) => {
-        if (value?.length > 3) return true;
+<script setup >
 
-        return "First name must be at least 3 characters.";
-      },
+const validate = () =>({
+    name: '',
+    nameRules: [
+        value => {
+            if (value?.length > 3) return true;
+            return "must be contains at least 3 characters"
+        },
+        
     ],
-  }),
-};
+    password: '',
+    passwordRules: [
+        value => {
+            if(/[0-9]/.test(value)) return true;
+            return "password nust be contains digits"
+        }
+    ]
+
+    
+
+
+})
+
+
+
+ 
+
 </script>
 <template>
   <v-sheet width="37%" class="form mx-auto">
@@ -31,7 +46,7 @@ export default {
         v-model="password"
         color="#FF4700"
         :counter="10"
-        :rules="nameRules"
+        :rules="passwordRules"
         label="Password"
         required
         class="form__pass"
