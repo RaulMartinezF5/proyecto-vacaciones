@@ -96,4 +96,8 @@ figure {
       margin-right: 3vw;
     }
 
+    #logout-button:hover {
+      transform: scale(0.8);
+}
+
 </style >
