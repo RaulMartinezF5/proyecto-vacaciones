@@ -88,8 +88,8 @@ figure {
     }
 
     #logout-button{
-      width: 5px;  
-      height: 5px;
+      width: 2,5vw;  
+      height: 2,5vw;
       position: absolute;
       right: 2vw;
       top: 1.5vw;
