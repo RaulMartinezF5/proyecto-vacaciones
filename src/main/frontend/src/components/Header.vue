@@ -58,8 +58,8 @@ figure {
     margin-top: 1vw;
 }
 
-.logo {
-    height: 7vw;
+#logo {
+    height: 3.5vw;
 }
 
 #info {
