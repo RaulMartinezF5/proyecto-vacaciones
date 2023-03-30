@@ -6,6 +6,6 @@ import { RouterLink, RouterView } from 'vue-router';
 <router-link :to="{name:'requestList'}"><button>requestList</button></router-link>
 </template>
 
-<style scoped lang="scss">
-
+<style lang="scss" scoped>
+  
 </style>
