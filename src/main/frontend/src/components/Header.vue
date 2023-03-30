@@ -38,7 +38,7 @@ setInterval(updateTime, 1000);
 <template>
     <header>
         <figure>
-            <img id="logo" src="../assets/logo.png" alt="FactoriaF5">
+            <img id="logo" src="../assets/img/logo.png" alt="FactoriaF5">
         </figure>
         <div id="info">
             <p id="date">{{ date }}</p>
@@ -46,7 +46,7 @@ setInterval(updateTime, 1000);
         <div>
             <p id="hour">{{ hourElement }}</p>
         </div>
-     <button id="logout-button"><img src="../assets/🦆 icon _log out_.png" alt="Logout"></button>
+     <button id="logout-button"><img src="../assets/img/🦆 icon _log out_.png" alt="Logout"></button>
     </header>
 </template>
 
