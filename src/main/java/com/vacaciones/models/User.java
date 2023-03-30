@@ -34,9 +34,14 @@ public class User {
     inverseJoinColumns = @JoinColumn(name = "user_id"))
     private Set<Role> roles;
 
-    public User(String identityDocument, String password) {
+
+    public User() {
+    }
+
+    public User(String identityDocument, String password, Set<Role> roles) {
         this.identityDocument = identityDocument;
         this.password = password;
+        this.roles = roles;
     }
 
     public String getIdentityDocument() {
