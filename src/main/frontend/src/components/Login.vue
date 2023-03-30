@@ -83,8 +83,8 @@ const validate = () =>({
   margin: 40px;
 }
 .btn {
-  max-width: 50%;
-  margin-left: 130px;
-  padding-bottom: 50px;
+  // max-width: 50%;
+  // margin-left: 130px;
+  // padding-bottom: 50px;
 }
 </style>
