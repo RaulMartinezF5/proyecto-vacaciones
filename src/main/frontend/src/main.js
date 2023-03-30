@@ -10,9 +10,8 @@ import * as directives from 'vuetify/directives'
 const vuetify = createVuetify({
   components,
   directives,
-
-
-  })
+  theme:false
+})
 
 const app = createApp(App)
 
