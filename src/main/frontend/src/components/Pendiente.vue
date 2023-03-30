@@ -12,15 +12,17 @@
 @use "../assets/scss/variables.scss" as c;
 
 .pendiente {
-    width: 10vw;
-    height: 2.5vw;
+    width: 7vw;
+    height: 2vw;
     background-color: map-get($map: c.$colors, $key: "Yellow");
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
     p {
-        color: map-get($map: c.$colors, $key: "Black");
-        font-size: larger;
+        color: black;
+        font-size: small;
         text-align: center;
-
+        display: flex; 
     }
 }
 </style>

@@ -1,7 +1,5 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
-import Pendiente from "./components/pendiente.vue";
-
 </script>
 
 <template>
@@ -11,10 +9,9 @@ import Pendiente from "./components/pendiente.vue";
       <RouterLink to="/about">About</RouterLink>
     </nav>
   </header>
-  <Pendiente />
 
   <main>
-
+  
     <RouterView />
   </main>
 </template>
