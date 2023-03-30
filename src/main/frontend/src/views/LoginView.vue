@@ -1,9 +1,11 @@
 <script setup>
-import Login from '../components/Login.vue'
+import Header from "../components/Header.vue"
+import Login from "../components/Login.vue";
 </script>
 
 <template>
- <Login></Login>
+  <Header></Header>
+  <Login />
 </template>
 
 <style lang="scss" scoped>
