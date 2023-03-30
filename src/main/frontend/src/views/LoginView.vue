@@ -1,14 +1,11 @@
 <script setup>
-import Header from "../components/Header.vue"
+import Login from '../components/Login.vue'
 </script>
 
 <template>
-<Header></Header>
-import Login from "../components/Login.vue";
-</script>
-
-<template>
-  <Login />
+ <Login></Login>
 </template>
 
-<style scoped lang="scss"></style>
+<style lang="scss" scoped>
+  
+</style>
