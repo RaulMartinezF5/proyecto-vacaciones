@@ -1,13 +1,14 @@
 <script setup>
 
+
+
 </script>
 
 <template>
     <div class="Button">
-            <v-btn class="button">Equipo</v-btn>
-    </div>
-    <div class="Button2">
-        <v-btn class="button2">Empleado</v-btn>
+        <v-btn>Button</v-btn> 
+        <button type="button" class="btn btn-success" id="Accept">Aceptar</button>
+
 
     </div>
 </template>
@@ -27,4 +28,6 @@
     justify-content: center;
     width: 250px;
 }
+
+
 </style>
