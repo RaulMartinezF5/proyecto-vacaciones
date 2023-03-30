@@ -1,30 +1,11 @@
 <script setup>
-
+import Login from '../components/Login.vue'
 </script>
 
 <template>
-    <div class="Button">
-            <v-btn class="button">Equipo</v-btn>
-    </div>
-    <div class="Button2">
-        <v-btn class="button2">Empleado</v-btn>
-
-    </div>
+ <Login></Login>
 </template>
 
-<style scoped lang="scss">
-.button {
-    display: flex;
-    background-color: #FF4700;
-    justify-content: center;
-    width: 250px;
-}
-
-.button2{
-    display: flex;
-    background-color: #FFA37F;
-    margin-top: 50px;
-    justify-content: center;
-    width: 250px;
-}
+<style lang="scss" scoped>
+  
 </style>
