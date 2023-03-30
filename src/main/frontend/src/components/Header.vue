@@ -17,14 +17,21 @@ const date = computed(() => {
 const hourElement = ref('')
 function updateTime() {
   const currentDate = new Date();
-  const hour = currentDate.getHours();
-  const minutes = currentDate.getMinutes();
-  const seconds = currentDate.getSeconds();
+  let hour = currentDate.getHours();
+  const minutes = ('0' + currentDate.getMinutes()).slice(-2);
+  const seconds = ('0' + currentDate.getSeconds()).slice(-2);
+
+  if (hour === 0) {
+    // Si la hora es 0, actualizamos la fecha y reiniciamos la hora a 0
+    date.value = new Date().toLocaleDateString('es-ES', { weekday: 'long', day: '2-digit', month: 'long', year: 'numeric' });
+    hour = 0;
+  }
 
   hourElement.value = `${hour}:${minutes}:${seconds}`;
 }
 
 setInterval(updateTime, 1000);
+
 
 </script>
 
