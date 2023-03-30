@@ -8,19 +8,16 @@ import Request from "./components/Request.vue";
 <template>
   <header>
     <nav>
-<!--       <RouterLink to="/">Home</RouterLink> 
-      <RouterLink to="/about">About</RouterLink> -->
+      <RouterLink to="/">Home</RouterLink>
+      <RouterLink to="/about">About</RouterLink>
     </nav>
   </header>
 <Request/>
  
-
   <main>
-
-  <!-- <RouterView /> -->
+  
+    <RouterView />
   </main>
 </template>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
