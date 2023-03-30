@@ -1,6 +1,6 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
-
+import FormComponent from "./components/FormComponent.vue";
 
 </script>
 
@@ -11,6 +11,7 @@ import { RouterLink, RouterView } from "vue-router";
       <RouterLink to="/about">About</RouterLink>
     </nav>
   </header>
+
  
 
   <main>
