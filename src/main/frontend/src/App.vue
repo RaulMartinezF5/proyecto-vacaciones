@@ -10,6 +10,4 @@ import FormComponent from "./components/FormComponent.vue";
   
 </template>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

@@ -9,9 +9,10 @@
 </template>
 
 <style lang="scss" scoped>
-@import '../assets/scss/variables.scss';
+@use "../assets/scss/variables.scss" as c;
 .requestSection{
-    border: $Orange solid 2px;
+    border: solid 2px;
+    border-color: map-get($map: c.$colors, $key: "Coral");
     width: 80%;
     display: flex;
     .workerName{
@@ -24,4 +25,4 @@
         display: inline-flex;
     }
 }
-</style>
+</style> background-color: map-get($map: c.$colors, $key: "Coral");
