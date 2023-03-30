@@ -1,26 +1,24 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
-import CardHistorial from "./components/CardHistorial.vue";
-import LoginView from "./views/LoginView.vue";
-
+import FormComponent from "./components/FormComponent.vue";
 
 </script>
 
 <template>
-  <!-- <header>
+   <header>
     <nav>
       <RouterLink to="/">Home</RouterLink> 
       <RouterLink to="/about">About</RouterLink>
     </nav>
-  </header> -->
-  <CardHistorial/>
+  </header>
 
+ 
 
   <main>
 
   <RouterView />
   </main>
-</template>
+</template> 
 
 <style lang="scss" scoped>
 

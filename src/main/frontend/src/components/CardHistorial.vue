@@ -7,7 +7,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="d-flex justify-center  flex-row aligth-center">
+  <div class="d-flex justify-center  flex-row">
     <v-card width="600">
       <v-card-text>
         <div><v-card-title :="props.name">Andrés P.</v-card-title></div>
