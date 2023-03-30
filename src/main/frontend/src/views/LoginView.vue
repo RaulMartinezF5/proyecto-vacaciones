@@ -5,7 +5,6 @@ import Header from "../components/Header.vue"
 <template>
 <Header></Header>
 import Login from "../components/Login.vue";
-</script>
 
 <template>
   <Login />
