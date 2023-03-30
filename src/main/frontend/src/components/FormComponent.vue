@@ -1,9 +1,9 @@
 <script setup>
-// import { Ref } from 'vue';
+import { ref } from 'vue';
 
 
-// const name = ref("hola");
-/* const surnames = ref("");
+const name = ref("");
+const surnames = ref("");
 const dni = ref("");
 const email = ref("");
 const vacationDays = ref("");
@@ -11,7 +11,9 @@ const startDay = ref("");
 const finishDay = ref("");
 const position = ref("");
 const role = ref("");
-const workingPlace = ref(""); */
+const workplace = ref();
+
+
 
 
 
@@ -32,27 +34,22 @@ const props = defineProps(
 )
 
 
+  
+
 </script>
 
 <template>
 <div class="container">
-    <v-text-field class="field" color="#FF4700" label="Nombre"> {{ name }} </v-text-field>
-    <v-text-field class="field" color="#FF4700" label="Apellidos"> </v-text-field>
-    <v-text-field class="field" color="#FF4700" label="DNI/NIE/Pasaporte"> </v-text-field>
-    <v-text-field class="field" color="#FF4700" label="Correo electrónico"> </v-text-field>
-    <v-text-field class="field" color="#FF4700" label="Cantidad de Vacaciones"> </v-text-field>
-    <v-select label="Posición" :items="['Formador','Coformador','Responsable de Promoción']"></v-select>
-    <v-select label="Tipo de Usuario" :items="['Responsable de Escuela','Empleado']"></v-select>
-    <v-select label="Lugar de trabajo" :items="['Asturias', 'Madrid', 'BCN-FemCoders', 'AST-Rural Camp',]" multiple chips></v-select>
-    
-    <v-menu>
-    </v-menu>
-    <v-text-field slot="activator" label="Fecha de entrada" prepend-icon="date_range"></v-text-field>
-    <v-date-picker v-model="startDate"></v-date-picker>
-
-
-
-
+    <v-text-field color="#FF4700" label="Nombre" v-model="name">  </v-text-field>
+    <v-text-field color="#FF4700" label="Apellidos" v-model="surnames"> </v-text-field>
+    <v-text-field color="#FF4700" label="DNI/NIE/Pasaporte" v-model="dni"> </v-text-field>
+    <v-text-field color="#FF4700" label="Correo electrónico" v-model="email"> </v-text-field>
+    <v-text-field color="#FF4700" label="Cantidad de Vacaciones" v-model="vacationDays"> </v-text-field>
+    <v-select color="#FF4700" label="Posición" :items="['Formador','Coformador','Responsable de Promoción']"   v-model="position"> </v-select>
+    <v-select color="#FF4700" label="Tipo de Usuario" :items="['Responsable de Escuela','Empleado']" v-model="role"> </v-select>
+    <v-select color="#FF4700" label="Lugar de trabajo" :items="['Asturias', 'Madrid', 'BCN-FemCoders', 'AST-Rural Camp',]" multiple chips v-model="workplace"> </v-select>
+    <v-text-field color="#FF4700" label="Start date" type="date" v-model="startDay"> </v-text-field>
+    <v-text-field color="#FF4700" label="End date" type="date" v-model="finishDay"> </v-text-field>
 </div>
 
     
@@ -66,13 +63,6 @@ const props = defineProps(
         gap: 2%;
         width: 100%;
         justify-content: center;
-
-    }
-
-    .field{
-
-        border-radius: 100px;
-        
     }
 
 
