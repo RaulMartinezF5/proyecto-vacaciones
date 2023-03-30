@@ -8,4 +8,6 @@ import Login from "../components/Login.vue";
   <Login />
 </template>
 
-<style scoped lang="scss"></style>
+<style lang="scss" scoped>
+  
+</style>
