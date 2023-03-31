@@ -9,18 +9,22 @@ import CardHistorial from "./components/CardHistorial.vue";
    <header>
     <!-- <nav>
       <RouterLink to="/">Home</RouterLink> 
+  <header>
+    <nav>
+      <RouterLink to="/">Home</RouterLink>
+
       <RouterLink to="/about">About</RouterLink>
     </nav> -->
   </header>
 
+
  <CardHistorial/>
 
-  <main>
 
-  <RouterView />
+  <main>
+  
+    <RouterView />
   </main>
 </template> 
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

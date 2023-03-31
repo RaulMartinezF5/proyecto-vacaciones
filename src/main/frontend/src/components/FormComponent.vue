@@ -48,8 +48,8 @@ const props = defineProps(
     <v-select color="#FF4700" label="Posición" :items="['Formador','Coformador','Responsable de Promoción']"   v-model="position"> </v-select>
     <v-select color="#FF4700" label="Tipo de Usuario" :items="['Responsable de Escuela','Empleado']" v-model="role"> </v-select>
     <v-select color="#FF4700" label="Lugar de trabajo" :items="['Asturias', 'Madrid', 'BCN-FemCoders', 'AST-Rural Camp',]" multiple chips v-model="workplace"> </v-select>
-    <v-text-field color="#FF4700" label="Start date" type="date" v-model="startDay"> </v-text-field>
-    <v-text-field color="#FF4700" label="End date" type="date" v-model="finishDay"> </v-text-field>
+    <v-text-field color="#FF4700" label="Fecha de entrada" type="date" v-model="startDay"> </v-text-field>
+    <v-text-field color="#FF4700" label="Fecha de baja" type="date" v-model="finishDay"> </v-text-field>
 </div>
 
     

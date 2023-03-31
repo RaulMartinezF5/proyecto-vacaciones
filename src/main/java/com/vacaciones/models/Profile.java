@@ -1,5 +1,4 @@
 package com.vacaciones.models;
-
 import java.sql.Date;
 
 import jakarta.persistence.Column;
@@ -16,7 +15,7 @@ public class Profile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_profile")
-    private String id;
+    private Long id;
     @Column(nullable = false)
     private String firstName;
     @Column(nullable = false)
@@ -33,7 +32,7 @@ public class Profile {
     public Profile() {
     }
 
-    public Profile(String id, String firstName, String lastName, String position, String email, Date singUpDate,
+    public Profile(Long id, String firstName, String lastName, String position, String email, Date singUpDate,
             Date dateOfWithdrawal) {
         this.id = id;
         this.firstName = firstName;
@@ -44,11 +43,11 @@ public class Profile {
         this.dateOfWithdrawal = dateOfWithdrawal;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
