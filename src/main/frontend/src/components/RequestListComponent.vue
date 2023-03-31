@@ -25,4 +25,4 @@
         display: inline-flex;
     }
 }
-</style> background-color: map-get($map: c.$colors, $key: "Coral");
+</style>
