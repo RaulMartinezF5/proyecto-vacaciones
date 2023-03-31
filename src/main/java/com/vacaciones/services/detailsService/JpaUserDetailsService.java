@@ -19,7 +19,7 @@ public class JpaUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String identifyDocument) throws UsernameNotFoundException {
-        return repository.findByIdentityDocument(identifyDocument)
+        return repository.findByDocument(identifyDocument)
                 .map(SecurityUser::new)
                 .orElseThrow(() -> new UsernameNotFoundException("document not found" + identifyDocument));
     }
