@@ -37,7 +37,7 @@ public class RegisterController {
 
             json.put("prolem", e.getMessage());
             json.put("message", "Error to sign up");
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);        }
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(json);        }
         
     }
 }
