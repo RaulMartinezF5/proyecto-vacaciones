@@ -1,11 +1,9 @@
 <script setup>
-import Header from "../components/Header.vue"
-import Login from "../components/Login.vue";
+import { RouterLink, RouterView } from 'vue-router';
 </script>
 
 <template>
-  <Header></Header>
-  <Login />
+<router-link :to="{name:'requestList'}"><button>requestList</button></router-link>
 </template>
 
 <style lang="scss" scoped>
