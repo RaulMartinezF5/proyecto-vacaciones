@@ -49,8 +49,8 @@ public class UserTest {
         roleRepository.save(role);
         userRepository.save(user);
 
-        User userDB = entityManager.find(User.class, user.getIdentityDocument());
+        User userDB = entityManager.find(User.class, user.getDocument());
 
-        assertThat(userDB.getIdentityDocument(), equalTo("1234567"));
+        assertThat(userDB.getDocument(), equalTo("1234567"));
     }
 }
