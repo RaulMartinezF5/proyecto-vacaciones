@@ -11,7 +11,6 @@ import FormComponent from "./components/FormComponent.vue";
       <RouterLink to="/about">About</RouterLink>
     </nav>
   </header>
-
  
   <main>
   
