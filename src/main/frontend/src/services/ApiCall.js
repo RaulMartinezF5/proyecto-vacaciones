@@ -6,7 +6,7 @@ export default class apiRequest{
     constructor(){
         this.request = ref([]);
     }
-    getrequest(){
+    getRequest(){
         return this.request.value;
     }
 
@@ -14,7 +14,7 @@ export default class apiRequest{
         try{
             const response = await axios.get('http://localhost:8080/api/request')
             .then((response) =>{
-                 this.request.value = response.data;
+                 this.request.value = response.data.feed.entry;
             })
            
         }catch(error){
