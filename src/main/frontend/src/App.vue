@@ -1,7 +1,6 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
 import FormComponent from "./components/FormComponent.vue";
-import Request from "./components/Request.vue";
 
 </script>
 
@@ -12,7 +11,6 @@ import Request from "./components/Request.vue";
       <RouterLink to="/about">About</RouterLink>
     </nav>
   </header>
-<Request/>
  
   <main>
   
