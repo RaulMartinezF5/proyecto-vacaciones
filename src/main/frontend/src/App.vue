@@ -6,7 +6,15 @@ import FormComponent from "./components/FormComponent.vue";
 
 <template>
 
+
   <RouterView />
+  <header>
+    <nav>
+      <RouterLink to="/">Home</RouterLink>
+      <RouterLink to="/about">About</RouterLink>
+    </nav>
+  </header>
+
   
 </template>
 
