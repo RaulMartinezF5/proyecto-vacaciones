@@ -1,5 +1,5 @@
 <script setup>
-import Header from "../components/Header.vue"
+// import Header from "../components/Header.vue"
 import Login from "../components/Login.vue";
 import apiRequest from "../services/ApiCall";
 import { ref, onBeforeMount } from "vue";
@@ -14,8 +14,13 @@ onBeforeMount( async() => {
 </script>
 
 <template>
+
+  <!-- <Header></Header> -->
+  <!-- <Login /> -->
+
   <Header></Header>
   <Login />
+
 
 </template>
 
