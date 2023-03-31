@@ -1,22 +1,34 @@
 <script setup>
-import { ref,defineProps } from "vue";
+import { defineProps } from "vue";
 
 const props = defineProps({
-    Request :Object,
-})
+  Request: Object,
+});
 </script>
 
 <template>
-  <div class="d-flex justify-center  flex-row">
-    <v-card width="600">
-      <v-card-text>
-        <div><v-card-title :="props.name">Andrés P.</v-card-title></div>
-        <p class="font-weight-medium  " :="props.date">12/12/12-13/05/21</p>
-        <p class="text-h6 font-weight-bold" :="props.days">Dias solicitados: 15</p>
-        <p class="text-h6 font-weight-bold" :="props.checked">Revisado por: Iyan</p>
-        <p class="text-h6 font-weight-bold" :="props.name_school">Nombre de la escuela</p>
-        <div class="text--primary" :="description"> well meaning and kindly "a benevolent smile"</div>
-      </v-card-text>
+  <div class="d-flex justify-center">
+    <v-card width="900">
+      <v-text>
+        <v-card-title class="d-flex justify-center">Andrés P.</v-card-title>
+        <div class="d-flex">
+          <p class="d-flex text-h6 font-weight-bold mr-14 ml-2">
+            Nombre de la escuela
+          </p>
+          <p class="relative font-weight-medium mt-1">12/12/12-13/05/21</p>
+        </div>
+        <div class="d-flex">
+          <p class="d-flex top-12 ml-4 mr-2" v-bind="props.description">
+            well meaning and kindly "a benevolent smile",
+            dasdhkahskdhahsfkhaksfhkahsfhalsfhlashflhasl,
+          </p>
+          <div class="d-flex flex-column">
+  <p class="text-sm font-weight-bold">Dias solicitados: {{ props.days }}</p>
+  <p class="text-sm font-weight-bold">Revisado por: {{ props.checked }}</p>
+</div>
+        
+        </div>
+      </v-text>
     </v-card>
   </div>
 </template>
