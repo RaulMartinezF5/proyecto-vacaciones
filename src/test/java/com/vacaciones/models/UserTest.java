@@ -51,6 +51,7 @@ public class UserTest {
 
         User userDB = entityManager.find(User.class, user.getDocument());
 
-        assertThat(userDB.getDocument(), equalTo("1234567"));
+        assertThat(userDB.getDocument(), equalTo("1234567L"));
+        assertThat(userDB.getRoles().size(), equalTo(1));
     }
 }
