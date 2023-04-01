@@ -29,5 +29,8 @@ margin-left: 5vw;
     color:white;
     border-radius: 10px;
     margin-left: 1rem;
+    font-weight: 700;
+
 }
+
 </style>
