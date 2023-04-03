@@ -1,12 +1,11 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
-</script>
 
+</script>
 <template>
   <main>
-  
     <RouterView />
   </main>
-</template>
+</template> 
 
 <style lang="scss" scoped></style>
