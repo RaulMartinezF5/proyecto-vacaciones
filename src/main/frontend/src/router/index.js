@@ -40,6 +40,14 @@ const router = createRouter({
           meta: {requiresAuth: true},
           children: [
             // aqui es donde deben ir todas las vistas que tiene el admin
+            {
+              path: 'CreateUser',
+              name: 'CreateUserView',
+              component: () => import('../views/Admin/CreateUserView.vue'),
+              meta: {requiresAuth: true},
+
+
+            } 
           ]
         }
       ]

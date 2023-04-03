@@ -18,7 +18,7 @@ import CardHistorial from "./components/CardHistorial.vue";
   </header>
 
 
- <CardHistorial/>
+ <!-- <CardHistorial/> -->
 
 
   <main>
