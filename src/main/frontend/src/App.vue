@@ -1,6 +1,7 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
 import FormComponent from "./components/FormComponent.vue";
+import RequestListComponent from "./components/RequestListComponent.vue";
 
 </script>
 
@@ -15,7 +16,7 @@ import FormComponent from "./components/FormComponent.vue";
     </nav>
   </header>
 
-  
+  <RequestListComponent/>
 </template>
 
 <style lang="scss" scoped></style>
