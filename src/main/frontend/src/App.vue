@@ -1,6 +1,5 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
-import FormComponent from "./components/FormComponent.vue";
 </script>
 <template>
   <main>
@@ -8,4 +7,10 @@ import FormComponent from "./components/FormComponent.vue";
   </main>
 </template> 
 
-<style lang="scss" scoped></style>
+<style scoped lang="scss">
+
+*{
+    font-family: 'Poppins', sans-serif; 
+}
+
+</style>
