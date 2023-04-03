@@ -3,7 +3,9 @@ import { defineProps } from "vue";
 
 const props = defineProps({
   Request: Object,
+  
 });
+
 </script>
 
 <template>
