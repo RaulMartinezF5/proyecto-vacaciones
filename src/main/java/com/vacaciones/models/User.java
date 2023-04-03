@@ -16,7 +16,7 @@ import jakarta.persistence.Table;
 @Table(name = "users")
 public class User {
 
-    @Id @Column(name = "id_user")
+    @Id
     private String document;
 
     @Column(nullable = false)
