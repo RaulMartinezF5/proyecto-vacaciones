@@ -1,9 +1,11 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router';
+import Login from "../components/Login.vue";
+
+
 </script>
 
 <template>
-<router-link :to="{name:'requestList'}"><button>requestList</button></router-link>
+  <Login />
 </template>
 
 <style lang="scss" scoped>
