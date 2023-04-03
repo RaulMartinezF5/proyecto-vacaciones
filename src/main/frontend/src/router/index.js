@@ -31,6 +31,12 @@ const router = createRouter({
           meta: {requiresAuth: true},
           children: [
             // aqui es donde deben ir todas las vistas que tiene el responsable
+            {
+              path: 'requestlist',
+              name:'requestList',
+              component: () => import('../views/HeadOfSchool/RequestListView.vue'),
+              meta: {requiresAuth: true}
+            }
           ]
         },
         {
