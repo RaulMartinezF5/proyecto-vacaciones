@@ -6,6 +6,7 @@ import Login from "../components/Login.vue";
 <template>
   <Header></Header>
   <Login />
+  
 </template>
 
 <style lang="scss" scoped>

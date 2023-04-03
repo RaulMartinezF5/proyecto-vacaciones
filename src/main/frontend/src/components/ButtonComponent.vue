@@ -10,7 +10,6 @@ const props = defineProps({
 
 <template>
         <v-btn class="button">{{button}}</v-btn> 
-        <!-- <button type="button" class="btn btn-success" id="Accept"></button> -->
 
 
 </template>
@@ -20,7 +19,7 @@ const props = defineProps({
     display: flex;
     background-color: #FF4700;
     justify-content: center;
-    width: 250px;
+    width: 150px;
 }
 
 

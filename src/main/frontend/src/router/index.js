@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import LoginView from '../views/LoginView.vue'
-
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -9,6 +8,7 @@ const router = createRouter({
       name: 'LoginView',
       component: LoginView
     },
+
     {
       path: "/session",
       name: "LayoutSession",
@@ -33,12 +33,25 @@ const router = createRouter({
             // aqui es donde deben ir todas las vistas que tiene el responsable
           ]
         },
+        
+
+
+
+
+
+
         {
           path: 'admin',
           name: 'admin',
           component: () => import('../layouts/superAdminLayout/SuperAdminLayout.vue'),
           meta: {requiresAuth: true},
           children: [
+          {
+            path: 'InfoSolicitud',
+            name: 'InfoSolicitudView',
+            component: () => import('../views/Admin/InfoSolicitudView.vue'),
+            meta: {requiresAuth: true},
+          }
             // aqui es donde deben ir todas las vistas que tiene el admin
           ]
         }
