@@ -35,7 +35,7 @@ const props = defineProps(
 @use "../assets/scss/variables.scss" as c;
 .requestSection{
     border: solid 2px;
-    border-color: map-get($map: c.$colors, $key: "Coral");
+    border-color: map-get($map: c.$colors, $key: "Orange");
     border-radius: 0.5vw;
     width: 80%;
     display: flex;
