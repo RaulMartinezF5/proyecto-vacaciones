@@ -39,7 +39,7 @@ public class SecurityUser implements UserDetails{
 
     @Override
     public String getUsername() {
-        return user.getIdentityDocument();
+        return user.getDocument();
     }
 
     public void setPassword(String password) {
