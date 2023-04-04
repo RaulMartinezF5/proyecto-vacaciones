@@ -1,13 +1,23 @@
 <script setup>
 import { RouterView } from 'vue-router';
 import AsideBarComponent from '../components/AsideBarComponent.vue';
+import { useRouter } from 'vue-router';
+import Header from '../components/Header.vue'
+
+const router = useRouter()
+
+const navigate = (navigateTo)=>{
+
+    router.push({name: navigateTo})
+}
 </script>
 <template>
+    <Header></Header>
     <main>
         <div class="aside-space">
-            <AsideBarComponent />
+            <AsideBarComponent @navigate-to="navigate" />
         </div>
-        <section>
+        <section class="views-wrapper">
             <RouterView />
         </section>
     </main>
@@ -21,6 +31,9 @@ main {
     .aside-space {
         width: 20%;
         height: 100vh;
+    }
+    .views-wrapper{
+        width: 80%;
     }
 }
 </style>
