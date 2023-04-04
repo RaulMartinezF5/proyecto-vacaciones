@@ -19,6 +19,11 @@ const showRole = computed(() => {
     if (test.value == 'ROLE_ADMIN') return 'ADMIN'
 })
 
+const emits = defineEmits(['navigateTo'])
+
+const emitRoute = (navigation)=>{
+    emits('navigateTo', navigation)
+}
 
 </script>
 <template>
@@ -48,29 +53,29 @@ const showRole = computed(() => {
         <div class="navigation-zone">
             <div v-if="test == 'ROLE_USER'" class="navigation">
                 <div class="nav-button-wrapper">
-                    <ButtonComponent :button="'EMPLEADO'" />
+                    <ButtonComponent @click="emitRoute('employeView')" :button="'EMPLEADO'" />
                 </div>
             </div>
             <div v-if="test == 'ROLE_RESPONSABLE'" class="navigation">
                 <div class="nav-button-wrapper">
-                    <ButtonComponent :button="'EMPLEADO'" />
+                    <ButtonComponent  @click="emitRoute('employeResponsableView')" :button="'EMPLEADO'" />
                 </div>
                 <div class="nav-button-wrapper">
-                    <ButtonComponent :button="'RESPONSABLE'" />
+                    <ButtonComponent  @click="emitRoute('requestListView')" :button="'RESPONSABLE'" />
                 </div>
             </div>
             <div v-if="test == 'ROLE_ADMIN'" class="navigation">
                 <div class="nav-button-wrapper">
-                    <ButtonComponent :button="'CREAR USUARIO'" />
+                    <ButtonComponent  @click="emitRoute('createUserView')" :button="'CREAR USUARIO'" />
                 </div>
                 <div class="nav-button-wrapper">
-                    <ButtonComponent :button="'PETICIONES'" />
+                    <ButtonComponent  @click="emitRoute('requestListViewAdmin')" :button="'PETICIONES'" />
                 </div>
                 <div class="nav-button-wrapper">
-                    <ButtonComponent :button="'INFORMES'" />
+                    <ButtonComponent  @click="emitRoute('staticsView')" :button="'INFORMES'" />
                 </div>
                 <div class="nav-button-wrapper">
-                    <ButtonComponent :button="'USUARIOS'" />
+                    <ButtonComponent  @click="emitRoute('userListView')" :button="'USUARIOS'" />
                 </div>
             </div>
         </div>
@@ -85,14 +90,14 @@ aside {
     @include gridDisplay(10, 1);
 
     .image-zone{
-        @include positionGrid(2, 1, 6, 1);
+        @include positionGrid(2, 1, 3, 1);
         width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
         img{
-            width: 80%;
-            height: 80%;
+            width: 50%;
+            height: 70%;
         }
     }
 
@@ -123,6 +128,7 @@ aside {
         align-items: center;
         row-gap: 1vh;
         width: 100%;
+        @include positionGrid(3, 1, 6, 1);
 
         .info-wrapper {
             width: 90%;
