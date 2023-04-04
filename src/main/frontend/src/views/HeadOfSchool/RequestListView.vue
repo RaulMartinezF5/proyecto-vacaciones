@@ -19,7 +19,7 @@ import RequestListComponent from '../../components/RequestListComponent.vue';
 <style scoped lang="scss">
 .sectionContainer {
     display: flex;
-    width: 70%;
+    width: 100%;
     flex-direction: column;
     
 nav{
