@@ -33,13 +33,13 @@ public class SecurityConfiguration {
             .headers(header -> header.frameOptions().sameOrigin())
             .csrf(csrf -> csrf.disable())
             .formLogin(form -> form
-                       .loginPage("/api/login")
                        .disable())
             .logout(out -> out 
                     .logoutUrl("/api/logout")
                     .deleteCookies("JSESSIONID"))
             .authorizeHttpRequests(auth -> auth 
                                    .requestMatchers("/api/register").permitAll()
+                                   .requestMatchers("/api/login").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN", "ROLE_RESPONSABLE")
                                    .anyRequest()
                                    .authenticated())
             .userDetailsService(service)
