@@ -45,7 +45,7 @@ const validate = () => ({
     align-content:center;
     position: relative;
     justify-self: center;
-    left: 90px;
+  
 
   }
 
