@@ -52,6 +52,12 @@ const router = createRouter({
           meta: {requiresAuth: true},
           children: [
             // aqui es donde deben ir todas las vistas que tiene el admin
+            {
+              path: 'userlist',
+              name: 'userList',
+              component: () => import('../views/Admin/UserListView.vue'),
+              meta: {requiresAuth: true}
+            }
           ]
         }
       ]

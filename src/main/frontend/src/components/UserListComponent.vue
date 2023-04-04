@@ -3,7 +3,7 @@ import { defineProps } from "vue";
 
 const props = defineProps({
   Request: Object,
-  
+
 });
 
 </script>
@@ -12,21 +12,26 @@ const props = defineProps({
   <div class="d-flex justify-center">
     <v-card width="900">
       <v-text>
-        <v-card-title class="d-flex justify-center">Andrés P.</v-card-title>
-        <div class="d-flex">
-          <p class="d-flex text-h6 font-weight-bold mr-14 ml-2">
-            Nombre de la escuela
+
+       <div class="d-flex justify-space-between"> 
+
+        <v-card-title class="d-flex font-weight-light">Andrés P.</v-card-title>
+        
+          <p class="d-flex text-h6 font-weight-bold mr-14 ml-2 text-uppercase worker-color">
+            Formador
           </p>
-          <p class="relative font-weight-medium mt-1">12/12/12-13/05/21</p>
+
         </div>
-        <div class="d-flex">
-          <p class="d-flex top-12 ml-4 mr-2" v-bind="props.description">
-            well meaning and kindly "a benevolent smile",
-            dasdhkahskdhahsfkhaksfhkahsfhalsfhlashflhasl,
+
+        <div class="d-flex justify-space-between">
+
+          <p class="d-flex font-weight-bold location" v-bind="props.description">
+            Escuela: Gijón
           </p>
+
           <div class="d-flex flex-column">
-  <p class="text-sm font-weight-bold">Dias solicitados: {{ props.days }}</p>
-  <p class="text-sm font-weight-bold">Revisado por: {{ props.checked }}</p>
+
+  <p class="text-sm font-weight-bold">Dias restantes: 15{{ props.days }}</p>
 </div>
         
         </div>
@@ -35,4 +40,13 @@ const props = defineProps({
   </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@use '../assets/scss/variables.scss' as c;
+
+.worker-color {
+  color: map-get($map: c.$colors, $key: "Orange");
+}
+.location {
+  font-size: 1.2rem;
+}
+</style>
