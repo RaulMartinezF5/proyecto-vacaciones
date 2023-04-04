@@ -1,16 +1,17 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
-import FormComponent from "./components/FormComponent.vue";
+import RequestListView from "./views/HeadOfSchool/RequestListView.vue";
+import RequestListViewAdmin from "./views/Admin/RequestListViewAdmin.vue";
 </script>
 <template>
-
-    <RouterView />
+    <RequestListViewAdmin/>
+   
 </template> 
 
 <style lang="scss" scoped>
 @use './assets/scss/variables.scss' as c;
-
 *{
   font-family: 'Poppins', sans-serif;
 }
+
 </style>
