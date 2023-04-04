@@ -20,6 +20,8 @@ const props = defineProps({
     background-color: #FF4700;
     justify-content: center;
     width: 150px;
+    border-radius: 5px;
+    margin-bottom: 5%;
 }
 
 
