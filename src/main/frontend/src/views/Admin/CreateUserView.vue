@@ -1,5 +1,4 @@
 <script setup>
-import Header from '../../components/Header.vue';
 import FormComponent from '../../components/FormComponent.vue';
 import ButtonComponent from '../../components/ButtonComponent.vue';
 

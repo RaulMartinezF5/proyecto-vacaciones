@@ -1,9 +1,9 @@
 <script setup>
-
+import UserListComponent from '../../components/UserListComponent.vue';
 </script>
 
 <template>
-<h1>user list</h1>
+<UserListComponent></UserListComponent>
 </template>
 
 <style scoped lang="scss">
