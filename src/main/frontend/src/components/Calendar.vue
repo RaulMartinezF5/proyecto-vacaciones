@@ -1,5 +1,5 @@
 <script>
-const Datepicker = require('vue-datepicker');
+import VueDatepicker from 'vue-datepicker';
 import moment from 'moment';
 
 
