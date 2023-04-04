@@ -11,7 +11,7 @@ const props = defineProps(
     }
 )
 
-const test = ref('ROLE_ADMIN')
+const test = ref('ROLE_USER')
 
 const showRole = computed(() => {
     if (test.value == 'ROLE_USER') return 'EMPLEADO'
@@ -53,7 +53,7 @@ const emitRoute = (navigation)=>{
         <div class="navigation-zone">
             <div v-if="test == 'ROLE_USER'" class="navigation">
                 <div class="nav-button-wrapper">
-                    <ButtonComponent @click="emitRoute('employeView')" :button="'EMPLEADO'" />
+                    <ButtonComponent @click="emitRoute('myRequests')" :button="'EMPLEADO'" />
                 </div>
             </div>
             <div v-if="test == 'ROLE_RESPONSABLE'" class="navigation">
@@ -72,7 +72,7 @@ const emitRoute = (navigation)=>{
                     <ButtonComponent  @click="emitRoute('requestListViewAdmin')" :button="'PETICIONES'" />
                 </div>
                 <div class="nav-button-wrapper">
-                    <ButtonComponent  @click="emitRoute('staticsView')" :button="'INFORMES'" />
+                    <ButtonComponent  @click="emitRoute('stadisticsView')" :button="'INFORMES'" />
                 </div>
                 <div class="nav-button-wrapper">
                     <ButtonComponent  @click="emitRoute('userListView')" :button="'USUARIOS'" />
