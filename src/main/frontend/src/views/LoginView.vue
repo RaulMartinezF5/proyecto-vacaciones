@@ -6,7 +6,7 @@ import { defineProps } from "vue";
 </script>
 
 <template>
-<router-link :to="{name:'userList'}"><button>userList</button></router-link>
+<router-link :to="{name:'userListView'}"><button>userList</button></router-link>
 <Login />
 
 </template>
