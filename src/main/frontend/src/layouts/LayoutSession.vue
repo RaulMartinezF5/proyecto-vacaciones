@@ -30,7 +30,7 @@ main {
 
     .aside-space {
         width: 20%;
-        height: 100vh;
+        height: 90vh;
     }
     .views-wrapper{
         width: 80%;
