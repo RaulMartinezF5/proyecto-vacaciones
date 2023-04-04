@@ -22,6 +22,7 @@ public class RegisterController {
         this.service = service;
     }
 
+    //usar payload para registrar tanto perfil como usuario 
     @PostMapping(value = "/register")
     public ResponseEntity<Map<String,String>> registerUser(@RequestBody User user) {
         

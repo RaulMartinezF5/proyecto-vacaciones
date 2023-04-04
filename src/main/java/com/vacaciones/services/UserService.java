@@ -2,16 +2,21 @@ package com.vacaciones.services;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.vacaciones.models.User;
+import com.vacaciones.repositories.ProfileRepository;
 import com.vacaciones.repositories.UserRepository;
 import com.vacaciones.services.baseServices.BasicService;
 
 @Service
 public class UserService implements BasicService<User>{
+
+    @Autowired
+    private ProfileRepository profileRepository;
 
     private UserRepository repository;
 
