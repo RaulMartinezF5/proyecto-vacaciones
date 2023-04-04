@@ -43,7 +43,8 @@ import ButtonComponent from '../../components/ButtonComponent.vue';
     .button-zone {
         width: 100%;
         display: flex;
-        justify-content: center;
+        justify-content: flex-end;
+        
     }
 
     .button {
