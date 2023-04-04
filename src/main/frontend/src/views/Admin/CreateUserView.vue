@@ -6,7 +6,6 @@ import ButtonComponent from '../../components/ButtonComponent.vue';
 </script>
 
 <template>
-
 <h1>CREAR USUARIO</h1>
 <div class="form"><FormComponent/></div>
 <div class="button"><ButtonComponent :button="'CREAR'"/></div>
