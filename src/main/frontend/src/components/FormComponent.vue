@@ -52,7 +52,7 @@ const props = defineProps(
     <div class="input-wrapper" ><v-text-field color="#FF4700" label="Fecha de baja" variant="solo" type="date" v-model="finishDay"> </v-text-field></div>
 </div>
 
-    
+   
 </template>
 
 <style lang="scss" scoped>
@@ -60,7 +60,7 @@ const props = defineProps(
     .container {
         display: grid;
         grid-template-columns: 32% 32%;
-        gap: 2%;
+        gap: 2vh;
         width: 100%;
         justify-content: center;
     }
