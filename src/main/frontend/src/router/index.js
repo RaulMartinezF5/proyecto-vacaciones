@@ -22,6 +22,12 @@ const router = createRouter({
           meta: {requiresAuth: true},
           children: [
             // aqui es donde deben ir todas las vistas que tiene el usuario
+            {
+              path: 'MyRequests',
+              name: 'myRequests',
+              component: () => import('../views/EmployeView.vue'),
+              meta: {requiresAuth: true},
+            }
           ]
         },
         {
