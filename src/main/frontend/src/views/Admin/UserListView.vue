@@ -5,8 +5,10 @@ import SearchBar from '../../components/SearchBar.vue';
 
 <template>
     <h1 id="title">Lista de Usuarios</h1>
+    <div class="d-flex flex-column">
 <SearchBar></SearchBar>
 <UserListComponent></UserListComponent>
+</div>
 </template>
 
 <style scoped lang="scss">
