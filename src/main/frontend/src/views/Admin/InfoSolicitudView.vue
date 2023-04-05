@@ -1,6 +1,8 @@
 <script setup>
 import ButtonComponent from '../../components/ButtonComponent.vue';
 import rechazada from '../../components/Rechazada.vue';
+import iconArrowLeft from '@/assets/img/iconArrowLeft.png';
+
 
 
 </script>
@@ -10,9 +12,12 @@ import rechazada from '../../components/Rechazada.vue';
     <div class="mainContainer">
 
         <div class="Rechazada">
-            <h1 class="titulo">
-                INFORMACIÓN DE SOLICITUD
-            </h1>
+            <div class="microheader">
+                <button class="button-arrow"><img :src="iconArrowLeft" alt="Flecha botón para retoceder" class="arrow"></button>
+                <h1 class="titulo">
+                    INFORMACIÓN DE SOLICITUD
+                </h1>
+            </div>
             <div class="usuario">
                 <h2 class="empleado"> Paula Frias</h2>
                 <h2 class="solicitud">Solicitud:</h2>
@@ -63,6 +68,11 @@ import rechazada from '../../components/Rechazada.vue';
         width: 75%;
         .titulo{
             margin-left: 20%;
+        }
+        .microheader{
+            display: flex;
+            flex-direction: row;
+            margin-top: 3%;
         }
     }
     .texto{
