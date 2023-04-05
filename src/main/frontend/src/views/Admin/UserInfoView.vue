@@ -13,10 +13,10 @@ import ButtonComponent from '../../components/ButtonComponent.vue';
 
         <div class=" button-zone">
             <div class="button-editar">
-                <ButtonComponent :button="'Editar'" />
+                <ButtonComponent :type="'warning'" :button="'Editar'" />
             </div>
             <div class="button-baja">
-                <ButtonComponent :button="'Dar de baja'" />
+                <ButtonComponent :type="'reject'" :button="'Dar de baja'" />
             </div>
         </div>
     </div>
@@ -48,17 +48,19 @@ h1 {
         width: 100%;
         display: flex;
         justify-content: flex-end;
+    
 
 
         .button {
-        width: 80%;
+        width: 15vw;
         margin-top: 2vw;
         display: flex;
-        justify-content: flex-end;
-        align-items: center;
         color: black;
         font-weight: 700;
-        margin: 30px;
+        align-items: center;
+        margin-right: 14vw;
+        font-size: medium;
+    
     }
     }
 
