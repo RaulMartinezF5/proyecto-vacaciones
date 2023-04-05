@@ -1,6 +1,5 @@
 <script setup>
 import ButtonComponent from '../../components/ButtonComponent.vue';
-import Header from '../../components/Header.vue';
 import rechazada from '../../components/Rechazada.vue';
 
 
@@ -8,23 +7,14 @@ import rechazada from '../../components/Rechazada.vue';
 
 
 <template>
-    <Header />
-
-
     <div class="mainContainer">
-        <div class="responsable">
-            <h2 class="Responsable"> Responsable</h2>
-            <div class="Button">
-                <ButtonComponent :button="'Equipo'" />
-                <ButtonComponent :button="'Empleado'" />
-            </div>
-        </div>
 
-        <div class="rechazada">
+        <div class="Rechazada">
             <h1 class="titulo">
-                Información de Solicitud
+                INFORMACIÓN DE SOLICITUD
             </h1>
             <div class="usuario">
+                <h2 class="empleado"> Paula Frias</h2>
                 <h2 class="solicitud">Solicitud:</h2>
                 <rechazada />
             </div>
@@ -39,6 +29,7 @@ import rechazada from '../../components/Rechazada.vue';
 
 <style lang="scss" scoped>
 .mainContainer {
+    width: 100%;
     display: flex;
     justify-content: space-around;
     margin: 2% 5%;
@@ -50,17 +41,55 @@ import rechazada from '../../components/Rechazada.vue';
         width: 30%;
         flex-wrap: wrap;
         align-content: center;
+        
     }
     .usuario{
         display: flex;
         flex-direction: row;
+        justify-content: space-between;
+        margin-top: 10%;
+        margin-right: 15%;
+        .solicitud{
+            margin-left: 45%;
+        }
+    }
+    .empleado{
+        display: flex;
+
     }
 
 
-    .rechazada {
-        width: 65%;
+    .Rechazada {
+        width: 75%;
+        .titulo{
+            margin-left: 20%;
+        }
+    }
+    .texto{
+        display: flex;
+        flex-direction: column;
+        background-color:#D9D9D9;
+        padding: 3% 5%;
+        border-radius: 10px;
+        margin-top: 5%;
+        
+        
 
+    }
+    #fecha{
+        background-color: white;
+        border-radius: 10px;
+        padding-left: 3%;
+        padding-top: 3%;
+        margin-bottom: 3%;
 
+    }
+    #comentario{
+        background-color: white;
+        border-radius: 10px;
+        padding-left: 3%;
+        padding-top: 3%;
+        margin-bottom: 3%;
     }
 }
 

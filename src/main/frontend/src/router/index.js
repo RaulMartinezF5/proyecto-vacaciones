@@ -57,13 +57,6 @@ const router = createRouter({
             }
           ]
         },
-        
-
-
-
-
-
-
         {
           path: 'admin',
           name: 'admin',
@@ -98,6 +91,12 @@ const router = createRouter({
               path: 'usersDetails',
               name: 'userDetailsView',
               component: () => import('../views/Admin/UserInfoView.vue'),
+              meta: { requiresAuth: true }
+            },
+            {
+              path:'infoSolicitud',
+              name: 'infoSolicitudView',
+              component: () => import('../views/Admin/InfoSolicitudView.vue'),
               meta: { requiresAuth: true }
             }
           ]
