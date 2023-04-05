@@ -1,5 +1,6 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
+
 </script>
 <template>
 
@@ -8,10 +9,10 @@ import { RouterLink, RouterView } from "vue-router";
 
 </template> 
 
-<style scoped lang="scss">
-
+<style lang="scss" scoped>
+@use './assets/scss/variables.scss' as c;
 *{
-    font-family: 'Poppins', sans-serif; 
+  font-family: 'Poppins', sans-serif;
 }
 
 </style>

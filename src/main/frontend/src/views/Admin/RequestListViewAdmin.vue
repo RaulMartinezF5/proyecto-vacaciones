@@ -1,11 +1,12 @@
 <script setup>
+import CardHistorial from '../../components/CardHistorial.vue';
 
 </script>
-
 <template>
-<h1>requestListView</h1>
+    <div>
+        <CardHistorial/>
+    </div>
+    
 </template>
-
-<style scoped lang="scss">
-
+<style lang="scss" scoped> 
 </style>
