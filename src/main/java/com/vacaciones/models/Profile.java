@@ -27,20 +27,20 @@ public class Profile {
     @Column(nullable = true)
     private Date singUpDate;
     @Column(nullable = true)
-    private Date dateOfWithdrawal;
+    private Date withdrawalDate;
 
     public Profile() {
     }
 
     public Profile(Long id, String firstName, String lastName, String position, String email, Date singUpDate,
-            Date dateOfWithdrawal) {
+            Date withdrawalDate) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.position = position;
         this.email = email;
         this.singUpDate = singUpDate;
-        this.dateOfWithdrawal = dateOfWithdrawal;
+        this.withdrawalDate = withdrawalDate;
     }
 
     public Long getId() {
@@ -92,10 +92,10 @@ public class Profile {
     }
 
     public Date getDateOfWithdrawal() {
-        return dateOfWithdrawal;
+        return withdrawalDate;
     }
 
-    public void setDateOfWithdrawal(Date dateOfWithdrawal) {
-        this.dateOfWithdrawal = dateOfWithdrawal;
+    public void setDateOfWithdrawal(Date withdrawalDate) {
+        this.withdrawalDate = withdrawalDate;
     }
 }

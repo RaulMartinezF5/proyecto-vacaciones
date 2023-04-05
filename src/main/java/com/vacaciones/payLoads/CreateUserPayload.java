@@ -17,11 +17,12 @@ public class CreateUserPayload {
     private String name;
     private String lastName;
     private String email;
+    private String password;
     private Integer holyDays;
     private String position;
     private String userType;
     private String location;
-    private Date SingInDate;
+    private Date singInDate;
     private Date withdrawalDate;
 
 }
