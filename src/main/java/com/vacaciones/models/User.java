@@ -1,5 +1,6 @@
 package com.vacaciones.models;
 
+import java.util.List;
 import java.util.Set;
 
 import jakarta.persistence.Column;
@@ -9,8 +10,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-
 
 @Entity
 @Table(name = "users")
@@ -23,11 +24,19 @@ public class User {
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "roles_users",
-    joinColumns = @JoinColumn(name = "role_id"),
-    inverseJoinColumns = @JoinColumn(name = "user_id"))
+    @JoinTable(name = "roles_users", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "chief-have-employes", joinColumns = @JoinColumn(name = "chief_id"), inverseJoinColumns = @JoinColumn(name = "employe_id"))
+    private Set<User> employes;
+
+    @OneToOne
+    private Profile profile;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "request_users", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "request_id"))
+    private List<Request> requests;
 
     public User() {
     }
@@ -54,7 +63,6 @@ public class User {
         this.password = password;
     }
 
-
     public Set<Role> getRoles() {
         return roles;
     }
@@ -63,7 +71,28 @@ public class User {
         this.roles = roles;
     }
 
+    public Set<User> getEmployes() {
+        return employes;
+    }
 
-    
-    
+    public void setEmployes(Set<User> employes) {
+        this.employes = employes;
+    }
+
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(Profile profile) {
+        this.profile = profile;
+    }
+
+    public List<Request> getRequests() {
+        return requests;
+    }
+
+    public void setRequests(List<Request> requests) {
+        this.requests = requests;
+    }
+
 }
