@@ -20,7 +20,7 @@ import com.vacaciones.repositories.UserRepository;
 import com.vacaciones.services.baseServices.AdminService;
 
 @Service
-public class RequestGestionService implements AdminService<Request>{
+public class RequestGestionService implements AdminService<Request, String> {
 
     @Autowired
     private UserRepository userRepository;
@@ -38,35 +38,34 @@ public class RequestGestionService implements AdminService<Request>{
     }
 
     @Override
-    public void delete(Long id) {
-
+    public void delete(String id) {
+        
         throw new UnsupportedOperationException("Unimplemented method 'delete'");
     }
 
     @Override
     public List<Request> findAll() {
-
+        
         throw new UnsupportedOperationException("Unimplemented method 'findAll'");
     }
 
     @Override
-    public Request update(Long id, Request entity) {
-
+    public Request update(String id, Request entity) {
+        
         throw new UnsupportedOperationException("Unimplemented method 'update'");
     }
-
 
     public Request findById(String idUser, Long idRequest) {
 
         throw new UnsupportedOperationException("Unimplemented method 'findById'");
     }
 
-
     public User save(CreateRequestPayload entity, String idUser) {
 
         Cause causeDB = causeRepository.findByDescription(entity.getDescriptionCauseRequest()).orElseThrow();
-        
-        Request requestToCreate = new Request(null, entity.getIssue(), entity.getState(), entity.getStartDate(), entity.getEndDate());
+
+        Request requestToCreate = new Request(null, entity.getIssue(), entity.getState(), entity.getStartDate(),
+                entity.getEndDate());
 
         Set<Cause> listCauseToRequest = new HashSet<>();
         listCauseToRequest.add(causeDB);
@@ -91,5 +90,5 @@ public class RequestGestionService implements AdminService<Request>{
         return userRepository.save(userDB);
 
     }
-    
+
 }

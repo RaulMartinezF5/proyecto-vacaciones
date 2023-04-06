@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 @Service
-public interface AdminService<T> {
+public interface AdminService<T,P> {
 
-    void delete(Long id);
+    void delete(P id);
     List<T> findAll();
-    T update(Long id, T entity);
+    T update(P id, T entity);
 }

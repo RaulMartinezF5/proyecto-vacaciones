@@ -37,7 +37,7 @@ public class ProfileRegisterService {
 
         User userToSave = new User(payload.getDocument(), encodePassword, rolesToUser );
         Profile profileToSave = new Profile(null, payload.getName(), payload.getLastName(), payload.getPosition(),
-                payload.getEmail(), payload.getSingInDate(), payload.getWithdrawalDate());
+                payload.getEmail(), payload.getSingInDate(), payload.getWithdrawalDate(), payload.getHolyDays());
 
         userToSave.setProfile(profileToSave);
 
