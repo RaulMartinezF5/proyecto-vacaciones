@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import LoginView from '../views/LoginView.vue'
-
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -9,6 +8,7 @@ const router = createRouter({
       name: 'LoginView',
       component: LoginView
     },
+
     {
       path: "/session",
       name: "LayoutSession",
@@ -91,6 +91,12 @@ const router = createRouter({
               path: 'usersDetails',
               name: 'userDetailsView',
               component: () => import('../views/Admin/UserInfoView.vue'),
+              meta: { requiresAuth: true }
+            },
+            {
+              path:'infoSolicitud',
+              name: 'infoSolicitudView',
+              component: () => import('../views/Admin/InfoSolicitudView.vue'),
               meta: { requiresAuth: true }
             }
           ]
