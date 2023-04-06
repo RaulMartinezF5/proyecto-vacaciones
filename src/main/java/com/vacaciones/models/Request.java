@@ -17,8 +17,10 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "requests")
 public class Request {
-    
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name = "id_request")
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_request")
     private Long id;
     @Column(nullable = false)
     private String issue;
@@ -30,16 +32,15 @@ public class Request {
     private Date endDate;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "cause_request",
-    joinColumns = @JoinColumn(name = "request_id"),
-    inverseJoinColumns = @JoinColumn(name = "cause_id"))
+    @JoinTable(name = "cause_request", joinColumns = @JoinColumn(name = "request_id"), inverseJoinColumns = @JoinColumn(name = "cause_id"))
     private Set<Cause> causes;
 
     @ManyToMany(mappedBy = "requests")
     private Set<User> users;
-    
+
     public Request() {
     }
+
     public Request(Long id, String issue, String state, Date startDate, Date endDate) {
         this.id = id;
         this.issue = issue;
@@ -47,38 +48,53 @@ public class Request {
         this.startDate = startDate;
         this.endDate = endDate;
     }
+
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
+
     public String getIssue() {
         return issue;
     }
+
     public void setIssue(String issue) {
         this.issue = issue;
     }
+
     public String getState() {
         return state;
     }
+
     public void setState(String state) {
         this.state = state;
     }
+
     public Date getStartDate() {
         return startDate;
     }
+
     public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
+
     public Date getEndDate() {
         return endDate;
     }
+
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
-    } 
-    
-    
-    
+    }
+
+    public Set<Cause> getCauses() {
+        return causes;
+    }
+
+    public void setCauses(Set<Cause> causes) {
+        this.causes = causes;
+    }
 
 }

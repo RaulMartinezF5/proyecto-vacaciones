@@ -58,4 +58,8 @@ public class TypeOfRequest {
         this.requests = requests;
     }
 
+    public void addRequest(Request request){
+        this.requests.add(request);
+    }
+
 }

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.vacaciones.models.Request;
+import com.vacaciones.payLoads.CreateRequestPayload;
 import com.vacaciones.services.employeActionsService.RequestGestionService;
 
 @RestController
@@ -25,10 +25,10 @@ public class RequestGestionController {
     }
 
     @PostMapping(value = "/user/{idUser}/createRequest")
-    public ResponseEntity<Map<String, String>> createNewRequest(@RequestBody Request request,
+    public ResponseEntity<Map<String, String>> createNewRequest(@RequestBody CreateRequestPayload payload,
             @PathVariable String idUser) {
         try {
-            requestGestionService.save(request, idUser);
+            requestGestionService.save(payload, idUser);
 
             Map<String, String> json = new HashMap<>();
 

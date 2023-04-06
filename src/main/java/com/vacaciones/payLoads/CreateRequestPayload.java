@@ -16,7 +16,7 @@ public class CreateRequestPayload {
     private String issue;
     private String state;
     private Date startDate;
-    private Date enDate;
+    private Date endDate;
     private String nameTypeOfRequest;
     private String descriptionCauseRequest;
 }

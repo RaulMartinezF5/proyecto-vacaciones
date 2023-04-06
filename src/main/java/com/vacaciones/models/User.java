@@ -1,5 +1,6 @@
 package com.vacaciones.models;
 
+import java.util.List;
 import java.util.Set;
 
 import jakarta.persistence.Column;
@@ -35,7 +36,7 @@ public class User {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "request_users", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "request_id"))
-    private Set<Request> requests;
+    private List<Request> requests;
 
     public User() {
     }
@@ -86,11 +87,11 @@ public class User {
         this.profile = profile;
     }
 
-    public Set<Request> getRequests() {
+    public List<Request> getRequests() {
         return requests;
     }
 
-    public void setRequests(Set<Request> requests) {
+    public void setRequests(List<Request> requests) {
         this.requests = requests;
     }
 
