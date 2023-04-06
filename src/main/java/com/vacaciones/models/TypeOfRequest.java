@@ -1,5 +1,6 @@
 package com.vacaciones.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Column;
@@ -8,7 +9,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -22,20 +22,16 @@ public class TypeOfRequest {
     @Column(nullable = false)
     private String name;
 
-    @OneToOne
-    private Cause cause;
-
     @OneToMany
     private List<Request> requests;
 
     public TypeOfRequest() {
     }
 
-    public TypeOfRequest(Long id, String name, Cause cause, List<Request> requests) {
+    public TypeOfRequest(Long id, String name) {
         this.id = id;
         this.name = name;
-        this.cause = cause;
-        this.requests = requests;
+        this.requests = new ArrayList<>();
     }
 
     public Long getId() {
@@ -52,14 +48,6 @@ public class TypeOfRequest {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Cause getCause() {
-        return cause;
-    }
-
-    public void setCause(Cause cause) {
-        this.cause = cause;
     }
 
     public List<Request> getRequests() {

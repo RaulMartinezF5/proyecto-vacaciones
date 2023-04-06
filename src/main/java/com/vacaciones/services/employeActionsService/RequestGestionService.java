@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 
 import com.vacaciones.models.Request;
 import com.vacaciones.models.User;
+import com.vacaciones.repositories.CauseRepository;
 import com.vacaciones.repositories.RequestRepository;
+import com.vacaciones.repositories.TypeOfRequestRepository;
 import com.vacaciones.repositories.UserRepository;
 import com.vacaciones.services.baseServices.AdminService;
 
@@ -19,9 +21,14 @@ public class RequestGestionService implements AdminService<Request>{
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private CauseRepository causeRepository;
+
+    @Autowired
+    private TypeOfRequestRepository typeOfRequestRepository;
+
     private RequestRepository requestRepository;
 
-    
     public RequestGestionService(RequestRepository requestRepository) {
         this.requestRepository = requestRepository;
     }
