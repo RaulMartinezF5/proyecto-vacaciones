@@ -1,7 +1,5 @@
 package com.vacaciones.services;
 
-import java.util.List;
-
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -17,11 +15,6 @@ public class UserService implements BasicService<User> {
 
     public UserService(UserRepository repository) {
         this.repository = repository;
-    }
-
-    @Override
-    public List<User> findAll() {
-        return repository.findAll();
     }
 
     @Override

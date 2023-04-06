@@ -23,19 +23,19 @@ public class User {
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "roles_users", 
-    joinColumns = @JoinColumn(name = "user_id"), 
-    inverseJoinColumns = @JoinColumn(name = "role_id"))
+    @JoinTable(name = "roles_users", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "chief-have-employes", 
-    joinColumns = @JoinColumn(name = "chief_id"), 
-    inverseJoinColumns = @JoinColumn(name = "employe_id"))
+    @JoinTable(name = "chief-have-employes", joinColumns = @JoinColumn(name = "chief_id"), inverseJoinColumns = @JoinColumn(name = "employe_id"))
     private Set<User> employes;
 
     @OneToOne
     private Profile profile;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "request_users", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "request_id"))
+    private Set<Request> requests;
 
     public User() {
     }
@@ -84,6 +84,14 @@ public class User {
 
     public void setProfile(Profile profile) {
         this.profile = profile;
+    }
+
+    public Set<Request> getRequests() {
+        return requests;
+    }
+
+    public void setRequests(Set<Request> requests) {
+        this.requests = requests;
     }
 
 }
