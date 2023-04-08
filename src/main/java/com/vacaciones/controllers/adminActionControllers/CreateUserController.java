@@ -1,4 +1,4 @@
-package com.vacaciones.controllers;
+package com.vacaciones.controllers.adminActionControllers;
 
 import java.util.HashMap;
 import java.util.Map;
