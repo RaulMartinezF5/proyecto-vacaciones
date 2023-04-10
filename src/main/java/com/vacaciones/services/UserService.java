@@ -8,20 +8,16 @@ import org.springframework.stereotype.Service;
 
 import com.vacaciones.models.User;
 import com.vacaciones.repositories.UserRepository;
+import com.vacaciones.services.baseServices.AdminService;
 import com.vacaciones.services.baseServices.BasicService;
 
 @Service
-public class UserService implements BasicService<User>{
+public class UserService implements BasicService<User>, AdminService<User, String> {
 
     private UserRepository repository;
 
-    public UserService(UserRepository repository){
+    public UserService(UserRepository repository) {
         this.repository = repository;
-    }
-
-    @Override
-    public List<User> findAll() {
-        return repository.findAll();
     }
 
     @Override
@@ -35,11 +31,32 @@ public class UserService implements BasicService<User>{
         String encodePassword = encoder.encode(user.getPassword());
 
         user.setPassword(encodePassword);
-        
+
         repository.save(user);
     }
-    public User findByDocument(String id){
+
+    public User findByDocument(String id) {
         return repository.findByDocument(id).orElseThrow();
     }
-    
+
+    @Override
+    public void delete(String id) {
+
+        throw new UnsupportedOperationException("Unimplemented method 'delete'");
+    }
+
+    @Override
+    public List<User> findAll() {
+
+        throw new UnsupportedOperationException("Unimplemented method 'findAll'");
+    }
+
+    @Override
+    public User update(String id, User entity) {
+        return repository.findById(id).map(userUpdate -> {
+            userUpdate.setPassword(entity.getPassword());
+            return repository.save(userUpdate);
+        }).orElseThrow();
+    }
+
 }
