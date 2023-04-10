@@ -110,38 +110,3 @@ import iconArrowLeft from '@/assets/img/iconArrowLeft.png';
 
 
 
-// .rechazada {
-//     display: flex;
-//     flex-direction: row;
-//     margin-left: 70px;
-//     margin-top: 53px;
-
-
-// }
-
-// #comentario {
-//     display: flex;
-//     margin-top: 30px;
-//     margin-bottom: 20px;
-//     margin-left: 190px;
-//     background-color: white;
-// }
-
-// #fecha {
-//     display: flex;
-//     margin-top: 30px;
-//     margin-left: 190px;
-//     background-color: white;
-// }
-
-
-// .button {
-//     margin-top: 20px;
-//     color: white;
-// }
-
-// .texto {
-//     margin-left: 500px;
-//     background-color: #D9D9D9;
-//     border-style: groove;
-// } </style>
