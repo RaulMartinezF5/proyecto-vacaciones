@@ -1,36 +1,23 @@
 <script setup>
-import Aceptada from './Aceptada.vue';
+import StateIndicator from './StateIndicator.vue';
 
 const props = defineProps(
     {
-        workerName: {
-            type: String,
-            default: "worker",
+        request: {
+            type: Object,
         },
-        date: {
-            type: Date,
-            default: '10/10/2022 - 15/10/2022',
-        },
-        days: {
-            type: Number,
-            default: 15,
-        }
-
     }
 )
 
 </script>
 
 <template>
-
-        <div class="request-wrapper">
-            <p class="workerName">{{ workerName }}</p>
-            <p class="date">{{ date }}</p>
-            <p class="days">Días de vacaciones: {{ days }} </p>
-            <Aceptada />
-
-        </div>
-    
+    <div class="request-wrapper">
+                <p class="workerName">{{ request.workerName }}</p>
+                <p class="date">{{ request.date }}</p>
+                <p class="days">Días de vacaciones: {{ request.days }} </p>
+                <StateIndicator :state="'aceptada'" />
+    </div>
 </template>
 
 <style lang="scss" scoped>
@@ -41,19 +28,20 @@ const props = defineProps(
     border: solid 2px;
     border-color: map-get($map: c.$colors, $key: "Orange");
     border-radius: 0.5vw;
-    width: 80%;
+    width: 100%;
     display: flex;
     justify-content: space-around;
     align-items: center;
-
-    p {
-        margin-block: 2vh;
-        font-size: 3vh;
-    }
-
-    .workerName {
-        font-size: 4vh;
-    }
-
+    margin-block: 2vh;
 }
-</style>
+
+
+
+p {
+    margin-block: 2vh;
+    font-size: 3vh;
+}
+
+.workerName {
+    font-size: 4vh;
+}</style>
