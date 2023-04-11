@@ -62,11 +62,6 @@ const setSelectedDates = (start, end) => {
 </template>
 <style lang="scss" scoped>
 
-.wrapper{
-    display: flex;
-    flex-direction: row;
-    justify-content: 
 
 
-}
 </style>
