@@ -40,6 +40,8 @@ public class SecurityConfiguration {
             .authorizeHttpRequests(auth -> auth 
                                    .requestMatchers("/api/register").permitAll()
                                    .requestMatchers("/api/login").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN", "ROLE_RESPONSABLE")
+                                   .requestMatchers("/api/createUser").hasAuthority("ROLE_ADMIN")
+                                   .requestMatchers("api/user/**").hasAnyAuthority("ROLE_USER", "ROLE_RESPONSABLE")
                                    .anyRequest()
                                    .authenticated())
             .userDetailsService(service)

@@ -17,7 +17,7 @@
     background-color: map-get($map: c.$colors, $key: "Coral");
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     p {
         color: black;
         font-size: small;

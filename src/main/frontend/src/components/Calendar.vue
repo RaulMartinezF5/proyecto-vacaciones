@@ -39,17 +39,10 @@ const setSelectedDates = (start, end) => {
      calculate();
 };
 
-
-
-
-
-
-
-
-</script>
 <template>
     <div>
-        <!--mostramos el calendario-->
+       
+
 
         <div class="wrapper">
          <input type="date" class="start" v-model="startDate" @input="setSelectedDates(startDate,endDate)">
@@ -60,8 +53,7 @@ const setSelectedDates = (start, end) => {
        
     </div>
 </template>
+
 <style lang="scss" scoped>
-
-
 
 </style>
