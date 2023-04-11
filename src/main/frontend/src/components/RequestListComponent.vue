@@ -22,33 +22,38 @@ const props = defineProps(
 </script>
 
 <template>
-   <section class="requestSection">
-    <p class="workerName">{{ workerName }}</p>
-    <p class="date">{{ date }}</p>
-    <p class="days">Días de vacaciones: {{ days }} </p>
-    <Aceptada/>
 
-   </section>
+        <div class="request-wrapper">
+            <p class="workerName">{{ workerName }}</p>
+            <p class="date">{{ date }}</p>
+            <p class="days">Días de vacaciones: {{ days }} </p>
+            <Aceptada />
+
+        </div>
+    
 </template>
 
 <style lang="scss" scoped>
 @use "../assets/scss/variables.scss" as c;
-.requestSection{
+
+
+.request-wrapper {
     border: solid 2px;
-    border-color: map-get($map: c.$colors, $key: "Coral");
+    border-color: map-get($map: c.$colors, $key: "Orange");
     border-radius: 0.5vw;
     width: 80%;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    
-    p{
+
+    p {
         margin-block: 2vh;
         font-size: 3vh;
     }
-    .workerName{
+
+    .workerName {
         font-size: 4vh;
     }
-    
+
 }
 </style>

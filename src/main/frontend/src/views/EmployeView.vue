@@ -3,7 +3,7 @@
 </script>
 
 <template>
-<h1>stadistics</h1>
+<h1>this is employe view</h1>
 </template>
 
 <style scoped lang="scss">

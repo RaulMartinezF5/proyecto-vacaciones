@@ -2,6 +2,8 @@ package com.vacaciones.services;
 
 import java.util.List;
 
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.vacaciones.models.User;
@@ -28,8 +30,13 @@ public class UserService implements BasicService<User>{
     }
 
     @Override
-    public void save(User entity) {
+    public void save(User user) {
+        PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+        String encodePassword = encoder.encode(user.getPassword());
+
+        user.setPassword(encodePassword);
         
+        repository.save(user);
     }
     public User findByDocument(String id){
         return repository.findByDocument(id).orElseThrow();

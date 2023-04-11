@@ -1,5 +1,6 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
+<<<<<<< HEAD
 import FormComponent from "./components/FormComponent.vue";
 import Calendar from "./components/Calendar.vue"
 </script>
@@ -8,6 +9,20 @@ import Calendar from "./components/Calendar.vue"
     <Calendar/>
     <!-- <RouterView /> -->
   </main>
+=======
+</script>
+<template>
+
+  
+    <RouterView />
+
+>>>>>>> b31baaa092e5a0a8c2fe92457638a7bd5c9f38bc
 </template> 
 
-<style lang="scss" scoped></style>
+<style scoped lang="scss">
+
+*{
+    font-family: 'Poppins', sans-serif; 
+}
+
+</style>

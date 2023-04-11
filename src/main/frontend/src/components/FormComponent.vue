@@ -40,31 +40,36 @@ const props = defineProps(
 
 <template>
 <div class="container">
-    <v-text-field color="#FF4700" label="Nombre" v-model="name">  </v-text-field>
-    <v-text-field color="#FF4700" label="Apellidos" v-model="surnames"> </v-text-field>
-    <v-text-field color="#FF4700" label="DNI/NIE/Pasaporte" v-model="dni"> </v-text-field>
-    <v-text-field color="#FF4700" label="Correo electrónico" v-model="email"> </v-text-field>
-    <v-text-field color="#FF4700" label="Cantidad de Vacaciones" v-model="vacationDays"> </v-text-field>
-    <v-select color="#FF4700" label="Posición" :items="['Formador','Coformador','Responsable de Promoción']"   v-model="position"> </v-select>
-    <v-select color="#FF4700" label="Tipo de Usuario" :items="['Responsable de Escuela','Empleado']" v-model="role"> </v-select>
-    <v-select color="#FF4700" label="Lugar de trabajo" :items="['Asturias', 'Madrid', 'BCN-FemCoders', 'AST-Rural Camp',]" multiple chips v-model="workplace"> </v-select>
-    <v-text-field color="#FF4700" label="Fecha de entrada" type="date" v-model="startDay"> </v-text-field>
-    <v-text-field color="#FF4700" label="Fecha de baja" type="date" v-model="finishDay"> </v-text-field>
+   <div class="input-wrapper" > <v-text-field color="#FF4700" label="Nombre" variant="solo" v-model="name">  </v-text-field></div>
+   <div class="input-wrapper" ><v-text-field color="#FF4700" label="Apellidos" variant="solo" v-model="surnames"> </v-text-field></div>
+   <div class="input-wrapper" > <v-text-field color="#FF4700" label="DNI/NIE/Pasaporte" variant="solo" v-model="dni"> </v-text-field></div>
+   <div class="input-wrapper" ><v-text-field color="#FF4700" label="Correo electrónico" variant="solo" v-model="email"> </v-text-field></div>
+   <div class="input-wrapper" > <v-text-field color="#FF4700" label="Cantidad de Vacaciones" variant="solo" v-model="vacationDays"> </v-text-field></div>
+    <div class="input-wrapper" ><v-select color="#FF4700" label="Posicion" variant="solo" :items="[ 'Formador', 'Coformador', 'Responsable de Promocion']"  v-model="workplace"> </v-select></div>
+    <div class="input-wrapper" ><v-select color="#FF4700" label="Tipo de Usuario" variant="solo" :items="[ 'Responsable de Escuela', 'Empleado',]"  v-model="workplace"> </v-select></div>
+    <div class="input-wrapper" ><v-select color="#FF4700" label="Lugar de trabajo" variant="solo" :items="['Asturias', 'Madrid', 'BCN-FemCoders', 'AST-Rural Camp',]" multiple chips v-model="workplace"> </v-select></div>
+    <div class="input-wrapper" > <v-text-field color="#FF4700" label="Fecha de entrada" variant="solo" type="date" v-model="startDay"> </v-text-field></div>
+    <div class="input-wrapper" ><v-text-field color="#FF4700" label="Fecha de baja" variant="solo" type="date" v-model="finishDay"> </v-text-field></div>
 </div>
 
-    
+   
 </template>
 
 <style lang="scss" scoped>
-@import "../assets/scss/variables.scss";
+@use "../assets/scss/variables.scss" as c;
     .container {
         display: grid;
         grid-template-columns: 32% 32%;
-        gap: 2%;
+        gap: 2vh;
         width: 100%;
         justify-content: center;
     }
 
-
+    .input-wrapper {
+        border-radius: 10px;
+        border : map-get($map: c.$colors, $key: "Orange") solid 2px;
+        overflow: hidden;
+        height: 6vh;
+    }
 
 </style>
