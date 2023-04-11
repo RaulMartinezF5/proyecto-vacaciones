@@ -1,46 +1,59 @@
-<script>
-import VueDatepicker from 'vue-datepicker';
-import moment from 'moment';
+<script setup>
+import {ref, watch} from "vue";
+import dayjs from "dayjs";
+
+const startDate = ref("");
+const endDate = ref("");
+
+const nonWorkingDays = ref(["Saturday", "Sunday"]);
+const remainingWorkingDays = ref(0);
 
 
-// definimos las variables las que alacenen las fechas seleccionadas en el calendario
+const calculate = () =>{
+    if(!startDate.value || !endDate.value){
+        remainingWorkingDays.value = 0;
+        return;
+    }
 
-export default {
-    components:{
-        Datepicker,
-    },
-    data(){
-        return {
-    
-            startDate:null,
-            endDate:null,
-            CountFinal:null,
-        };
+    let remainingDays = 0;
+    let date = dayjs(startDate.value);
 
-    },
+    while(date.isBefore(dayjs(endDate.value))){
+        if(!nonWorkingDays.value.includes(date.format("dddd"))){
+            remainingDays++;
 
-    methods: {
-        Count(){
-            if(this.start && this.endDate){
-                const start = moment(this.startDate);
-                const end = moment(this.endDate);
-                const CountFinal = end.diff(strat,'days') + 1
-                this.CountFinal = CountFinal
-            }
-        },
-    },
+        }
+        date = date.add(1,"day");
+    }
 
+    remainingWorkingDays.value = remainingDays;
 };
 
-</script>
+
+watch(startDate, calculate);
+watch(endDate, calculate);
+
+const setSelectedDates = (start, end) => {
+    startDate.value = start;
+    endDate.value = end;
+     calculate();
+};
+
 <template>
     <div>
-        <!--mostramos el calendario-->
-        <datepicker v-model="startDate" :range-end="endDate" @input="Count"></datepicker>
-        <datepicker v-model="endDate" :range-end="startDate" @input="Count"></datepicker>
-        <div>{{ CountFinal}}</div>
-        
+       
+
+
+        <div class="wrapper">
+         <input type="date" class="start" v-model="startDate" @input="setSelectedDates(startDate,endDate)">
+         <input type="date"  class="end" v-model="endDate" @input="setSelectedDates(startDate,endDate)">
+        </div>
+        <p>Dias habiles restantes: {{ remainingWorkingDays }}</p>
+         
+       
     </div>
 </template>
+
 <style lang="scss" scoped>
+
 </style>
