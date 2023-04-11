@@ -51,14 +51,22 @@ const setSelectedDates = (start, end) => {
     <div>
         <!--mostramos el calendario-->
 
-        <div>
-         <input type="date" v-model="startDate" @input="setSelectedDates(startDate,endDate)">
-         <input type="date" v-model="endDate" @input="setSelectedDates(startDate,endDate)">
+        <div class="wrapper">
+         <input type="date" class="start" v-model="startDate" @input="setSelectedDates(startDate,endDate)">
+         <input type="date"  class="end" v-model="endDate" @input="setSelectedDates(startDate,endDate)">
         </div>
-         
         <p>Dias habiles restantes: {{ remainingWorkingDays }}</p>
+         
        
     </div>
 </template>
 <style lang="scss" scoped>
+
+.wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: 
+
+
+}
 </style>

@@ -6,7 +6,7 @@ import Calendar from "./components/Calendar.vue"
 <template>
   <main>
     <Calendar/>
-    <RouterView />
+    <!-- <RouterView /> -->
   </main>
 </template> 
 
