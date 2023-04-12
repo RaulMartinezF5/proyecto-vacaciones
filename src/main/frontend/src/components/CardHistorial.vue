@@ -1,6 +1,6 @@
 <script setup>
 import { defineProps } from "vue";
-import Aceptada from "./Aceptada.vue";
+
 
 const props = defineProps({
   Request: Object,

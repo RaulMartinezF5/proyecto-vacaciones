@@ -30,7 +30,7 @@ public class User {
     private Set<Role> roles;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "chief-have-employes", joinColumns = @JoinColumn(name = "chief_id"), inverseJoinColumns = @JoinColumn(name = "employe_id"))
+    @JoinTable(name = "chief-has-employes", joinColumns = @JoinColumn(name = "chief_id"), inverseJoinColumns = @JoinColumn(name = "employe_id"))
     private Set<User> employes;
 
     @OneToOne
