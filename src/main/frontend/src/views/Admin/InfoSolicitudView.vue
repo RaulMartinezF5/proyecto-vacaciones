@@ -102,7 +102,7 @@ import iconArrowLeft from '@/assets/img/iconArrowLeft.png';
         margin-bottom: 3%;
     }
 }
-
+</style>
 
 
 
