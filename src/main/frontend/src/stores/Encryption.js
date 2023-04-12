@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import apiRequest from '../services/ApiCall';
+import UserService from '../apiCall/services/UserService';
 
 export const encryptionStore = defineStore('encryptionStore', {
   state: () => ({
@@ -12,11 +12,11 @@ export const encryptionStore = defineStore('encryptionStore', {
     async login(username, password) {
       const encodeInfo = this.encoder(username, password);
 
-      const repository = new Repository('auth');
+      const repository = new apiRequest('auth');
 
       const service = repository.chooseApi();
 
-      const response = await service?.login(encodeInfo);
+      const response = await service.login(encodeInfo);
 
       this.username = response.username;
       this.roleLogin = response.role;
