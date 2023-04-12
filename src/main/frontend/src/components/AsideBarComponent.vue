@@ -11,7 +11,7 @@ const props = defineProps(
     }
 )
 
-const test = ref('ROLE_ADMIN')
+const test = ref('ROLE_RESPONSABLE')
 
 const showRole = computed(() => {
     if (test.value == 'ROLE_USER') return 'EMPLEADO'
