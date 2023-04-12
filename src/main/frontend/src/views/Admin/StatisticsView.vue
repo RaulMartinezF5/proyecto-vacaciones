@@ -2,11 +2,11 @@
 import iconArrowLeft from '@/assets/img/iconArrowLeft.png';
 import ButtonComponent from '../../components/ButtonComponent.vue';
 
+
 </script>
 
 <template>
     <div class="mainContainer">
-        <!-- <div class="header"> -->
         <div class="microheader">
             <button class="button-arrow"><img :src="iconArrowLeft" alt="" class="arrow"></button>
             <h1 class="Titulo">
@@ -22,7 +22,7 @@ import ButtonComponent from '../../components/ButtonComponent.vue';
 
         <div class="container">
             <div class="pepin">
-                <div class="grafic"></div>
+                <div class="grafic"><canvas id="myChart" style="width:100%;max-width:700px"></canvas></div>
                 <div class="grafic2"></div>
             </div>
             <div class="pepon">
@@ -105,9 +105,8 @@ import ButtonComponent from '../../components/ButtonComponent.vue';
                     width: 100%;
                 }
             }
-    }
-}
-
+        }   
+    }  
 
 
 </style>
