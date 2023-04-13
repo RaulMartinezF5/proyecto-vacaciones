@@ -98,6 +98,12 @@ const router = createRouter({
               name: 'infoSolicitudView',
               component: () => import('../views/Admin/InfoSolicitudView.vue'),
               meta: { requiresAuth: true }
+            },
+            {
+              path: 'createTeams',
+              name: 'createTeamsView',
+              component: () => import('../views/Admin/CreateTeamsView.vue'),
+              meta: {requiresAuth: true}
             }
           ]
         }
