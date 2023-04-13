@@ -1,6 +1,11 @@
 <script setup>
+import { useAuthStore } from '../stores/authStore';
 import ButtonComponent from './ButtonComponent.vue';
 import { computed, ref } from 'vue';
+
+const authStore = useAuthStore();
+
+
 
 const props = defineProps(
     {
@@ -11,7 +16,15 @@ const props = defineProps(
     }
 )
 
-const test = ref('ROLE_RESPONSABLE')
+
+const userRole = computed(()=>{
+    const roles = {
+        'ROLE_ADMIN': 'ADMIN',
+        'ROLE_RESPONSABLE': 'RESPONSABLE',
+        'ROLE_USER': 'USER'
+    }
+    return roles[authStore.roleLogin]
+})
 
 const showRole = computed(() => {
     if (test.value == 'ROLE_USER') return 'EMPLEADO'
@@ -31,7 +44,7 @@ const emitRoute = (navigation)=>{
         <div class="image-zone">
             <img src="../assets/img/user-default-icon.png" alt="user default icon">
 
-            <h1>{{ showRole }}</h1>
+            <h1>{{ userRole }}</h1>
         </div>
 
         <div v-if="test == 'ROLE_USER'" class="user-info-zone">
@@ -51,12 +64,12 @@ const emitRoute = (navigation)=>{
         </div>
 
         <div class="navigation-zone">
-            <div v-if="test == 'ROLE_USER'" class="navigation">
+            <div v-if="authStore.roleLogin == 'ROLE_USER'" class="navigation">
                 <div class="nav-button-wrapper">
                     <ButtonComponent @click="emitRoute('myRequests')" :button="'EMPLEADO'" />
                 </div>
             </div>
-            <div v-if="test == 'ROLE_RESPONSABLE'" class="navigation">
+            <div v-if="authStore.roleLogin == 'ROLE_RESPONSABLE'" class="navigation">
                 <div class="nav-button-wrapper">
                     <ButtonComponent  @click="emitRoute('employeResponsableView')" :button="'EMPLEADO'" />
                 </div>
@@ -64,7 +77,7 @@ const emitRoute = (navigation)=>{
                     <ButtonComponent  @click="emitRoute('requestListView')" :button="'RESPONSABLE'" />
                 </div>
             </div>
-            <div v-if="test == 'ROLE_ADMIN'" class="navigation">
+            <div v-if="authStore.roleLogin == 'ROLE_ADMIN'" class="navigation">
                 <div class="nav-button-wrapper">
                     <ButtonComponent  @click="emitRoute('createUserView')" :button="'CREAR USUARIO'" />
                 </div>

@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import LoginView from '../views/LoginView.vue'
+import { useAuthStore } from '../stores/authStore.js'
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -111,6 +113,16 @@ const router = createRouter({
     }
   ]
 });
+router.beforeEach((to, from) => {
+  const loginStore = useAuthStore()
 
+  if(to.meta.requiresAuth && !loginStore.isAuthenticated) return {name: 'login'}
+  if(to.name == 'LayoutSession' && loginStore.roleLogin == 'ROLE_USER') router.push({name:'myRequests'})
+  if(to.name == 'LayoutSession' && loginStore.roleLogin == 'ROLE_RESPONSABLE') router.push({name:'requestListView'})
+  if(to.name == 'LayoutSession' && loginStore.roleLogin == 'ROLE_ADMIN') {
+    console.log('admin');
+    router.push({name:'createUserView'})
+  }
+})
 
 export default router

@@ -1,5 +1,23 @@
 <script setup>
-const validate = () => ({
+import { ref } from 'vue';
+import { useAuthStore } from '../stores/authStore';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+const authStore = useAuthStore()
+
+const username = ref('')
+const password = ref('')
+
+const login = async(username, password)=>{
+  const response = await authStore.login(username, password)
+  
+  if(response == 'auth') {
+
+    router.push({name: 'LayoutSession'})
+  }
+}
+/* const validate = () => ({
   name: "",
   nameRules: [
     (value) => {
@@ -14,20 +32,21 @@ const validate = () => ({
       return "password nust be contains digits";
     },
   ],
-});
+}); */
+
 </script>
 <template>
   <v-sheet width="37%" class="form mx-auto">
     <v-img :width="'50%'" aspect-ratio="16/9" cover src="../../src/assets/img/logo-login.jpg" class="img"></v-img>
     <v-form ref="form">
-      <v-text-field color="#FF4700" v-model="name" :counter="10" :rules="nameRules" label="User Name" required
+      <v-text-field color="#FF4700" v-model="username" :counter="10" :rules="nameRules" label="User Name" required
         class="form__name"></v-text-field>
 
       <v-text-field v-model="password" color="#FF4700" :counter="10" :rules="passwordRules" label="Password" required
         class="form__pass"></v-text-field>
 
       <div class="btn">
-        <v-btn color="#FF4700" rounded="xs" :width="'50%'" @click="validate">
+        <v-btn color="#FF4700" rounded="xs" :width="'50%'" @click="login(username,password)">
           Login
         </v-btn>
       </div>
