@@ -1,15 +1,24 @@
 <script setup>
 import Request from "../components/Request.vue"
+import StateIndicator from '../components/StateIndicator.vue';
+
+const props = defineProps(
+    {
+        request: {
+            type: Object,
+        },
+    }
+)
 </script>
 
 <template>
+
     <div class="wrapper">
         <div class="select">
             <h2 class="solicitud">Solicitud de dias de: </h2>
-            <!-- <v-select class="label" label="" :items="['vacaciones', 'permisos']" variant="solo"></v-select> -->
-            <select class="label">
-                <option value="vacaciones"><i class="fas fa-chevron-down"></i> vacaciones</option>
-                <option value="permisos"><i class="fas fa-chevron-down"></i> permisos</option>
+            <select class="label fas fa-chevron-down">
+                <option value="vacaciones"> vacaciones</option>
+                <option value="permisos"> permisos</option>
             </select>
 
         </div>
@@ -17,14 +26,18 @@ import Request from "../components/Request.vue"
             <Request class="request" />
 
         </div>
-    </div>
-    <h2 class="listado">Listado de solicitudes</h2>
-    <div>
-
+        <h2 class="listado">Listado de solicitudes</h2>
+        <div class="request-wrapper">
+                    <p class="startDate">13/04/2023</p>
+                    <p class="finishDate">14/04/2023</p>
+                    <StateIndicator class="state" :state="'aceptada'" />
+         </div> 
     </div>
 </template>
 
 <style scoped lang="scss">
+@use "../assets/scss/variables.scss" as c;
+
 .wrapper {
     width: 90%;
     margin-left: 4%;
@@ -66,5 +79,29 @@ import Request from "../components/Request.vue"
 .listado {
     text-align: center;
     margin-top: 3vh;
+}
+.request-wrapper {
+    border: solid 2px;
+    border-color: map-get($map: c.$colors, $key: "Orange");
+    border-radius: 0.5vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-block: 2vh;
+    
+    
+}
+
+p {
+    margin: 2vh;
+    font-size: 3vh;
+}
+
+.workerName {
+    font-size: 4vh;
+}
+
+.state{
+    margin-right: 2vw;
 }
 </style>

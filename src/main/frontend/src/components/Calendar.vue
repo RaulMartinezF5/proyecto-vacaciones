@@ -48,7 +48,7 @@ const setSelectedDates = (start, end) => {
          <input type="date" class="start" v-model="startDate" @input="setSelectedDates(startDate,endDate)">
          <input type="date"  class="end" v-model="endDate" @input="setSelectedDates(startDate,endDate)">
         </div>
-        <p> {{ remainingWorkingDays }}</p>
+        <!-- <p> {{ remainingWorkingDays }}</p> -->
          
        
     </div>
