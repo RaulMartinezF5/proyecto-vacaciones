@@ -15,9 +15,6 @@ const props = defineProps(
 
     <div class="wrapper">
         <div class="select">
-            <i class=“fa-solid fa-location-dot” style= "color: #000000"></i>
-             <!-- <font-awesome-icon icon="fa-solid fa-user-secret" />  -->
-
             <h2 class="solicitud">Solicitud de dias de: </h2>
             <select class="label fas fa-chevron-down">
                 <option value="vacaciones"> vacaciones</option>
