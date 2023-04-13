@@ -70,9 +70,6 @@ const props = defineProps(
         justify-content: center;
         flex-direction: column;
         background-color: #D9D9D9;
-
-
-        .request {}
     }
 }
 
