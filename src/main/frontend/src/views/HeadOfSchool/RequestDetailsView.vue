@@ -1,9 +1,13 @@
 <script setup>
-
+import RequestDescription from '../../components/RequestDescription.vue';
 </script>
 
 <template>
-<h1>reuquest details</h1>
+
+<RequestDescription/>
+
+
+
 </template>
 
 <style scoped lang="scss">

@@ -2,15 +2,9 @@
 import ButtonComponent from '../../components/ButtonComponent.vue';
 import rechazada from '../../components/Rechazada.vue';
 import iconArrowLeft from '@/assets/img/iconArrowLeft.png';
-
-
-
 </script>
-
-
 <template>
     <div class="mainContainer">
-
         <div class="Rechazada">
             <div class="microheader">
                 <button class="button-arrow"><img :src="iconArrowLeft" alt="Flecha botón para retoceder" class="arrow"></button>
@@ -24,21 +18,18 @@ import iconArrowLeft from '@/assets/img/iconArrowLeft.png';
                 <rechazada />
             </div>
             <div class="texto">
-                <textarea name="fecha" id="fecha" placeholder="Fecha" cols="70" rows="2"></textarea>
-                <textarea name="Escribe comentario" placeholder="Comentario" id="comentario" cols=70 rows=5></textarea>
+                <p id="fecha"> pepon </p>
+                <p id="comentario"> pepin </p>
             </div>
         </div>
     </div>
 </template>
-
-
 <style lang="scss" scoped>
 .mainContainer {
     width: 100%;
     display: flex;
     justify-content: space-around;
     margin: 2% 5%;
-
     .responsable {
         display: flex;
         flex-direction: column;
@@ -60,10 +51,7 @@ import iconArrowLeft from '@/assets/img/iconArrowLeft.png';
     }
     .empleado{
         display: flex;
-
     }
-
-
     .Rechazada {
         width: 75%;
         .titulo{
@@ -84,7 +72,6 @@ import iconArrowLeft from '@/assets/img/iconArrowLeft.png';
         margin-top: 5%;
         
         
-
     }
     #fecha{
         background-color: white;
@@ -92,7 +79,6 @@ import iconArrowLeft from '@/assets/img/iconArrowLeft.png';
         padding-left: 3%;
         padding-top: 3%;
         margin-bottom: 3%;
-
     }
     #comentario{
         background-color: white;
@@ -102,11 +88,3 @@ import iconArrowLeft from '@/assets/img/iconArrowLeft.png';
         margin-bottom: 3%;
     }
 }
-</style>
-
-
-
-
-
-
-
