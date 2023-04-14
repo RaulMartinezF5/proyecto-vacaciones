@@ -2,11 +2,11 @@
 import CardHistorial from '../../components/CardHistorial.vue';
 
 </script>
-
 <template>
-<CardHistorial/>
+    <div>
+        <CardHistorial/>
+    </div>
+    
 </template>
-
-<style scoped lang="scss">
-
+<style lang="scss" scoped> 
 </style>
