@@ -1,6 +1,4 @@
 <script setup>
-import ButtonComponent from '../../components/ButtonComponent.vue';
-import rechazada from '../../components/Rechazada.vue';
 import iconArrowLeft from '@/assets/img/iconArrowLeft.png';
 </script>
 <template>
@@ -21,6 +19,13 @@ import iconArrowLeft from '@/assets/img/iconArrowLeft.png';
                 <p id="fecha"> pepon </p>
                 <p id="comentario"> pepin </p>
             </div>
+            <div class="comment-section" v-if="fake.state == null">
+            <v-textarea > </v-textarea>
+            <div class="buttons-section">
+                <ButtonComponent :button="'Aceptar'" :type="'accept'"/>
+                <ButtonComponent :button="'Rechazar'" :type="'reject'"/>
+            </div>
+        </div>
         </div>
     </div>
 </template>
@@ -88,3 +93,4 @@ import iconArrowLeft from '@/assets/img/iconArrowLeft.png';
         margin-bottom: 3%;
     }
 }
+</style>

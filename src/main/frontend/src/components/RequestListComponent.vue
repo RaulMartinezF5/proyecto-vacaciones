@@ -14,7 +14,7 @@ const props = defineProps(
 <template>
     <div class="request-wrapper">
                 <p class="workerName">{{ request.workerName }}</p>
-                <p class="date">{{ request.date }}</p>
+                <p class="date">{{ request.startDate }} - {{ request.finishDate }}</p>                 
                 <p class="days">Días de vacaciones: {{ request.days }} </p>
                 <StateIndicator :state="'aceptada'" />
     </div>
