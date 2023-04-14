@@ -9,7 +9,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="d-flex justify-center">
+  <div class="card d-flex justify-center ">
     <v-card width="900">
       <v-text>
         <v-card-title class="d-flex justify-center">Andrés P.</v-card-title>
@@ -23,6 +23,7 @@ const props = defineProps({
           <p class="d-flex top-12 ml-4 mr-2" v-bind="props.description">
             well meaning and kindly "a benevolent smile",
             dasdhkahskdhahsfkhaksfhkahsfhalsfhlashflhasl,
+        
           </p>
           <div class="d-flex flex-column">
   <p class="text-sm font-weight-bold">Dias solicitados: {{ props.days }}</p>
@@ -35,4 +36,9 @@ const props = defineProps({
   </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.card{
+  margin-top: 16vh;
+}
+
+</style>

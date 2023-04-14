@@ -1,28 +1,15 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
-<<<<<<< HEAD
-import FormComponent from "./components/FormComponent.vue";
-import Calendar from "./components/Calendar.vue"
+import  GrafficasDonut from "./components/GrafficasDonut.vue"
 </script>
 <template>
-  <main>
-    <Calendar/>
-    <!-- <RouterView /> -->
-  </main>
-=======
-</script>
-<template>
+  <RouterView />
 
-  
-    <RouterView />
-
->>>>>>> b31baaa092e5a0a8c2fe92457638a7bd5c9f38bc
+  <GrafficasDonut/>
 </template> 
 
 <style scoped lang="scss">
-
-*{
-    font-family: 'Poppins', sans-serif; 
+* {
+  font-family: 'Poppins', sans-serif;
 }
-
 </style>
