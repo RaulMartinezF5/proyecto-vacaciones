@@ -38,6 +38,7 @@ const typeStatePicker = computed(() => {
         font-family: 'Poppins', sans-serif;
         font-weight: bold; 
         text-align: center;
+        padding: 3%;
     }  
 }
 .rechazada{
