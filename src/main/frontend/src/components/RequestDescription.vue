@@ -20,7 +20,7 @@ import iconArrowLeft from '@/assets/img/iconArrowLeft.png';
                 <p id="comentario"> pepin </p>
             </div>
             <div class="comment-section" v-if="fake.state == null">
-            <v-textarea > </v-textarea>
+
             <div class="buttons-section">
                 <ButtonComponent :button="'Aceptar'" :type="'accept'"/>
                 <ButtonComponent :button="'Rechazar'" :type="'reject'"/>
@@ -78,6 +78,7 @@ import iconArrowLeft from '@/assets/img/iconArrowLeft.png';
         
         
     }
+
     #fecha{
         background-color: white;
         border-radius: 10px;
@@ -85,6 +86,7 @@ import iconArrowLeft from '@/assets/img/iconArrowLeft.png';
         padding-top: 3%;
         margin-bottom: 3%;
     }
+    
     #comentario{
         background-color: white;
         border-radius: 10px;
