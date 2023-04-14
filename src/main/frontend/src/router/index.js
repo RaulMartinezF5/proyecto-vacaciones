@@ -23,7 +23,7 @@ const router = createRouter({
           children: [
             // aqui es donde deben ir todas las vistas que tiene el usuario
             {
-              path: 'MyRequests',
+              path: 'myRequests',
               name: 'myRequests',
               component: () => import('../views/EmployeView.vue'),
               meta: { requiresAuth: true },
@@ -38,7 +38,7 @@ const router = createRouter({
           children: [
             // aqui es donde deben ir todas las vistas que tiene el responsable
             {
-              path: 'requestlist',
+              path: 'requestList',
               name: 'requestListView',
               component: () => import('../views/HeadOfSchool/RequestListView.vue'),
               meta: { requiresAuth: true }
