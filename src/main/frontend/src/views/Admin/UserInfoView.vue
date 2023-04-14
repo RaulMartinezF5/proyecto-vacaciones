@@ -35,22 +35,13 @@ h1 {
     display: flex;
     flex-direction: column;
     justify-content: center;
-
     row-gap: 2vh;
-
-
-
-    .form {
-        
-    }
 
     .button-zone {
         width: 100%;
         display: flex;
         justify-content: flex-end;
     
-
-
         .button {
         width: 15vw;
         margin-top: 2vw;

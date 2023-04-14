@@ -8,7 +8,6 @@ import ButtonComponent from '../../components/ButtonComponent.vue';
     <h1>CREAR USUARIO</h1>
     <div class="form-wrapper">
 
-        
             <FormComponent />
         
         <div class=" button-zone">
@@ -30,14 +29,7 @@ import ButtonComponent from '../../components/ButtonComponent.vue';
     display: flex;
     flex-direction: column;
     justify-content: center;
-
     row-gap: 2vh;
-
-
-
-    .form {
-        
-    }
 
     .button-zone {
         width: 100%;
