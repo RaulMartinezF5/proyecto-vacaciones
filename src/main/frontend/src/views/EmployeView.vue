@@ -53,10 +53,6 @@ const props = defineProps(
         align-items: center;
         margin-top: 3vh;
         font-weight: bold;
-       
-        .solicitud {
-
-        }
 
         .label {
             margin-left: 10px;
