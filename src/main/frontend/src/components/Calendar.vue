@@ -1,6 +1,6 @@
 <script setup>
 import {ref, watch} from "vue";
-import dayjs from "dayjs";
+// import dayjs from "dayjs";
 
 const startDate = ref("");
 const endDate = ref("");
@@ -71,14 +71,7 @@ const setSelectedDates = (start, end) => {
         font-size: 25px;
         margin: 30px;
       
-        input .start{
-  
-        }
-        input .end{
-        
-
-
-        }
+       
     }
    
 }
