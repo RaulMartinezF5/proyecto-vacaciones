@@ -2,6 +2,9 @@
 const props = defineProps({
   profile: {
     type: Object
+  },
+  school:{
+    type: String
   }
 
 });
@@ -26,7 +29,7 @@ const props = defineProps({
         <div class="d-flex justify-space-between">
 
           <p class="d-flex font-weight-bold ml-10 mb-3 location" v-bind="props.description">
-            Escuela: Gijón
+            Escuela: {{ school }}
           </p>
 
           <div class="d-flex flex-column">

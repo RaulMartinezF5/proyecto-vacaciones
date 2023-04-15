@@ -21,4 +21,12 @@ export default class AdminService {
 
         return getBody
     }
+    async schoolOfUser(document){
+        axios.defaults.withCredentials = true
+        const response = axios.get(this.baseUrl + `/user/${document}/School`)
+
+        const getSchool = (await response).data.school
+
+        return getSchool
+    }
 }

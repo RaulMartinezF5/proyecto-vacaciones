@@ -16,7 +16,7 @@ onBeforeMount(async () => {
     <div class="d-flex flex-column">
 <SearchBar></SearchBar>
 
-<UserListComponent v-for="user of adminStore.allUsers" :profile="user"></UserListComponent>
+<UserListComponent v-for="(user, key) of adminStore.allUsers" :key="index" :school="adminStore.SchoolOfUser[key]" :profile="user"></UserListComponent>
 </div>
 </template>
 

@@ -3,7 +3,8 @@ import Repository from "../apiCall/Repository";
 
 export const useAdminStore = defineStore('adminStore',{
     state: ()=>({
-        allUsers: []
+        allUsers: [],
+        SchoolOfUser: []
     }),
     actions:{
         async createUser(payload){
@@ -23,15 +24,20 @@ export const useAdminStore = defineStore('adminStore',{
 
             const response = await service.listAllUsers()
 
-            console.log(response.status);
+            console.log(response.status)
 
             const data = response.data
             const profiles = []
+            const schools = []
             for (const user of data) {
                 
-                if(user.profile != undefined) profiles.push(user.profile)
+                if(user.profile != undefined) {
+                    profiles.push(user.profile)
+                    schools.push(await service.schoolOfUser(user.document))
+                }
             }
 
+            this.SchoolOfUser = schools
             this.allUsers = profiles
         },
         randomPassword(){
