@@ -1,8 +1,6 @@
 <script setup>
-import ButtonComponent from '../../components/ButtonComponent.vue';
 import rechazada from '../../components/Rechazada.vue';
 import iconArrowLeft from '@/assets/img/iconArrowLeft.png';
-
 
 
 </script>
