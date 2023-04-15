@@ -1,6 +1,8 @@
 <script setup>
 const props = defineProps({
-  Request: Object,
+  profile: {
+    type: Object
+  }
 
 });
 
@@ -13,10 +15,10 @@ const props = defineProps({
 
        <div class="d-flex justify-space-between"> 
 
-        <v-card-title class="d-flex font-weight-light ml-10 mt-3">Andrés P.</v-card-title>
+        <v-card-title class="d-flex font-weight-light ml-10 mt-3">{{ profile.firstName }} {{ profile.lastName }}</v-card-title>
         
           <p class="d-flex text-h6 font-weight-bold mr-10 mt-3 text-uppercase worker-color">
-            Formador
+            {{profile.position}}
           </p>
 
         </div>
@@ -29,7 +31,7 @@ const props = defineProps({
 
           <div class="d-flex flex-column">
 
-  <p class="text-sm font-weight-bold mr-10 mb-3 vacations">Vacaciones restantes: 15{{ props.days }}</p>
+  <p class="text-sm font-weight-bold mr-10 mb-3 vacations">Vacaciones restantes: {{ profile.hollydays }}</p>
 </div>
         
         </div>
