@@ -43,7 +43,7 @@ const login = async(username, password)=>{
         class="form__name"></v-text-field>
 
       <v-text-field v-model="password" color="#FF4700" :counter="10" :rules="passwordRules" label="Password" required
-        class="form__pass"></v-text-field>
+        class="form__pass" type="password"></v-text-field>
 
       <div class="btn">
         <v-btn color="#FF4700" rounded="xs" :width="'50%'" @click="login(username,password)">

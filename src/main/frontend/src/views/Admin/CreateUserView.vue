@@ -11,11 +11,7 @@ import ButtonComponent from '../../components/ButtonComponent.vue';
         
             <FormComponent />
         
-        <div class=" button-zone">
-            <div class="button">
-                <ButtonComponent :button="'CREAR'" />
-            </div>
-        </div>
+
     </div>
 </template>
 
@@ -33,27 +29,5 @@ import ButtonComponent from '../../components/ButtonComponent.vue';
 
     row-gap: 2vh;
 
-
-
-    .form {
-        
-    }
-
-    .button-zone {
-        width: 100%;
-        display: flex;
-        justify-content: flex-end;
-        
-    }
-
-    .button {
-        width: 40%;
-        margin-top: 2vw;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: white;
-        font-weight: 700;
-    }
 }
 </style>

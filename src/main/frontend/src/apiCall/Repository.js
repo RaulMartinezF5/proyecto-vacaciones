@@ -1,3 +1,4 @@
+import AdminService from "./services/AdminService";
 import AuthService from "./services/AuthService";
 import UserService from "./services/UserService";
 
@@ -14,5 +15,9 @@ export default class Repository{
     
     chooseUserService(){
         if(this.api === 'basic') return new UserService()
+    }
+
+    chooseAdminService(){
+        if(this.api === 'admin') return new AdminService()
     }
 }

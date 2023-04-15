@@ -1,4 +1,5 @@
 package com.vacaciones.models;
+
 import java.sql.Date;
 
 import jakarta.persistence.Column;
@@ -24,9 +25,9 @@ public class Profile {
     private String position;
     @Column(nullable = false)
     private String email;
-    @Column(nullable = true)
+
     private Date singUpDate;
-    @Column(nullable = true)
+
     private Date withdrawalDate;
     private Integer hollydays;
 
@@ -109,5 +110,4 @@ public class Profile {
         this.hollydays = hollydays;
     }
 
-    
 }

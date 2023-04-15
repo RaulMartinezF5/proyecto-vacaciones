@@ -116,7 +116,7 @@ const router = createRouter({
 router.beforeEach((to, from) => {
   const loginStore = useAuthStore()
 
-  if(to.meta.requiresAuth && !loginStore.isAuthenticated) return {name: 'login'}
+  if(to.meta.requiresAuth && !loginStore.isAuthenticated) return {name: 'LoginView'}
   if(to.name == 'LayoutSession' && loginStore.roleLogin == 'ROLE_USER') router.push({name:'myRequests'})
   if(to.name == 'LayoutSession' && loginStore.roleLogin == 'ROLE_RESPONSABLE') router.push({name:'requestListView'})
   if(to.name == 'LayoutSession' && loginStore.roleLogin == 'ROLE_ADMIN') {
