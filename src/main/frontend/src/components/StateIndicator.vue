@@ -12,7 +12,7 @@ const props = defineProps(
 const typeStatePicker = computed(() => {
     const options = {
         'rechazada': 'rechazada',
-        'aceptada': 'aceptada',
+        'Accept': 'aceptada',
     }
 
     return options[props.state]
