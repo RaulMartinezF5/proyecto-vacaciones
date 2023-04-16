@@ -17,10 +17,10 @@ import com.vacaciones.repositories.CauseRepository;
 import com.vacaciones.repositories.RequestRepository;
 import com.vacaciones.repositories.TypeOfRequestRepository;
 import com.vacaciones.repositories.UserRepository;
-import com.vacaciones.services.baseServices.AdminService;
+
 
 @Service
-public class RequestGestionService implements AdminService<Request, String> {
+public class RequestGestionService{
 
     @Autowired
     private UserRepository userRepository;
@@ -37,27 +37,11 @@ public class RequestGestionService implements AdminService<Request, String> {
         this.requestRepository = requestRepository;
     }
 
-    @Override
-    public void delete(String id) {
-        
-        throw new UnsupportedOperationException("Unimplemented method 'delete'");
-    }
+    public List<Request> findUserRequests(String document) {
 
-    @Override
-    public List<Request> findAll() {
-        
-        throw new UnsupportedOperationException("Unimplemented method 'findAll'");
-    }
+        User userDB = userRepository.findByDocument(document).orElseThrow();
 
-    @Override
-    public Request update(String id, Request entity) {
-        
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
-    }
-
-    public Request findById(String idUser, Long idRequest) {
-
-        throw new UnsupportedOperationException("Unimplemented method 'findById'");
+        return userDB.getRequests();
     }
 
     public User save(CreateRequestPayload entity, String idUser) {
@@ -65,7 +49,7 @@ public class RequestGestionService implements AdminService<Request, String> {
         Cause causeDB = causeRepository.findByDescription(entity.getDescriptionCauseRequest()).orElseThrow();
 
         Request requestToCreate = new Request(null, entity.getIssue(), entity.getState(), entity.getStartDate(),
-                entity.getEndDate());
+                entity.getEndDate(), entity.getQuantityOfDays());
 
         Set<Cause> listCauseToRequest = new HashSet<>();
         listCauseToRequest.add(causeDB);

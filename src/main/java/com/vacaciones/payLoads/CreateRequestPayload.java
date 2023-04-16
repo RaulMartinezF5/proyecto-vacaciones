@@ -19,4 +19,5 @@ public class CreateRequestPayload {
     private Date endDate;
     private String nameTypeOfRequest;
     private String descriptionCauseRequest;
+    private Integer quantityOfDays;
 }

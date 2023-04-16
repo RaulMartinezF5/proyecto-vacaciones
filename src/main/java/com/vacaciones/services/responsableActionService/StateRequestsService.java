@@ -34,6 +34,8 @@ public class StateRequestsService {
         
         userDB.setRequests(updatedList);
 
+        if(newstate.equals("Accept")) userDB.getProfile().setHollydays(userDB.getProfile().getHollydays()-requestToUpdate.getQuantityOfDays());
+
         requestRepository.save(requestToUpdate);
 
         userRepository.save(userDB);
