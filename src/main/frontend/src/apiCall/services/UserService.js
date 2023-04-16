@@ -1,7 +1,7 @@
 import axios from 'axios'
 export default class UserService {
   constructor() {
-    this.baseUrl = 'http://localhost:8080/api/request';
+    this.baseUrl = 'http://localhost:8080/api/user';
   }
 
   async userInfo(username) {
@@ -22,5 +22,23 @@ export default class UserService {
     const getStatus = (await response).status;
 
     return getStatus;
+  }
+
+  async makeRequest(payload, document){
+    axios.defaults.withCredentials = true;
+    const response = axios.post(this.baseUrl + `/${document}/createRequest`, payload)
+
+    const getStatus = (await response).status;
+
+    return getStatus;
+  }
+  async viewAllRequest(document){
+    axios.defaults.withCredentials = true;
+    const response = axios.get(this.baseUrl + `/requests/${document}`)
+
+    const getBody = (await response).data
+
+    console.log(getBody);
+    return getBody
   }
 }

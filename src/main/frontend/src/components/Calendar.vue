@@ -27,8 +27,14 @@ const calculate = () => {
         if (changeFecha.getDay() != 0 && changeFecha.getDay() != 6) remainingWorkingDays.value++
 
     }
+
+    const requestBasicData = {
+        'days': remainingWorkingDays.value,
+        'startDate': startDate.value,
+        'endDate': endDate.value
+    }
     
-    return remainingWorkingDays.value
+    return requestBasicData
     /*  if(!startDate.value || !endDate.value){
          remainingWorkingDays.value = 0;
          return;

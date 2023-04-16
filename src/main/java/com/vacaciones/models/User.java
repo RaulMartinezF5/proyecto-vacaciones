@@ -106,6 +106,4 @@ public class User {
         this.contractedUser = contractedUser;
     }
 
-    
-
 }

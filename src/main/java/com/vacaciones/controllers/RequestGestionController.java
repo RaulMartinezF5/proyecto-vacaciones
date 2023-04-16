@@ -47,6 +47,7 @@ public class RequestGestionController {
             Map<String, String> json = new HashMap<>();
 
             json.put("error", e.getMessage());
+            json.put("cause", e.getLocalizedMessage());
 
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(json);
         }

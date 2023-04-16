@@ -1,6 +1,31 @@
 <script setup>
+import { onBeforeMount, ref } from "vue";
 import Request from "../components/Request.vue"
+import { useAuthStore } from '../stores/authStore'
+import { useUserStore } from '../stores/userStore'
+import CreateRequestPayload from "../apiCall/payloads/CreateRequestPayload";
 
+const authStore = useAuthStore()
+const userStore = useUserStore()
+
+const typeOfRequest = ref('Vacaciones')
+const cause = ref('')
+
+onBeforeMount(async () => {
+    await userStore.viewAllRequests(authStore.username)
+})
+
+const createRequest = async (element) => {
+    /* if(typeOfRequest.value === '') return
+    if(typeOfRequest.value === 'Permiso' && cause.value === '') return */
+    if(typeOfRequest.value === 'Vacaciones') cause.value = 'Vacaciones'
+    let payload = new CreateRequestPayload(element.issue, 'Default', element.startDate, element.endDate, typeOfRequest.value, cause.value, element.days)
+    
+
+    userStore.createRequest(payload, authStore.username)
+
+    await userStore.viewAllRequests(authStore.username)
+}
 </script>
 
 <template>
@@ -8,20 +33,28 @@ import Request from "../components/Request.vue"
         <div class="card-request">
             <div class="selection-zone">
                 <h3>Solicitud de dias de: </h3>
-                <select class="label">
-                    <option value="vacaciones"> vacaciones</option>
-                    <option value="permisos"> permisos</option>
+                <select v-model="typeOfRequest" class="label">
+                    <option value="Vacaciones">Vacaciones</option>
+                    <option value="Permiso">Permiso</option>
                 </select>
             </div>
+
             <div class="request-space">
-                <Request />
+                <div class="cause-request-zone" v-if="typeOfRequest === 'Permiso'">
+                    <h3>motivo del permiso: </h3>
+                    <select v-model="cause" class="label">
+                        <option value="Matrimonio">Matrimonio</option>
+                        <option value="Nacimiento hijo/a">Nacimiento hijo/a</option>
+                    </select>
+                </div>
+                <Request @emit-basic-emit-info="createRequest" />
             </div>
         </div>
+        <h1 v-for="request of userStore.allUserRequests">{{ request.issue }}</h1>
     </div>
 </template>
 
 <style scoped lang="scss">
-@use "../assets/scss/variables.scss" as c;
 @use '../assets/scss/main' as *;
 
 .request-wrapper {
@@ -47,6 +80,12 @@ import Request from "../components/Request.vue"
         .request-space {
             width: 100%;
             @include flexDisplay(column, center, center);
+
+            .cause-request-zone {
+                width: 100%;
+                @include flexDisplay(row, center, center);
+                background-color: map-get($map: $colors, $key: "Grey");
+            }
         }
     }
 

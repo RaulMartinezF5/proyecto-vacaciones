@@ -14,7 +14,7 @@ export default class Repository{
     }
     
     chooseUserService(){
-        if(this.api === 'basic') return new UserService()
+        if(this.api === 'user') return new UserService()
     }
 
     chooseAdminService(){

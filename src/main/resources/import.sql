@@ -18,6 +18,7 @@ INSERT INTO causes (id_cause, description) VALUES (default, 'Nacimiento prematur
 INSERT INTO causes (id_cause, description) VALUES (default, 'Formacion del trabajador') 
 INSERT INTO causes (id_cause, description) VALUES (default, 'Asistencia a examenes')
 INSERT INTO causes (id_cause, description) VALUES (default, 'Derecho a vacaciones')
+INSERT INTO causes (id_cause, description) VALUES (default, 'Vacaciones')
 
 INSERT INTO schools (id_school, name) VALUES (default, 'Asturias')
 INSERT INTO schools (id_school, name) VALUES (default, 'Madrid')

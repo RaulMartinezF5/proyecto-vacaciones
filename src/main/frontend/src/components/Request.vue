@@ -1,17 +1,28 @@
 <script setup>
-import { ref } from 'vue';
+import { ref,reactive } from 'vue';
 import ButtonComponent from './ButtonComponent.vue';
 import Calendar from './Calendar.vue';
 // const firstDay = ref("");
 // const lastDay = ref("");
-const issue = ref("");
-const correspondingDays = ref(0)
+const basicRequestData = reactive({
+    'days': 0,
+    'startDate': '',
+    'endDate': '',
+    'issue': ''
+})
 // const remainingDays = ref("7");
 
-
-
 const vacationDays = (quantityOfDays)=>{
-    correspondingDays.value = quantityOfDays
+    basicRequestData.days = quantityOfDays.days
+    basicRequestData.startDate = quantityOfDays.startDate
+    basicRequestData.endDate = quantityOfDays.endDate
+}
+
+const emit = defineEmits(['emitBasicEmitInfo'])
+
+const emitBasicInfo = () => {
+    if(basicRequestData.startDate === '') return
+    emit('emitBasicEmitInfo', basicRequestData)
 }
 </script>
 
@@ -25,14 +36,14 @@ const vacationDays = (quantityOfDays)=>{
         </div>
         <div class="issue-zone">
             <div class="text-wrapper">
-                <v-textarea no-resize="true" color="#FF4700" bg-color="white" label="Comentario" v-model="issue">
+                <v-textarea color="#FF4700" bg-color="white" label="Comentario" v-model="basicRequestData.issue">
                 </v-textarea>
             </div>
         </div>
         <div class="button-zone">
-            <h2>Dias correspondientes de vacaciones: {{ correspondingDays }}</h2>
+            <h2>Dias correspondientes de vacaciones: {{ basicRequestData.days }}</h2>
             <div class="button-wrapper">
-                <ButtonComponent :button="'Enviar Solicitud'" />
+                <ButtonComponent :button="'Enviar Solicitud'"  @click="emitBasicInfo()"/>
             </div>
         </div>
     </div>
