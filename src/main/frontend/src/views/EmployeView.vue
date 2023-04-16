@@ -1,9 +1,10 @@
 <script setup>
-import { onBeforeMount, ref } from "vue";
+import { onBeforeMount, onUpdated, ref } from "vue";
 import Request from "../components/Request.vue"
 import { useAuthStore } from '../stores/authStore'
 import { useUserStore } from '../stores/userStore'
 import CreateRequestPayload from "../apiCall/payloads/CreateRequestPayload";
+import SimpleRequestComponent from "../components/simpleRequestComponent.vue";
 
 const authStore = useAuthStore()
 const userStore = useUserStore()
@@ -24,8 +25,12 @@ const createRequest = async (element) => {
 
     userStore.createRequest(payload, authStore.username)
 
-    await userStore.viewAllRequests(authStore.username)
+    
 }
+
+onUpdated(async () => {
+    await userStore.viewAllRequests(authStore.username)
+    })
 </script>
 
 <template>
@@ -50,7 +55,9 @@ const createRequest = async (element) => {
                 <Request @emit-basic-emit-info="createRequest" />
             </div>
         </div>
-        <h1 v-for="request of userStore.allUserRequests">{{ request.issue }}</h1>
+        <div class="user-requests-zone">
+            <SimpleRequestComponent v-for="request of userStore.allUserRequests" :request="request"/>
+        </div>
     </div>
 </template>
 
@@ -59,7 +66,8 @@ const createRequest = async (element) => {
 
 .request-wrapper {
     width: 100%;
-    @include flexDisplay(row, center, center);
+    @include flexDisplay(column, center, center);
+    gap: 2vh;
 
     .card-request {
         width: 90%;
@@ -87,6 +95,12 @@ const createRequest = async (element) => {
                 background-color: map-get($map: $colors, $key: "Grey");
             }
         }
+    }
+
+    .user-requests-zone{
+        width: 90%;
+        @include flexDisplay(column, center, center);
+        gap: 2vh;
     }
 
 }

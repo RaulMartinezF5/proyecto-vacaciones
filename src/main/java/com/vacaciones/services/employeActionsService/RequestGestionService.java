@@ -59,6 +59,9 @@ public class RequestGestionService{
         User userDB = userRepository.findByDocument(idUser).orElseThrow();
 
         List<Request> requestList = new ArrayList<>();
+        if(userDB.getRequests() != null){
+            requestList = userDB.getRequests();
+        }
 
         requestList.add(requestToCreate);
 

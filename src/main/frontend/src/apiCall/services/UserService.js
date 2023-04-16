@@ -38,7 +38,7 @@ export default class UserService {
 
     const getBody = (await response).data
 
-    console.log(getBody);
+
     return getBody
   }
 }

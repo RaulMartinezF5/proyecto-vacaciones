@@ -21,6 +21,7 @@ export const useUserStore = defineStore('userStore', {
             const service = repository.chooseUserService()
 
             const response = await service.viewAllRequest(document)
+            
             this.allUserRequests = response
         }
     }
