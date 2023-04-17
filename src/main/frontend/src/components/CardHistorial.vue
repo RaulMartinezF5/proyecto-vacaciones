@@ -1,5 +1,4 @@
 <script setup>
-import { defineProps } from "vue";
 import StateIndicator from "./StateIndicator.vue";
 
 const props = defineProps({

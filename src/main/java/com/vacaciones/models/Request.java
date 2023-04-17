@@ -30,6 +30,7 @@ public class Request {
     private Date startDate;
     @Column(nullable = false)
     private Date endDate;
+    @Column Integer quantityOfDays;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "cause_request", joinColumns = @JoinColumn(name = "request_id"), inverseJoinColumns = @JoinColumn(name = "cause_id"))
@@ -41,12 +42,13 @@ public class Request {
     public Request() {
     }
 
-    public Request(Long id, String issue, String state, Date startDate, Date endDate) {
+    public Request(Long id, String issue, String state, Date startDate, Date endDate, Integer quantityOfDays) {
         this.id = id;
         this.issue = issue;
         this.state = state;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.quantityOfDays = quantityOfDays;
     }
 
     public Long getId() {
@@ -96,5 +98,14 @@ public class Request {
     public void setCauses(Set<Cause> causes) {
         this.causes = causes;
     }
+
+    public Integer getQuantityOfDays() {
+        return quantityOfDays;
+    }
+
+    public void setQuantityOfDays(Integer quantityOfDays) {
+        this.quantityOfDays = quantityOfDays;
+    }
+    
 
 }

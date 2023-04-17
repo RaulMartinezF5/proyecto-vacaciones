@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import LoginView from '../views/LoginView.vue'
+import { useAuthStore } from '../stores/authStore.js'
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -93,6 +95,18 @@ const router = createRouter({
               component: () => import('../views/Admin/UserInfoView.vue'),
               meta: { requiresAuth: true }
             },
+            {
+              path:'infoSolicitud',
+              name: 'infoSolicitudView',
+              component: () => import('../views/Admin/InfoSolicitudView.vue'),
+              meta: { requiresAuth: true }
+            },
+            {
+              path: 'createTeams',
+              name: 'createTeamsView',
+              component: () => import('../views/Admin/CreateTeamsView.vue'),
+              meta: {requiresAuth: true}
+            }
 
           ]
         }
@@ -100,6 +114,16 @@ const router = createRouter({
     }
   ]
 });
+router.beforeEach((to, from) => {
+  const loginStore = useAuthStore()
 
+  if(to.meta.requiresAuth && !loginStore.isAuthenticated) return {name: 'LoginView'}
+  if(to.name == 'LayoutSession' && loginStore.roleLogin == 'ROLE_USER') router.push({name:'myRequests'})
+  if(to.name == 'LayoutSession' && loginStore.roleLogin == 'ROLE_RESPONSABLE') router.push({name:'requestListView'})
+  if(to.name == 'LayoutSession' && loginStore.roleLogin == 'ROLE_ADMIN') {
+    console.log('admin');
+    router.push({name:'createUserView'})
+  }
+})
 
 export default router

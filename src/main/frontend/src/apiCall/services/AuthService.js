@@ -1,5 +1,4 @@
-const axios = require("axios");
-const RegisterPayload = require("../payloads/RegisterPayload");
+import axios from "axios";
 
 export default class AuthService {
   constructor() {
@@ -34,12 +33,5 @@ export default class AuthService {
     return getBody.data;
   }
 
-  get getBaseUrl() {
-    return this.baseUrl;
-  }
-
-  set setBaseUrl(baseUrl) {
-    this.baseUrl = baseUrl;
-  }
 }
 

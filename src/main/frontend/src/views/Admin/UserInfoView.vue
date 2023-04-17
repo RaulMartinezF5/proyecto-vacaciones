@@ -1,6 +1,5 @@
 <script setup>
 import FormComponent from '../../components/FormComponent.vue';
-import ButtonComponent from '../../components/ButtonComponent.vue';
 
 </script>
 
@@ -9,16 +8,9 @@ import ButtonComponent from '../../components/ButtonComponent.vue';
     <div class="form-wrapper">
 
 
-        <FormComponent />
+        <FormComponent :view="'userDetails'" />
 
-        <div class=" button-zone">
-            <div class="button-editar">
-                <ButtonComponent :type="'warning'" :button="'Editar'" />
-            </div>
-            <div class="button-baja">
-                <ButtonComponent :type="'reject'" :button="'Dar de baja'" />
-            </div>
-        </div>
+        
     </div>
 </template>
 
@@ -35,27 +27,10 @@ h1 {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+
     row-gap: 2vh;
 
-    .button-zone {
-        width: 100%;
-        display: flex;
-        justify-content: flex-end;
-    
-        .button {
-        width: 15vw;
-        margin-top: 2vw;
-        display: flex;
-        color: black;
-        font-weight: 700;
-        align-items: center;
-        margin-right: 14vw;
-        font-size: medium;
-    
-    }
-    }
-
-  
 }
 
 

@@ -31,6 +31,7 @@ public class UserService implements BasicService<User>, AdminService<User, Strin
         String encodePassword = encoder.encode(user.getPassword());
 
         user.setPassword(encodePassword);
+        user.setContractedUser("active");
 
         repository.save(user);
     }

@@ -15,7 +15,7 @@ import com.vacaciones.payLoads.CreateUserPayload;
 import com.vacaciones.services.adminActionsServices.ProfileModificationsService;
 
 @RestController
-@RequestMapping(path = "/api")
+@RequestMapping(path = "/api/admin")
 public class ProfileModificationsController {
     
     

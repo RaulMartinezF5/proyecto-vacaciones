@@ -10,15 +10,20 @@ import org.springframework.stereotype.Service;
 
 import com.vacaciones.models.Profile;
 import com.vacaciones.models.Role;
+import com.vacaciones.models.School;
 import com.vacaciones.models.User;
 import com.vacaciones.payLoads.CreateUserPayload;
 import com.vacaciones.repositories.ProfileRepository;
+import com.vacaciones.repositories.SchoolRepository;
 import com.vacaciones.repositories.UserRepository;
 
 @Service
 public class ProfileRegisterService {
     @Autowired
     private ProfileRepository profileRepository;
+
+    @Autowired
+    private SchoolRepository schoolRepository;
 
     private UserRepository userRepository;
 
@@ -39,9 +44,15 @@ public class ProfileRegisterService {
         Profile profileToSave = new Profile(null, payload.getName(), payload.getLastName(), payload.getPosition(),
                 payload.getEmail(), payload.getSingInDate(), payload.getWithdrawalDate(), payload.getHolyDays());
 
+        School schoolDB = schoolRepository.findByName(payload.getLocation()).orElseThrow();
+
+        schoolDB.addProfile(profileToSave);
+
         userToSave.setProfile(profileToSave);
 
         profileRepository.save(profileToSave);
+
+        schoolRepository.save(schoolDB);
 
         User userDB = userRepository.save(userToSave);
 

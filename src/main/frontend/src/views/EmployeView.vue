@@ -1,100 +1,107 @@
 <script setup>
+import { onBeforeMount, onUpdated, ref } from "vue";
 import Request from "../components/Request.vue"
-import StateIndicator from '../components/StateIndicator.vue';
+import { useAuthStore } from '../stores/authStore'
+import { useUserStore } from '../stores/userStore'
+import CreateRequestPayload from "../apiCall/payloads/CreateRequestPayload";
+import SimpleRequestComponent from "../components/SimpleRequestComponent.vue";
 
-const props = defineProps(
-    {
-        request: {
-            type: Object,
-        },
-    }
-)
+const authStore = useAuthStore()
+const userStore = useUserStore()
+
+const typeOfRequest = ref('Vacaciones')
+const cause = ref('')
+
+onBeforeMount(async () => {
+    await userStore.viewAllRequests(authStore.username)
+})
+
+const createRequest = async (element) => {
+    /* if(typeOfRequest.value === '') return
+    if(typeOfRequest.value === 'Permiso' && cause.value === '') return */
+    if(typeOfRequest.value === 'Vacaciones') cause.value = 'Vacaciones'
+    let payload = new CreateRequestPayload(element.issue, 'Default', element.startDate, element.endDate, typeOfRequest.value, cause.value, element.days)
+    
+
+    userStore.createRequest(payload, authStore.username)
+
+    
+}
+
+onUpdated(async () => {
+    await userStore.viewAllRequests(authStore.username)
+    })
 </script>
 
 <template>
+    <div class="request-wrapper">
+        <div class="card-request">
+            <div class="selection-zone">
+                <h3>Solicitud de dias de: </h3>
+                <select v-model="typeOfRequest" class="label">
+                    <option value="Vacaciones">Vacaciones</option>
+                    <option value="Permiso">Permiso</option>
+                </select>
+            </div>
 
-    <div class="wrapper">
-        <div class="select">
-            <h2 class="solicitud">Solicitud de dias de: </h2>
-            <select class="label fas fa-chevron-down">
-                <option value="vacaciones"> vacaciones</option>
-                <option value="permisos"> permisos</option>
-            </select>
-
+            <div class="request-space">
+                <div class="cause-request-zone" v-if="typeOfRequest === 'Permiso'">
+                    <h3>motivo del permiso: </h3>
+                    <select v-model="cause" class="label">
+                        <option value="Matrimonio">Matrimonio</option>
+                        <option value="Nacimiento hijo/a">Nacimiento hijo/a</option>
+                    </select>
+                </div>
+                <Request @emit-basic-emit-info="createRequest" />
+            </div>
         </div>
-        <div class="container">
-            <Request class="request" />
-
+        <div class="user-requests-zone">
+            <SimpleRequestComponent v-for="request of userStore.allUserRequests" :request="request"/>
         </div>
-        <h2 class="listado">Listado de solicitudes</h2>
-        <div class="request-wrapper">
-                    <p class="startDate">13/04/2023</p>
-                    <p class="finishDate">14/04/2023</p>
-                    <StateIndicator class="state" :state="'aceptada'" />
-         </div> 
     </div>
 </template>
 
 <style scoped lang="scss">
-@use "../assets/scss/variables.scss" as c;
+@use '../assets/scss/main' as *;
 
-.wrapper {
-    width: 90%;
-    margin-left: 4%;
-    border-radius: 10px;
-    margin-top: 3vh;
+.request-wrapper {
+    width: 100%;
+    @include flexDisplay(column, center, center);
+    gap: 2vh;
 
+    .card-request {
+        width: 90%;
+        border-radius: 10px;
+        margin-top: 2vh;
+        @include flexDisplay(column, center, center);
 
-    .select {
-        display: flex;
-        margin-bottom: 3VH;;
-        justify-content: center;
-        width: 100%;
-        align-items: center;
-        margin-top: 3vh;
-        font-weight: bold;
+        .selection-zone {
+            width: 100%;
+            @include flexDisplay(row, center, center);
+            font-weight: bold;
 
-        .label {
-            margin-left: 10px;
-            font-size: 25px;
+            .label {
+                margin-left: 1%;
+            }
+        }
 
+        .request-space {
+            width: 100%;
+            @include flexDisplay(column, center, center);
+
+            .cause-request-zone {
+                width: 100%;
+                @include flexDisplay(row, center, center);
+                background-color: map-get($map: $colors, $key: "Grey");
+            }
         }
     }
 
-    .container {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        background-color: #D9D9D9;
+    .user-requests-zone{
+        width: 90%;
+        @include flexDisplay(column, center, center);
+        gap: 2vh;
     }
-}
 
-.listado {
-    text-align: center;
-    margin-top: 3vh;
-}
-.request-wrapper {
-    border: solid 2px;
-    border-color: map-get($map: c.$colors, $key: "Orange");
-    border-radius: 0.5vw;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-block: 2vh;
-    
-    
-}
-
-p {
-    margin: 2vh;
-    font-size: 3vh;
-}
-
-.workerName {
-    font-size: 4vh;
-}
-
-.state{
-    margin-right: 2vw;
 }
 </style>

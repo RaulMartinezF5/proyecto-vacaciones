@@ -69,5 +69,20 @@ public class ProfileModificationsService implements AdminService<CreateUserPaylo
         }).orElseThrow();
     }
     
+    public void fireUser(String document){
+        User userDB = userRepository.findByDocument(document).orElseThrow();
+
+        userDB.setContractedUser("inactive");
+
+        userRepository.save(userDB);
+    }
+
+    public void restoreUser(String document){
+        User userDB = userRepository.findByDocument(document).orElseThrow();
+
+        userDB.setContractedUser("active");
+
+        userRepository.save(userDB);
+    }
 
 }
