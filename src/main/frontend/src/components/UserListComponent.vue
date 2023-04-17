@@ -13,7 +13,7 @@ const props = defineProps({
 
 <template>
   <div class="d-flex justify-center card-container">
-    <v-card width="900" class="card">
+    <v-card width="80%" class="card">
       <v-text>
 
        <div class="d-flex justify-space-between"> 
@@ -29,7 +29,7 @@ const props = defineProps({
         <div class="d-flex justify-space-between">
 
           <p class="d-flex font-weight-bold ml-10 mb-3 location" v-bind="props.description">
-            Escuela: {{ school }}
+            Lugar de trabajo: {{ school }}
           </p>
 
           <div class="d-flex flex-column">

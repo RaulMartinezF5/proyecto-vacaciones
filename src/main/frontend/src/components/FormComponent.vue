@@ -81,15 +81,13 @@ const createUser = async () => {
 .container {
     display: grid;
     grid-template-columns: 32% 32%;
-    gap: 2vh;
+    gap: 1vh;
     width: 100%;
     justify-content: center;
 
     .input-wrapper {
         border-radius: 10px;
-        border: map-get($map: c.$colors, $key: "Orange") solid 2px;
-        overflow: hidden;
-        height: 6vh;
+
     }
 
 

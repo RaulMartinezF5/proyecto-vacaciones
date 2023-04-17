@@ -12,12 +12,15 @@ onBeforeMount(async () => {
 </script>
 
 <template>
+
     <h1 id="title">Lista de Usuarios</h1>
     <div class="d-flex flex-column">
-<SearchBar></SearchBar>
-
-<UserListComponent v-for="(user, key) of adminStore.allUsers" :key="index" :school="adminStore.SchoolOfUser[key]" :profile="user"></UserListComponent>
-</div>
+        <SearchBar></SearchBar>
+        <div class="user-list-wrapper">
+            <UserListComponent v-for="(user, key) of adminStore.allUsers" :key="index"
+                :school="adminStore.SchoolOfUser[key]" :profile="user"></UserListComponent>
+        </div>
+    </div>
 </template>
 
 <style scoped lang="scss">
@@ -28,5 +31,11 @@ onBeforeMount(async () => {
     margin-top: 2%;
     margin-bottom: 2%;
 }
+.user-list-wrapper{
 
+    display: flex;
+    flex-direction: column;
+    
+    gap: 1vh;
+}
 </style>
