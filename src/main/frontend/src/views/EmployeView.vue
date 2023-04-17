@@ -4,7 +4,7 @@ import Request from "../components/Request.vue"
 import { useAuthStore } from '../stores/authStore'
 import { useUserStore } from '../stores/userStore'
 import CreateRequestPayload from "../apiCall/payloads/CreateRequestPayload";
-import SimpleRequestComponent from "../components/simpleRequestComponent.vue";
+import SimpleRequestComponent from "../components/SimpleRequestComponent.vue";
 
 const authStore = useAuthStore()
 const userStore = useUserStore()
