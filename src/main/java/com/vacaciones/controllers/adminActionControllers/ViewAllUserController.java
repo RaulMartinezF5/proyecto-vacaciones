@@ -16,12 +16,13 @@ public class ViewAllUserController {
 
     private ViewAllUserService service;
 
-    public ViewAllUserController(ViewAllUserService  service) {
+    public ViewAllUserController(ViewAllUserService service) {
         this.service = service;
-}
-@GetMapping(value = "/allusers")
-public List<User> allList() {
-    return service.allList();
-    
-}
+    }
+
+    @GetMapping(value = "/allusers")
+    public List<User> allList() {
+        return service.allList();
+
+    }
 }

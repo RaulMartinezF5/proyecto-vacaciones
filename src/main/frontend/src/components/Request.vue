@@ -1,69 +1,97 @@
 <script setup>
-import { ref } from 'vue';
+import { ref,reactive } from 'vue';
 import ButtonComponent from './ButtonComponent.vue';
 import Calendar from './Calendar.vue';
-    // const firstDay = ref("");
-    // const lastDay = ref("");
-    // const description = ref("");
-    // const remainingDays = ref("7");
+// const firstDay = ref("");
+// const lastDay = ref("");
+const basicRequestData = reactive({
+    'days': 0,
+    'startDate': '',
+    'endDate': '',
+    'issue': ''
+})
+// const remainingDays = ref("7");
 
+const vacationDays = (quantityOfDays)=>{
+    basicRequestData.days = quantityOfDays.days
+    basicRequestData.startDate = quantityOfDays.startDate
+    basicRequestData.endDate = quantityOfDays.endDate
+}
+
+const emit = defineEmits(['emitBasicEmitInfo'])
+
+const emitBasicInfo = () => {
+    if(basicRequestData.startDate === '') return
+    emit('emitBasicEmitInfo', basicRequestData)
+}
 </script>
 
 <template>
-    <div class="container">
+    <div class="request-info-wrapper">
         <!-- <v-text-field color="#FF4700" label="Start date" type="date" v-model="firstDay"> </v-text-field>
-        <v-text-field color="#FF4700" label="End date" type="date" v-model="lastDay"> </v-text-field>
-        <p id="remainingDaysParagraph">Dias restantes de vacaciones: {{ remainingDays }}</p> -->
-        <Calendar class="calendar"/>
-        <v-textarea class="textarea" color="#FF4700" bg-color="white" label="Description" type="date" v-model="description"> </v-textarea>
-       <div class="container__btn">
-           <h2>Dias correspondientes de vacaciones:</h2>
-        <ButtonComponent class="button" :button="'Enviar Solicitud'"/>
-        </div> 
-       </div> 
-
-  
-
+                        <v-text-field color="#FF4700" label="End date" type="date" v-model="lastDay"> </v-text-field>
+                        <p id="remainingDaysParagraph">Dias restantes de vacaciones: {{ remainingDays }}</p> -->
+        <div class="date-inputs-space">
+            <Calendar @emit-vacation-days="vacationDays"/>
+        </div>
+        <div class="issue-zone">
+            <div class="text-wrapper">
+                <v-textarea color="#FF4700" bg-color="white" label="Comentario" v-model="basicRequestData.issue">
+                </v-textarea>
+            </div>
+        </div>
+        <div class="button-zone">
+            <h2>Dias correspondientes de vacaciones: {{ basicRequestData.days }}</h2>
+            <div class="button-wrapper">
+                <ButtonComponent :button="'Enviar Solicitud'"  @click="emitBasicInfo()"/>
+            </div>
+        </div>
+    </div>
 </template>
 
 <style lang="scss" scoped>
-@use "../assets/scss/variables.scss" as c;
-    
-    .container {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-gap: 2%;
-        background-color: map-get($map: c.$colors, $key: "Grey" );
-        padding: 3%;
-        border-radius: 10px;
-      
-        .textarea{
-            grid-column: 1 / span 2;
-            border-radius: 10px;
-          
-        }
-        
-        .calendar{
-            display: flex;
-            justify-content: center;
-    
+@use '../assets/scss/main' as *;
 
-        }
-        .container__btn{
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-           
+.request-info-wrapper {
+    width: 100%;
+    @include gridDisplay(auto, 1);
+    background-color: map-get($map: $colors, $key: "Grey");
+    border-radius: 10px;
+    row-gap: 1vh;
 
-            .button{
-                width: 15vw;
-                height: 5vh;
-                border-radius: 10px;
-                border: 2px solid black;
-                font-size: 12px;
-            }
-        }
-        
+    .date-inputs-space {
+        width: 100%;
+        @include flexDisplay(row, center, center);
+        @include positionGrid(1, 1, 1, 1);
     }
 
+    .issue-zone {
+        width: 100%;
+        @include flexDisplay(row, center, center);
+
+        .text-wrapper {
+            width: 90%;
+            @include flexDisplay(row, center, center);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+    }
+
+
+    .button-zone {
+        width: 100%;
+        height: 10vh;
+        @include positionGrid(3, 1, 4, 1);
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        .button-wrapper {
+            width: 30%;
+            border-radius: 10px;
+            border: 2px solid black;
+            overflow: hidden;
+        }
+    }
+}
 </style>

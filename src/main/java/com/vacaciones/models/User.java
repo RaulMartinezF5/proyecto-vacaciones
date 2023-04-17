@@ -23,12 +23,14 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+    private String contractedUser;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "roles_users", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "chief-have-employes", joinColumns = @JoinColumn(name = "chief_id"), inverseJoinColumns = @JoinColumn(name = "employe_id"))
+    @JoinTable(name = "chief-has-employes", joinColumns = @JoinColumn(name = "chief_id"), inverseJoinColumns = @JoinColumn(name = "employe_id"))
     private Set<User> employes;
 
     @OneToOne
@@ -45,6 +47,7 @@ public class User {
         this.document = document;
         this.password = password;
         this.roles = roles;
+        this.contractedUser = "active";
     }
 
     public String getDocument() {
@@ -93,6 +96,14 @@ public class User {
 
     public void setRequests(List<Request> requests) {
         this.requests = requests;
+    }
+
+    public String getContractedUser() {
+        return contractedUser;
+    }
+
+    public void setContractedUser(String contractedUser) {
+        this.contractedUser = contractedUser;
     }
 
 }
