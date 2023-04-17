@@ -28,7 +28,7 @@ export default class AuthService {
 
     const getBody = response;
 
-    console.log(response.status);
+    console.log(response.data);
 
     return getBody.data;
   }
