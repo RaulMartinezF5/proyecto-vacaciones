@@ -10,7 +10,7 @@ import ButtonComponent from '../../components/ButtonComponent.vue';
         <div class="microheader">
             <button class="button-arrow"><img :src="iconArrowLeft" alt="" class="arrow"></button>
             <h1 class="Titulo">
-                INFORMES ESTADISTICOS
+                INFORMES 
             </h1>
         </div>
 
