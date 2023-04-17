@@ -48,14 +48,14 @@ const createUser = async () => {
             </v-text-field></div>
         <div class="input-wrapper"> <v-text-field color="#FF4700" label="Cantidad de Vacaciones" variant="solo"
                 v-model="vacationDays"> </v-text-field></div>
-        <div class="input-wrapper"><v-select color="#FF4700" label="Posicion" variant="solo"
+        <div class="input-wrapper"><v-select color="#FF4700" label="Posición" variant="solo"
                 :items="['Formador', 'Coformador', 'Responsable de Promocion']" v-model="position"> </v-select></div>
         <div class="input-wrapper"><v-select color="#FF4700" label="Tipo de Usuario" variant="solo"
                 :items="['Responsable', 'Empleado', 'Admin']" v-model="role"> </v-select></div>
         <div class="input-wrapper"><v-select color="#FF4700" label="Lugar de trabajo" variant="solo"
                 :items="['Asturias', 'Madrid', 'Barcelona', 'Malaga', 'Sevilla', 'Norte']" v-model="workplace"> </v-select>
         </div>
-        <div class="input-wrapper"> <v-text-field color="#FF4700" label="Fecha de entrada" variant="solo" type="date"
+        <div class="input-wrapper"> <v-text-field color="#FF4700" label="Fecha de alta" variant="solo" type="date"
                 v-model="startDay"> </v-text-field></div>
         <div class="input-wrapper"><v-text-field color="#FF4700" label="Fecha de baja" variant="solo" type="date"
                 v-model="finishDay"> </v-text-field></div>

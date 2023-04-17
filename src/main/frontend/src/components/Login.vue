@@ -61,10 +61,8 @@ const login = async(username, password)=>{
   .img {
     display: flex;
     max-width: 100%;
-    align-content:center;
     position: relative;
-    justify-self: center;
-  
+    margin: auto;
 
   }
 
