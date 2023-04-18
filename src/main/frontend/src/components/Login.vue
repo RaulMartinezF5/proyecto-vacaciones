@@ -39,15 +39,15 @@ const login = async(username, password)=>{
   <v-sheet width="37%" class="form mx-auto">
     <v-img :width="'50%'" aspect-ratio="16/9" cover src="../../src/assets/img/logo-login.jpg" class="img"></v-img>
     <v-form ref="form">
-      <v-text-field color="#FF4700" v-model="username" :counter="10" :rules="nameRules" label="User Name" required
+      <v-text-field color="#FF4700" v-model="username" :counter="10" :rules="nameRules" label="Usuario" required
         class="form__name"></v-text-field>
 
-      <v-text-field v-model="password" color="#FF4700" :counter="10" :rules="passwordRules" label="Password" required
+      <v-text-field v-model="password" color="#FF4700" :counter="10" :rules="passwordRules" label="Contraseña" required
         class="form__pass" type="password"></v-text-field>
 
       <div class="btn">
         <v-btn color="#FF4700" rounded="xs" :width="'50%'" @click="login(username,password)">
-          Login
+          Iniciar sesión
         </v-btn>
       </div>
     </v-form>
