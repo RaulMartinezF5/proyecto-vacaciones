@@ -1,5 +1,8 @@
+import { useRouter } from 'vue-router';
 import { defineStore } from 'pinia';
-import Repository from '../apiCall/Repository'
+import Repository from '../apiCall/Repository';
+
+const router = useRouter();
 
 export const useAuthStore = defineStore('authStore', {
   state: () => ({
@@ -28,5 +31,30 @@ export const useAuthStore = defineStore('authStore', {
       const infoEncode = window.btoa(`${username}:${password}`);
       return infoEncode;
     },
+    async logout(){
+      const api = new Repository('auth');
+      const apiAuth = api.chooseAuthService();
+
+      const responseForLogout = await apiAuth.logout();
+
+    },
+    async cleanLoginSession(){
+      this.statusLogin = 0
+      this.roleLogin = ''
+      this.isAuthenticated = false
+      this.username = ''
+    }
   },
 });
+
+
+// export default logout {
+//   name:'Logout',
+//   methods: {
+//     logout()
+//     {
+//       localStorage.clear();
+//       this.useRoute('/')
+//     }
+//   },
+// }
