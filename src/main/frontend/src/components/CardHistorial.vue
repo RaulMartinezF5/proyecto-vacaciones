@@ -2,7 +2,9 @@
 import StateIndicator from "./StateIndicator.vue";
 
 const props = defineProps({
-  Request: Object,
+  Request: {
+    type: Object
+  }
 });
 
 
@@ -41,15 +43,15 @@ const fake = {
 
           <div class="card-container d-flex">
             <div class="counter d-flex flex-column">
-                <p class="uno text-sm font-weight-bold">
-                  Dias solicitados:{{ fake.days }}
-                </p>
-                <p class=" dos text-sm font-weight-bold">
-                  Revisado por: {{ fake.checked }}
-                </p>
-                <p class=" card-description d-flex top-12 ml-1 mr-1" v-bind="props.description">
-                  {{ fake.description }}
-                </p>
+              <p class="uno text-sm font-weight-bold">
+                Dias solicitados:{{ fake.days }}
+              </p>
+              <p class=" dos text-sm font-weight-bold">
+                Revisado por: {{ fake.checked }}
+              </p>
+              <p class=" card-description d-flex top-12 ml-1 mr-1" v-bind="props.description">
+                {{ fake.description }}
+              </p>
 
             </div>
           </div>
@@ -61,7 +63,6 @@ const fake = {
 </template>
 
 <style lang="scss" scoped>
-
 h1 {
   display: flex;
   justify-content: center;
@@ -107,6 +108,7 @@ h1 {
         display: flex;
 
       }
+
       .counter {
         display: flex;
         width: 100%;

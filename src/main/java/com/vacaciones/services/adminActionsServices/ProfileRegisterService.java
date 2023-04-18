@@ -69,9 +69,9 @@ public class ProfileRegisterService {
         
         System.out.println(selector);
         if(selector.equals("Empleado")) roles.add(userRole);  
-        if(selector.equals("Responsable")) {
-            roles.add(userRole);
+        if(selector.equals("Responsable")) { 
             roles.add(responsableRole);
+            roles.add(userRole);
         }
         if(selector.equals("Admin")) {
             roles.add(adminRole);
