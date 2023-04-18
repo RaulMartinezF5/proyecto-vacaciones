@@ -1,9 +1,17 @@
 <script setup>
-import iconArrowLeft from '@/assets/img/iconArrowLeft.png';
 import ButtonComponent from './ButtonComponent.vue';
 import StateIndicator from './StateIndicator.vue';
+import { useAdminStore } from '../stores/adminStore';
+import { useRoute } from 'vue-router';
 
+const adminStore = useAdminStore()
+const route = useRoute()
+const userDocument = route.params.document
+const idRequest = route.params.idRequest
 
+const acceptRequest =async  () => {
+    await adminStore.changeStateOfRequest(userDocument, idRequest, 'Accept')
+}
 const fake = {
     name: "iyan",
     nameschool: "AST",
@@ -19,13 +27,7 @@ const fake = {
 <template>
     <div class="mainContainer">
         <div>
-            <div class="microheader">
-                <button class="button-arrow"><img :src="iconArrowLeft" alt="Flecha botón para retoceder"
-                        class="arrow"></button>
-                <h1 class="titulo">
-                    INFORMACIÓN DE SOLICITUD
-                </h1>
-            </div>
+            
             <div class="usuario">
                 <h2 class="empleado"> Natalia Rojo</h2>
                 <h2 class="solicitud">Solicitud:
@@ -45,7 +47,7 @@ const fake = {
                 <v-textarea class="textarea" rows="3" color="#FF4700" bg-color="white" label="Añada un comentario si lo desea"
                     hide-details="true"> </v-textarea>
                 <div class="buttons-section">
-                    <ButtonComponent :button="'Aceptar'" :type="'accept'" />
+                    <ButtonComponent :button="'Aceptar'" :type="'accept'" @click="acceptRequest()"/>
                     <ButtonComponent :button="'Rechazar'" :type="'reject'" />
                 </div>
             </div>
@@ -75,11 +77,6 @@ const fake = {
             margin-left: 30%;
         }
 
-        .microheader {
-            display: flex;
-            flex-direction: row;
-            margin-block: 2%;
-        }
     }
 
     .texto {

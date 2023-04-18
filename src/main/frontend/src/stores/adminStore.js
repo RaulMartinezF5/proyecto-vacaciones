@@ -58,7 +58,8 @@ export const useAdminStore = defineStore('adminStore',{
                         {
                             name: `${user.profile.firstName} ${user.profile.lastName}`,
                             requestUser: request,
-                            schoolOfUser: school
+                            schoolOfUser: school,
+                            userDocument: user.document
                         }
                         
                         ))
@@ -67,6 +68,15 @@ export const useAdminStore = defineStore('adminStore',{
             console.log(allRequestOfUsers);
 
             this.allRequests =allRequestOfUsers
+        },
+        async changeStateOfRequest(document, idRequest, state){
+            const repository = new Repository('admin')
+
+            const service = repository.chooseAdminService()
+
+            const response = await service.changeRequestState(document, idRequest, state)
+
+            console.log(response);
         },
         randomPassword(){
             const randomPass = Math.random().toString(36).slice(2)

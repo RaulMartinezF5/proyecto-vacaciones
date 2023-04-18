@@ -7,7 +7,14 @@ const props = defineProps({
   }
 });
 
+const emits = defineEmits(['emitRequestDetails'])
 
+const emitRequestDetails = () => {
+  emits('emitRequestDetails', {
+    userDocument: props.request.userDocument,
+    requestId: props.request.requestUser.id
+  })
+}
 const fake = {
   name: "iyan",
   nameschool: "AST",
@@ -24,7 +31,7 @@ const fake = {
 <template>
   <div class="main">
     
-    <div class="wrapper">
+    <div class="wrapper" @click="emitRequestDetails()">
       <h2>{{ request.name }}</h2>
       <v-card class="wrapper-card">
         <v-card-text>
