@@ -1,5 +1,6 @@
 import axios from "axios";
 
+
 export default class AuthService {
   constructor() {
     this.baseUrl = 'http://localhost:8080/api';
@@ -30,6 +31,18 @@ export default class AuthService {
 
     console.log(response.data);
 
+    return getBody.data;
+  }
+
+  async logout() {
+    const response = await axios.get(`${this.baseUrl}/logout`, {
+      withCredentials: true
+    });
+  
+    const getBody = response;
+  
+    console.log(response.status);
+  
     return getBody.data;
   }
 
