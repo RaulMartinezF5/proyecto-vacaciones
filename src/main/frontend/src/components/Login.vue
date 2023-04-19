@@ -38,7 +38,7 @@ const login = async(username, password)=>{
 <template>
   <v-sheet width="37%" class="form mx-auto">
     <v-img :width="'50%'" aspect-ratio="16/9" cover src="../../src/assets/img/logo-login.jpg" class="img"></v-img>
-    <v-form ref="form">
+    <v-form ref="form" @keyup.enter="login(username, password)">
       <v-text-field color="#FF4700" v-model="username" :counter="10" :rules="nameRules" label="Usuario" required
         class="form__name"></v-text-field>
 
@@ -46,7 +46,7 @@ const login = async(username, password)=>{
         class="form__pass" type="password"></v-text-field>
 
       <div class="btn">
-        <v-btn color="#FF4700" rounded="xs" :width="'50%'" @click="login(username,password)">
+        <v-btn color="#FF4700" rounded="xs" :width="'50%'"  @click="login(username,password)">
           Iniciar sesión
         </v-btn>
       </div>
