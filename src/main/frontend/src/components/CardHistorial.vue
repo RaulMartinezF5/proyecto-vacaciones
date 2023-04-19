@@ -2,10 +2,19 @@
 import StateIndicator from "./StateIndicator.vue";
 
 const props = defineProps({
-  Request: Object,
+  request: {
+    type: Object
+  }
 });
 
+const emits = defineEmits(['emitRequestDetails'])
 
+const emitRequestDetails = () => {
+  emits('emitRequestDetails', {
+    userDocument: props.request.userDocument,
+    requestId: props.request.requestUser.id
+  })
+}
 const fake = {
   name: "iyan",
   nameschool: "AST",
@@ -20,36 +29,36 @@ const fake = {
 </script>
 
 <template>
-  <div class="main">
-    <h1>HISTORIAL DE SOLICITUDES</h1>
-    <div class="wrapper">
-      <h2>{{ fake.name }}</h2>
+
+    
+    <div class="wrapper" @click="emitRequestDetails()">
+      <h2>{{ request.name }}</h2>
       <v-card class="wrapper-card">
         <v-card-text>
           <div class="card-titulos d-flex">
             <p class="school d-flex text-h6 font-weight-bold">
               Nombre de la escuela:
-              {{ fake.nameschool }}
+              {{ request.schoolOfUser }}
             </p>
             <p class="relative font-weight-medium mt-1">
-              {{ fake.date }}
+              {{ request.requestUser.startDate }} {{ request.requestUser.endDate }}
             </p>
             <p class="relative font-weight-medium mt-1">
-              <StateIndicator />
+              <StateIndicator :state="request.requestUser.state"/>
             </p>
           </div>
 
           <div class="card-container d-flex">
             <div class="counter d-flex flex-column">
-                <p class="uno text-sm font-weight-bold">
-                  Dias solicitados:{{ fake.days }}
-                </p>
-                <p class=" dos text-sm font-weight-bold">
-                  Revisado por: {{ fake.checked }}
-                </p>
-                <p class=" card-description d-flex top-12 ml-1 mr-1" v-bind="props.description">
-                  {{ fake.description }}
-                </p>
+              <p class="uno text-sm font-weight-bold">
+                Dias solicitados:{{ request.requestUser.quantityOfDays }}
+              </p>
+              <p class=" dos text-sm font-weight-bold">
+                Revisado por: {{ fake.checked }}
+              </p>
+              <p class=" card-description d-flex top-12 ml-1 mr-1" >
+                {{ request.requestUser.issue }}
+              </p>
 
             </div>
           </div>
@@ -57,11 +66,10 @@ const fake = {
         </v-card-text>
       </v-card>
     </div>
-  </div>
+
 </template>
 
 <style lang="scss" scoped>
-
 h1 {
   display: flex;
   justify-content: center;
@@ -107,6 +115,7 @@ h1 {
         display: flex;
 
       }
+
       .counter {
         display: flex;
         width: 100%;

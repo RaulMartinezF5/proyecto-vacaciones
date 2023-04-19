@@ -29,4 +29,13 @@ export default class AdminService {
 
         return getSchool
     }
+
+    async changeRequestState(document, idRequest, state){
+        axios.defaults.withCredentials = true
+        const response = axios.put('http://localhost:8080/api/' + `responsable/request/${idRequest}/user/${document}/${state}`)
+
+        const getStatus = (await response).status
+
+        return getStatus
+    }
 }

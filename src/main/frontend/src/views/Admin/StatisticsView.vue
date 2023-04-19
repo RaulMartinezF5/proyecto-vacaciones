@@ -2,7 +2,6 @@
 import iconArrowLeft from '@/assets/img/iconArrowLeft.png';
 import ButtonComponent from '../../components/ButtonComponent.vue';
 
-
 </script>
 
 <template>
@@ -22,7 +21,8 @@ import ButtonComponent from '../../components/ButtonComponent.vue';
 
         <div class="container">
             <div class="pepin">
-                <div class="grafic"><canvas id="myChart" style="width:100%;max-width:700px"></canvas></div>
+                <div class="grafic"><canvas id="myChart" style="width:100%;max-width:700px">
+                </canvas></div>
                 <div class="grafic2"></div>
             </div>
             <div class="pepon">

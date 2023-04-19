@@ -5,14 +5,15 @@ const props = defineProps(
     {
         state: {
             type : String,
-            default: "Pendiente",
+            default: 'Default',
         },
     }
 )
 const typeStatePicker = computed(() => {
     const options = {
-        'rechazada': 'rechazada',
+        'Reject': 'rechazada',
         'Accept': 'aceptada',
+        'Default': 'pendiente'
     }
 
     return options[props.state]
@@ -22,7 +23,7 @@ const typeStatePicker = computed(() => {
 
 <template>
     <div class="state">
-        <p :class="['state', typeStatePicker]">{{ state }}</p>
+        <p :class="['state', typeStatePicker]">{{ typeStatePicker }}</p>
     </div>
 </template>
 

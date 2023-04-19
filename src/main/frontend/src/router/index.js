@@ -96,10 +96,11 @@ const router = createRouter({
               meta: { requiresAuth: true }
             },
             {
-              path:'infoSolicitud',
-              name: 'infoSolicitudView',
-              component: () => import('../views/Admin/InfoSolicitudView.vue'),
-              meta: { requiresAuth: true }
+              path:'requestDetails/user/:document/request/:idRequest',
+              name: 'requestDetailsView',
+              component: () => import('../views/Admin/RequestDetailsView.vue'),
+              meta: { requiresAuth: true },
+              props: route => ({ document: route.params.document, idRequest:  parseInt(route.params.idRequest)})
             },
             {
               path: 'createTeams',
