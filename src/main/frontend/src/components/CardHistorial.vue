@@ -1,11 +1,5 @@
 <script setup>
-<<<<<<< HEAD
-import { defineProps } from "vue";
 import StateIndicator from "./StateIndicator.vue";
-
-=======
-import StateIndicator from "./StateIndicator.vue";
->>>>>>> 6fe95019a1e92ea69a4d7cf07186e32e366d70b1
 
 const props = defineProps({
   Request: Object,
@@ -28,19 +22,6 @@ const fake = {
 <template>
   <div class="main">
     <h1>HISTORIAL DE SOLICITUDES</h1>
-<<<<<<< HEAD
-    <div class="wrapper" style="background-color: #d9d9d9">
-    <h2>  Andrés Perez {{ props.name }}</h2>
-      <v-card class="wrapper-card" width="1000" style="margin-top: 20px">
-        <v-card-text>
-          <div class="card-titulos d-flex">
-            <p class="school d-flex text-h6 font-weight-bold">
-              Nombre de la escuela: 
-              {{ props.nameschool }}
-            </p>
-            <p class="relative font-weight-medium mt-1">
-              {{ props.date }} 00/02/2022 - 15/02/2022
-=======
     <div class="wrapper">
       <h2>{{ fake.name }}</h2>
       <v-card class="wrapper-card">
@@ -52,22 +33,13 @@ const fake = {
             </p>
             <p class="relative font-weight-medium mt-1">
               {{ fake.date }}
->>>>>>> 6fe95019a1e92ea69a4d7cf07186e32e366d70b1
             </p>
             <p class="relative font-weight-medium mt-1">
               <StateIndicator />
             </p>
           </div>
 
-<<<<<<< HEAD
-          <div class="card-container d-flex ">
-            <p class=" card-description d-flex top-12 ml-1 mr-12 text-justify" v-bind="props.description">
-              Lorem Ipsum  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-              {{ props.description }}
-            </p>
-=======
           <div class="card-container d-flex">
->>>>>>> 6fe95019a1e92ea69a4d7cf07186e32e366d70b1
             <div class="counter d-flex flex-column">
                 <p class="uno text-sm font-weight-bold">
                   Dias solicitados:{{ fake.days }}
@@ -100,11 +72,6 @@ h1 {
   background-color: #d9d9d9;
   display: flex;
   justify-content: space-around;
-<<<<<<< HEAD
-  border-radius: 10px;
-  margin-right: 2vw;
-=======
->>>>>>> 6fe95019a1e92ea69a4d7cf07186e32e366d70b1
   align-items: center;
   flex-direction: column;
   align-items: center;
@@ -144,13 +111,6 @@ h1 {
         display: flex;
         width: 100%;
         font-size: 18px;
-<<<<<<< HEAD
-        margin-top: 6vh;
-
-
-
-=======
->>>>>>> 6fe95019a1e92ea69a4d7cf07186e32e366d70b1
       }
     }
   }
