@@ -16,14 +16,18 @@ const props = defineProps({
     }
 })
 
-const acceptRequest = async () => {
-    await adminStore.changeStateOfRequest(userDocument, idRequest, 'Accept')
+
+
+const emits = defineEmits(['acceptEmit'],['rejectEmit'])
+
+
+const acceptEmit = ()=>{
+    emits('acceptEmit', 'Accept')
 }
 
-const rejectRequest = async () => {
-    await adminStore.changeStateOfRequest(userDocument, idRequest, 'Reject')
+const rejectEmit = ()=>{
+    emits('rejectEmit', 'Reject')
 }
-
 const fake = {
     name: "iyan",
     nameschool: "AST",
@@ -56,8 +60,8 @@ const fake = {
                 <v-textarea class="textarea" rows="3" color="#FF4700" bg-color="white"
                     label="Añada un comentario si lo desea" hide-details="true"> </v-textarea>
                 <div class="buttons-section">
-                    <ButtonComponent :button="'Aceptar'" :type="'accept'" @click="acceptRequest()" />
-                    <ButtonComponent :button="'Rechazar'" :type="'reject'" @click="rejectRequest()" />
+                    <ButtonComponent :button="'Aceptar'" :type="'accept'" @click="acceptEmit()" />
+                    <ButtonComponent :button="'Rechazar'" :type="'reject'" @click="rejectEmit()" />
                 </div>
             </div>
         </div>

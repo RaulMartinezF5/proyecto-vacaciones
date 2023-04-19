@@ -14,8 +14,20 @@ const router = useRouter()
 let OneRequest = reactive({})
 
 onBeforeMount( () => {
+
     OneRequest = adminStore.infoRequest(idRequest)
 })
+
+const acceptRequest = async () => {
+    await adminStore.changeStateOfRequest(userDocument, idRequest, 'Accept')
+    OneRequest = adminStore.infoRequest(idRequest)
+}
+
+const rejectRequest = async () => {
+    await adminStore.changeStateOfRequest(userDocument, idRequest, 'Reject')
+    OneRequest = adminStore.infoRequest(idRequest)
+}
+
 
 
 const backTo = () => {
@@ -35,7 +47,7 @@ const backTo = () => {
             </h1>
         </div>
         <div class="request-space">
-            <RequestDescription :request="OneRequest" />
+            <RequestDescription :request="OneRequest" @accept-emit="acceptRequest" @reject-emit="rejectRequest()"/>
         </div>
     </div>
 </template>
