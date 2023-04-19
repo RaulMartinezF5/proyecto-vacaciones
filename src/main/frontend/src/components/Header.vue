@@ -1,6 +1,17 @@
 <script setup>
 import { computed } from "@vue/reactivity";
 import { ref } from "vue";
+import { useRouter } from "vue-router";
+import { useAuthStore } from '../stores/authStore'
+
+const authStore = useAuthStore();
+const router = useRouter();
+
+const logout = async ()=>{
+  router.push({name:'LoginView'})
+  authStore.cleanLoginSession();
+  await authStore.logout();
+}
 
 const date = computed(() => {
   const weekdays = ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
@@ -45,7 +56,7 @@ setInterval(updateTime, 1000);
         <div>
             <p id="hour">{{ hourElement }}</p>
         </div>
-     <button id="logout-button"><img src="../assets/img/🦆 icon _log out_.png" alt="Logout"></button>
+     <button v-on:click="logout()" id="logout-button"><img src="../assets/img/🦆 icon _log out_.png" alt="Logout"></button>
     </header>
 </template>
 
