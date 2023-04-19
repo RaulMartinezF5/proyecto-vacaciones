@@ -8,9 +8,9 @@ const authStore = useAuthStore();
 const router = useRouter();
 
 const logout = async ()=>{
-  authStore.logout();
-  authStore.cleanLoginSession();
   router.push({name:'LoginView'})
+  authStore.cleanLoginSession();
+  await authStore.logout();
 }
 
 const date = computed(() => {
@@ -56,7 +56,7 @@ setInterval(updateTime, 1000);
         <div>
             <p id="hour">{{ hourElement }}</p>
         </div>
-     <button v-on:click="logout" id="logout-button"><img src="../assets/img/🦆 icon _log out_.png" alt="Logout"></button>
+     <button v-on:click="logout()" id="logout-button"><img src="../assets/img/🦆 icon _log out_.png" alt="Logout"></button>
     </header>
 </template>
 
