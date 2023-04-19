@@ -5,7 +5,8 @@ export const useAdminStore = defineStore('adminStore',{
     state: ()=>({
         allUsers: [],
         SchoolOfUser: [],
-        allRequests: []
+        allRequests: [],
+        IndividualRequest: {}
     }),
     actions:{
         async createUser(payload){
@@ -76,7 +77,17 @@ export const useAdminStore = defineStore('adminStore',{
 
             const response = await service.changeRequestState(document, idRequest, state)
 
-            console.log(response);
+  
+        },
+        infoRequest(idRequest){
+            
+            for (const request of this.allRequests) {
+                if(request.requestUser.id == idRequest){
+                    
+                    this.IndividualRequest = request
+                    return request}
+            }
+            return
         },
         randomPassword(){
             const randomPass = Math.random().toString(36).slice(2)

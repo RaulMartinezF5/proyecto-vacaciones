@@ -1,12 +1,25 @@
 <script setup>
 import RequestDescription from '../../components/RequestDescription.vue';
 import iconArrowLeft from '@/assets/img/iconArrowLeft.png';
+import { onBeforeMount, onUpdated, reactive, ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { useAdminStore } from '../../stores/adminStore';
+import { useRoute } from 'vue-router';
 
+const adminStore = useAdminStore()
+const route = useRoute()
+const userDocument = route.params.document
+const idRequest = route.params.idRequest
 const router = useRouter()
+let OneRequest = reactive({})
 
-const backTo = ()=>{
-    router.push({name: 'requestListViewAdmin'})
+onBeforeMount( () => {
+    OneRequest = adminStore.infoRequest(idRequest)
+})
+
+
+const backTo = () => {
+    router.push({ name: 'requestListViewAdmin' })
 }
 
 </script>
@@ -15,24 +28,40 @@ const backTo = ()=>{
 <template>
     <div class="mainContainer">
         <div class="microheader">
-                <button class="button-arrow"><img :src="iconArrowLeft" alt="Flecha botón para retoceder"
-                        class="arrow" @click="backTo()"></button>
-                <h1 class="titulo">
-                    INFORMACIÓN DE SOLICITUD
-                </h1>
-            </div>
-        <RequestDescription/>
+            <button class="button-arrow"><img :src="iconArrowLeft" alt="Flecha botón para retoceder" class="arrow"
+                    @click="backTo()"></button>
+            <h1 class="titulo">
+                INFORMACIÓN DE SOLICITUD
+            </h1>
+        </div>
+        <div class="request-space">
+            <RequestDescription :request="OneRequest" />
+        </div>
     </div>
 </template>
 
 
 <style lang="scss" scoped>
+@use '../../assets/scss/main' as *;
 
-.microheader 
-{
-            display: flex;
-            flex-direction: row;
-            margin-block: 2%;
+.mainContainer {
+    width: 100%;
+    @include flexDisplay(column, center, center);
+
+    .microheader {
+        width: 100%;
+        @include gridDisplay(1,3);
+        margin-top: 1vh;
+        margin-bottom: 1vh;
+
+        .button-arrow{
+            @include flexDisplay(row, flex-start, center)
+        }
+    }
+    .request-space{
+        width: 90%;
+        @include flexDisplay(row, center, center);
+    }
 }
 </style>
 

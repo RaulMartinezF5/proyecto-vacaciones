@@ -29,7 +29,7 @@ const fake = {
 </script>
 
 <template>
-  <div class="main">
+
     
     <div class="wrapper" @click="emitRequestDetails()">
       <h2>{{ request.name }}</h2>
@@ -66,7 +66,7 @@ const fake = {
         </v-card-text>
       </v-card>
     </div>
-  </div>
+
 </template>
 
 <style lang="scss" scoped>

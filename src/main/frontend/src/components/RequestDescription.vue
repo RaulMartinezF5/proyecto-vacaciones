@@ -1,6 +1,7 @@
 <script setup>
 import ButtonComponent from './ButtonComponent.vue';
 import StateIndicator from './StateIndicator.vue';
+import { onUpdated } from 'vue';
 import { useAdminStore } from '../stores/adminStore';
 import { useRoute } from 'vue-router';
 
@@ -9,9 +10,20 @@ const route = useRoute()
 const userDocument = route.params.document
 const idRequest = route.params.idRequest
 
-const acceptRequest =async  () => {
+const props = defineProps({
+    request: {
+        type: Object
+    }
+})
+
+const acceptRequest = async () => {
     await adminStore.changeStateOfRequest(userDocument, idRequest, 'Accept')
 }
+
+const rejectRequest = async () => {
+    await adminStore.changeStateOfRequest(userDocument, idRequest, 'Reject')
+}
+
 const fake = {
     name: "iyan",
     nameschool: "AST",
@@ -26,33 +38,30 @@ const fake = {
 </script>
 <template>
     <div class="mainContainer">
-        <div>
-            
+
+
             <div class="usuario">
-                <h2 class="empleado"> Natalia Rojo</h2>
+                <h2 class="empleado"> {{ request.name }}</h2>
                 <h2 class="solicitud">Solicitud:
-                    <StateIndicator />
+                    <StateIndicator :state="request.requestUser.state" />
                 </h2>
 
             </div>
 
             <div class="texto">
-                <p id="fecha"> pepon </p>
-                <p id="comentario"> Lorem ipsum dolor sit Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore
-                    illum dolorem illo minus in est quaerat veritatis similique id nulla dignissimos, magni dolores
-                    pariatur! Neque incidunt, ad enim minima reprehenderit, cumque laboriosam est saepe blanditiis suscipit
-                    debitis asperiores? Accusantium a eum ullam neque impedit! Nisi dolore a libero quia atque!</p>
+                <p id="fecha"> {{ request.requestUser.startDate }} {{ request.requestUser.endDate }}</p>
+                <p id="comentario"> {{ request.requestUser.issue }}</p>
             </div>
-            <div class="comment-section" v-if="fake.state == null">
-                <v-textarea class="textarea" rows="3" color="#FF4700" bg-color="white" label="Añada un comentario si lo desea"
-                    hide-details="true"> </v-textarea>
+            <div class="comment-section" v-if="request.requestUser.state == 'Default'">
+                <v-textarea class="textarea" rows="3" color="#FF4700" bg-color="white"
+                    label="Añada un comentario si lo desea" hide-details="true"> </v-textarea>
                 <div class="buttons-section">
-                    <ButtonComponent :button="'Aceptar'" :type="'accept'" @click="acceptRequest()"/>
-                    <ButtonComponent :button="'Rechazar'" :type="'reject'" />
+                    <ButtonComponent :button="'Aceptar'" :type="'accept'" @click="acceptRequest()" />
+                    <ButtonComponent :button="'Rechazar'" :type="'reject'" @click="rejectRequest()" />
                 </div>
             </div>
         </div>
-    </div>
+
 </template>
 <style lang="scss" scoped>
 .mainContainer {
@@ -61,39 +70,38 @@ const fake = {
     justify-content: space-around;
 
     .usuario {
+        width: 100%;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-    }
 
-    .solicitud {
-        display: flex;
-    }
+        .solicitud {
+            display: flex;
+        }
 
-    .empleado {
-        display: flex;
-    }
-        .titulo {
-            margin-left: 30%;
+        .empleado {
+            display: flex;
         }
 
     }
 
-    .texto {
-        display: flex;
-        flex-direction: column;
-        background-color: #D9D9D9;
-        padding: 2%;
-        border-radius: 10px;
-        margin-top: 1%;
-        gap: 2vh;
 
-
+    .titulo {
+        margin-left: 30%;
     }
 
-    .textarea {
-        padding: 2%;        
-    }
+}
+
+.texto {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #D9D9D9;
+    padding: 2%;
+    border-radius: 10px;
+    margin-top: 1vh;
+    gap: 2vh;
+
 
     #fecha {
         background-color: white;
@@ -102,23 +110,36 @@ const fake = {
     }
 
     #comentario {
+        width: 100%;
         background-color: white;
         border-radius: 10px;
         padding: 1vw;
     }
+}
 
-    .comment-section {
-        display: flex;
-        background-color: #D9D9D9;
-        margin-top: 2%;
-        border-radius: 10px;
-    }
 
-    .buttons-section {
-        display: flex;
-        flex-direction: column;
-        padding-right: 2%;
-        justify-content: center;
-        gap: 4vh;
-    }
+
+
+.comment-section {
+    width: 100%;
+    display: flex;
+    background-color: #D9D9D9;
+    margin-top: 2%;
+    border-radius: 10px;
+}
+.textarea {
+    padding: 2%;
+
+
+}
+.buttons-section {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    padding-right: 2%;
+    justify-content: center;
+    gap: 4vh;
+    
+    
+}
 </style>

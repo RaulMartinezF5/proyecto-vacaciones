@@ -1,7 +1,7 @@
 <script setup>
 import CardHistorial from '../../components/CardHistorial.vue';
 import { useAdminStore } from '../../stores/adminStore';
-import { onBeforeMount } from 'vue';
+import { onBeforeMount, onUpdated } from 'vue';
 import { useRouter } from 'vue-router'
 
 const adminStore = useAdminStore()
@@ -13,13 +13,28 @@ onBeforeMount(() => {
 const navigateTo = (info)=>{
     router.push({name: 'requestDetailsView', params:{document: info.userDocument, idRequest: info.requestId }})
 }
+
+onUpdated(async () => {
+    await adminStore.listAllRequests()
+})
 </script>
 <template>
+    <div class="list-request-wrapper">
     <h1>HISTORIAL DE SOLICITUDES</h1>
-    <div> 
+    <div class="card-historial-space"> 
         <CardHistorial @emit-request-details="navigateTo" v-for="request of adminStore.allRequests" :request="request" />
     </div>
-    
+    </div>
 </template>
 <style lang="scss" scoped> 
+@use '../../assets/scss/main' as *;
+.list-request-wrapper{
+    width: 100%;
+    @include flexDisplay(column, center, center);
+    .card-historial-space{
+        width: 80%;
+        @include flexDisplay(column, normal, center);
+        gap: 2vh
+    }
+}
 </style>
