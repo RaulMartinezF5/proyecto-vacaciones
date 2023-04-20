@@ -20,12 +20,14 @@ const filteredUsers = computed(() => {
 </script>
 
 <template>
+
     <h1 id="title">Lista de Usuarios</h1>
     <div class="d-flex flex-column">
         <SearchBar v-model="searchQuery"/>
-
-        <UserListComponent v-for="(user, key) of filteredUsers" :key="index" :school="adminStore.SchoolOfUser[key]"
-            :profile="user"></UserListComponent>
+        <div class="user-list-wrapper">
+            <UserListComponent v-for="(user, key) of filteredUsers" :key="index"
+                :school="adminStore.SchoolOfUser[key]" :profile="user"></UserListComponent>
+        </div>
     </div>
 </template>
 
@@ -36,5 +38,12 @@ const filteredUsers = computed(() => {
     text-align: center;
     margin-top: 2%;
     margin-bottom: 2%;
+}
+.user-list-wrapper{
+
+    display: flex;
+    flex-direction: column;
+    
+    gap: 1vh;
 }
 </style>
