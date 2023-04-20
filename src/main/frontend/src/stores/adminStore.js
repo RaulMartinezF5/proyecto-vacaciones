@@ -40,6 +40,9 @@ export const useAdminStore = defineStore('adminStore',{
             this.SchoolOfUser = schools
             this.allUsers = profiles
         },
+
+
+
         randomPassword(){
             const randomPass = Math.random().toString(36).slice(2)
 

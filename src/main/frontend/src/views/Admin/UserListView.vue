@@ -2,22 +2,31 @@
 import UserListComponent from '../../components/UserListComponent.vue';
 import SearchBar from '../../components/SearchBar.vue';
 import { useAdminStore } from '../../stores/adminStore';
-import { onBeforeMount } from 'vue';
+import { onBeforeMount, computed , ref } from 'vue';
 
 const adminStore = useAdminStore()
-
 onBeforeMount(async () => {
     await adminStore.listAllUsers()
+})
+
+const searchQuery = ref("") 
+
+const filteredUsers = computed(() => {
+  if (!searchQuery.value) return adminStore.allUsers
+  return adminStore.allUsers.filter(user => 
+    user['name'].toLowerCase().includes(searchQuery.value.toLowerCase())
+  )
 })
 </script>
 
 <template>
     <h1 id="title">Lista de Usuarios</h1>
     <div class="d-flex flex-column">
-<SearchBar></SearchBar>
+        <SearchBar v-model="searchQuery"/>
 
-<UserListComponent v-for="(user, key) of adminStore.allUsers" :key="index" :school="adminStore.SchoolOfUser[key]" :profile="user"></UserListComponent>
-</div>
+        <UserListComponent v-for="(user, key) of filteredUsers" :key="index" :school="adminStore.SchoolOfUser[key]"
+            :profile="user"></UserListComponent>
+    </div>
 </template>
 
 <style scoped lang="scss">
@@ -28,5 +37,4 @@ onBeforeMount(async () => {
     margin-top: 2%;
     margin-bottom: 2%;
 }
-
 </style>
