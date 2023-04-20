@@ -77,10 +77,10 @@ export const useAdminStore = defineStore('adminStore',{
 
             const response = await service.changeRequestState(document, idRequest, state)
 
-            const actualiceListUser = await service.listAllUsers()
+            const actualiceListUser = await this.listAllRequests()
         },
-        infoRequest(idRequest){
-            
+        async infoRequest(idRequest){
+
             for (const request of this.allRequests) {
                 if(request.requestUser.id == idRequest){
                     
