@@ -3,6 +3,12 @@ import { useAuthStore } from '../stores/authStore';
 import ButtonComponent from './ButtonComponent.vue';
 import { computed, ref } from 'vue';
 
+function uploadPhoto() {
+    let fileInput = document.getElementById("photo-upload");
+    let file = fileInput.files[0];
+}
+
+
 const authStore = useAuthStore();
 
 
@@ -17,7 +23,7 @@ const props = defineProps(
 )
 
 
-const userRole = computed(()=>{
+const userRole = computed(() => {
     const roles = {
         'ROLE_ADMIN': 'ADMIN',
         'ROLE_RESPONSABLE': 'RESPONSABLE',
@@ -34,7 +40,7 @@ const showRole = computed(() => {
 
 const emits = defineEmits(['navigateTo'])
 
-const emitRoute = (navigation)=>{
+const emitRoute = (navigation) => {
     emits('navigateTo', navigation)
 }
 
@@ -45,6 +51,10 @@ const emitRoute = (navigation)=>{
             <img src="../assets/img/user-default-icon.png" alt="user default icon">
 
             <h1>{{ userRole }}</h1>
+            <div class="inputPhoto"><input type="file" name="photo" id="photo-upload"  accept="image/*"></div>
+            <div class="buttonPhoto">
+                <ButtonComponent :button="'AÑADIR'"/>
+            </div>
         </div>
 
         <div v-if="test == 'ROLE_USER'" class="user-info-zone">
@@ -71,24 +81,24 @@ const emitRoute = (navigation)=>{
             </div>
             <div v-if="authStore.roleLogin == 'ROLE_RESPONSABLE'" class="navigation">
                 <div class="nav-button-wrapper">
-                    <ButtonComponent  @click="emitRoute('employeResponsableView')" :button="'EMPLEADO'" />
+                    <ButtonComponent @click="emitRoute('employeResponsableView')" :button="'EMPLEADO'" />
                 </div>
                 <div class="nav-button-wrapper">
-                    <ButtonComponent  @click="emitRoute('requestListView')" :button="'RESPONSABLE'" />
+                    <ButtonComponent @click="emitRoute('requestListView')" :button="'RESPONSABLE'" />
                 </div>
             </div>
             <div v-if="authStore.roleLogin == 'ROLE_ADMIN'" class="navigation">
                 <div class="nav-button-wrapper">
-                    <ButtonComponent  @click="emitRoute('createUserView')" :button="'CREAR USUARIO'" />
+                    <ButtonComponent @click="emitRoute('createUserView')" :button="'CREAR USUARIO'" />
                 </div>
                 <div class="nav-button-wrapper">
-                    <ButtonComponent  @click="emitRoute('requestListViewAdmin')" :button="'PETICIONES'" />
+                    <ButtonComponent @click="emitRoute('requestListViewAdmin')" :button="'PETICIONES'" />
                 </div>
                 <div class="nav-button-wrapper">
-                    <ButtonComponent  @click="emitRoute('stadisticsView')" :button="'INFORMES'" />
+                    <ButtonComponent @click="emitRoute('stadisticsView')" :button="'INFORMES'" />
                 </div>
                 <div class="nav-button-wrapper">
-                    <ButtonComponent  @click="emitRoute('userListView')" :button="'USUARIOS'" />
+                    <ButtonComponent @click="emitRoute('userListView')" :button="'USUARIOS'" />
                 </div>
             </div>
         </div>
@@ -102,13 +112,14 @@ aside {
     height: 100%;
     @include gridDisplay(10, 1);
 
-    .image-zone{
+    .image-zone {
         @include positionGrid(2, 1, 3, 1);
         width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
-        img{
+
+        img {
             width: 50%;
             height: 70%;
         }
@@ -152,5 +163,19 @@ aside {
             align-items: center;
         }
     }
-}
-</style>
+
+    .inputPhoto {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 40px;
+        margin-top: 2vh;
+    }
+
+    .buttonPhoto {
+        width: 90%;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-top: 1vh;
+    }
+}</style>
