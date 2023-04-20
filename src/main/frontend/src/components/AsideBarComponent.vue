@@ -4,8 +4,8 @@ import ButtonComponent from './ButtonComponent.vue';
 import { computed, ref } from 'vue';
 
 function uploadPhoto() {
-    var fileInput = document.getElementById("photo-upload");
-    var file = fileInput.files[0];
+    let fileInput = document.getElementById("photo-upload");
+    let file = fileInput.files[0];
 }
 
 
