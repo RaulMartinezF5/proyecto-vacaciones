@@ -1,6 +1,5 @@
 <script setup>
 import FormComponent from '../../components/FormComponent.vue';
-import ButtonComponent from '../../components/ButtonComponent.vue';
 
 </script>
 
@@ -18,6 +17,7 @@ import ButtonComponent from '../../components/ButtonComponent.vue';
     h1 {
         text-align: center;
         margin-top: 3vh;
+        text-transform: uppercase;
     }
 .form-wrapper {
     width: 100%;
