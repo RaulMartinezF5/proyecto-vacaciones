@@ -1,5 +1,4 @@
 <script setup>
-import AlertComponent from "../components/AlertComponent.vue";
 import Login from "../components/Login.vue";
 
 </script>
