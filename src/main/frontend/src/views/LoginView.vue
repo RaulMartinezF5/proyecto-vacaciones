@@ -1,12 +1,13 @@
 <script setup>
+import AlertComponent from "../components/AlertComponent.vue";
 import Login from "../components/Login.vue";
 
 </script>
 
 <template>
     <div id="center-login">
-<Login />
-</div>
+        <Login />
+    </div>
 </template>
 
 <style lang="scss" scoped>
@@ -16,5 +17,4 @@ import Login from "../components/Login.vue";
     align-items: center;
     height: 100vh;
 }
-  
 </style>
