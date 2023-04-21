@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, reactive } from 'vue';
 import { useAdminStore } from '../stores/adminStore';
 import CreateUserPayload from '../apiCall/payloads/CreateUserPayload';
 import ButtonComponent from '../components/ButtonComponent.vue';
@@ -70,26 +70,21 @@ const createUser = async () => {
     await adminStore.createUser(payload)
 }
 
-const submitForm = async () => {
-  if (
-    name.value &&
-    surnames.value &&
-    dni.value &&
-    email.value &&
-    vacationDays.value &&
-    position.value &&
-    role.value &&
-    workplace.value &&
-    startDay.value &&
-    finishDay.value
-  ) {
-    await createUser()
+
+const onSubmit = async () => {
+  const valid = await Promise.all([
+    $refs.form.validate(),
+    name.value && surnames.value && dni.value && email.value && position.value && role.value && workplace.value && startDay.value && finishDay.value
+  ]);
+
+  if (valid.every(Boolean)) {
+    await createUser();
   }
-}
+};
 </script>
 
 <template>
-    <v-form @keyup.enter="submitForm()">
+    <v-form @submit.prevent="onSubmit()">
 
     <div class="container">
         <div class="input-wrapper"> <v-text-field color="#FF4700" label="Nombre" variant="solo" v-model="name" :rules="nameRules">
