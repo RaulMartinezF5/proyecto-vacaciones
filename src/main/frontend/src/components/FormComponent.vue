@@ -128,7 +128,7 @@ const onSubmit = async () => {
     </div>
     <div v-if="view === 'create'" class="button-zone">
         <div class="button-wrapper">
-            <ButtonComponent :button="'CREAR'" @click="createUser()"/>
+            <ButtonComponent :button="'CREAR'" @click="createUser()" :disabled="!name || !surnames || !dni || !email || !position || !role || !workplace"/>
         </div>
     </div>
     </v-form>
