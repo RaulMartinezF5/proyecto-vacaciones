@@ -5,8 +5,8 @@ import Login from "../components/Login.vue";
 
 <template>
     <div id="center-login">
-<Login />
-</div>
+        <Login />
+    </div>
 </template>
 
 <style lang="scss" scoped>
@@ -16,5 +16,4 @@ import Login from "../components/Login.vue";
     align-items: center;
     height: 100vh;
 }
-  
 </style>
