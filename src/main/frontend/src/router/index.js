@@ -90,10 +90,12 @@ const router = createRouter({
               meta: { requiresAuth: true }
             },
             {
-              path: 'usersDetails',
+              path: 'usersDetails/:document',
               name: 'userDetailsView',
               component: () => import('../views/Admin/UserInfoView.vue'),
-              meta: { requiresAuth: true }
+              meta: { requiresAuth: true },
+              props: route => ({ document: route.params.document})
+
             },
             {
               path:'requestDetails/user/:document/request/:idRequest',
