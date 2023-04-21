@@ -6,7 +6,10 @@ export const useAdminStore = defineStore('adminStore',{
         allUsers: [],
         SchoolOfUser: [],
         allRequests: [],
-        IndividualRequest: {}
+        IndividualRequest: {},
+        responsables: [],
+        allUsersWithoutResponsable: [],
+        employesOfResponsable: []
     }),
     actions:{
         async createUser(payload){
@@ -66,7 +69,7 @@ export const useAdminStore = defineStore('adminStore',{
                         ))
                 }
             }
-            console.log(allRequestOfUsers);
+
 
             this.allRequests =allRequestOfUsers
         },
@@ -88,6 +91,50 @@ export const useAdminStore = defineStore('adminStore',{
                     return request}
             }
             return
+        },
+        async listAllResponsables(){
+            const repository = new Repository('admin')
+
+            const service = repository.chooseAdminService()
+
+            const response = await service.listAllResponsables()
+
+            this.responsables = response
+        },
+        async listAllUserWithoutResponsable(document){
+            const repository = new Repository('admin')
+
+            const service = repository.chooseAdminService()
+
+            const response = await service.listAllUserWithoutSelected(document)
+
+            console.log(response);
+            const allEmployes = []
+            for (const user of response) {
+                
+                if(user.profile != undefined) {
+                    allEmployes.push(user)
+                }
+            }
+
+            this.allUsersWithoutResponsable = allEmployes
+        },
+        async asignEmployeToResponsable(documentResponsable, documentEmploye){
+            const repository = new Repository('admin')
+
+            const service = repository.chooseAdminService()
+            const response = await service.asignEmployeToResponsable(documentResponsable, documentEmploye);
+
+            await this.listAllRequests()
+        },
+        async listAllEmployesOfResponsable(document){
+            const repository = new Repository('admin')
+
+            const service = repository.chooseAdminService()
+
+            const response = await service.listAllEmployesOfResponsable(document)
+
+            this.employesOfResponsable = response
         },
         randomPassword(){
             const randomPass = Math.random().toString(36).slice(2)

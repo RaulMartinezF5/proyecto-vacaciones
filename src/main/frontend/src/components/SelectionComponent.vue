@@ -1,6 +1,19 @@
 <script setup>
+import { ref } from 'vue';
 import ButtonComponent from './ButtonComponent.vue';
 
+const responsableDocument = ref('')
+const employeDocument = ref('')
+const emits = defineEmits(['emitEmploye'],['emitResponsable'] )
+
+const employeEmit = ()=>{ 
+
+    emits('emitEmploye',employeDocument.value)
+}
+const responsableEmit = ()=>{
+
+    emits('emitResponsable', responsableDocument.value)
+}
 const props = defineProps({
     employes: {
         type: Array,
@@ -16,28 +29,22 @@ const props = defineProps({
     }
 })
 
-const emits = defineEmits(['selecEmploye', 'selectResponsable'])
 
-const emitResponsable = (document) => {
-    emits('selectResponsable', document)
-}
-const emitEmploye = (document) => {
-    emits('selecEmploye', document)
-}
+
 </script>
 <template>
     <div class="create-teams-wrapper">
         <div class="input-zone">
-            <select name="responsables" id="responsables" @select="emitResponsable">
-                <option v-for="responsable of responsables" :value="responsable">{{ responsable }}</option>
+            <select v-model="responsableDocument" name="responsables" id="responsables" @change="responsableEmit()">
+                <option v-for="responsable of responsables" :value="`${responsable.document}`">{{ `${responsable.profile.firstName} ${responsable.profile.lastName}` }}</option>
             </select>
-            <select name="employes" id="employes" @select="emitEmploye">
-                <option v-for="employe of employes" :value="employe">{{ employe }}</option>
+            <select v-model="employeDocument" name="employes" id="employes" @change="employeEmit()">
+                <option v-for="employe of employes" :value="employe.document">{{ `${employe.profile.firstName} ${employe.profile.lastName}`}}</option>
             </select>
         </div>
         <div class="list-zone">
             <ul>
-                <li v-for="employe of employesOfResponsable">{{ employe }}</li>
+                <li v-for="employe of employesOfResponsable">{{ `${employe.profile.firstName} ${employe.profile.lastName}` }}</li>
             </ul>
         </div>
         <div class="button-zone">
