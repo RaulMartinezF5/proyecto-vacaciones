@@ -3,12 +3,18 @@ import UserListComponent from '../../components/UserListComponent.vue';
 import SearchBar from '../../components/SearchBar.vue';
 import { useAdminStore } from '../../stores/adminStore';
 import { onBeforeMount } from 'vue';
-
+import { useRouter } from 'vue-router'
 const adminStore = useAdminStore()
 
 onBeforeMount(async () => {
     await adminStore.listAllUsers()
 })
+
+const router = useRouter()
+
+function navigateToUserInfoView(user) {
+  router.push({ name: 'userDetailsView', params: { document: user.id }})
+}
 </script>
 
 <template>
@@ -18,7 +24,7 @@ onBeforeMount(async () => {
         <SearchBar></SearchBar>
         <div class="user-list-wrapper">
             <UserListComponent v-for="(user, key) of adminStore.allUsers" :key="index"
-                :school="adminStore.SchoolOfUser[key]" :profile="user"></UserListComponent>
+                :school="adminStore.SchoolOfUser[key]" :profile="user" @click="navigateToUserInfoView(user)"></UserListComponent>
         </div>
     </div>
 </template>
