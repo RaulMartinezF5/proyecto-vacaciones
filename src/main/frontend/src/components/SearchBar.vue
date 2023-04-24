@@ -18,7 +18,7 @@ watch(searchQuery, newValue => {
 
 <template>
     <v-form width="900" class="d-flex flex-row justify-center mb-7">
-      <input v-model="searchQuery" type="text" placeholder="Filter users..."/>
+      <input v-model="searchQuery" type="text" placeholder="&#128269 Filtrar usuarios..."/>
     </v-form> 
 
 </template>
@@ -27,18 +27,12 @@ watch(searchQuery, newValue => {
 @use "../assets/scss/variables.scss" as c;
 
 input{
-width: 50vw;
-height: 2vw;
+width: 75%;
+height: 3vw;
 border-color: map-get($map: c.$colors, $key: "Black");
 border: 2px solid;
 margin-right: 1vw;
-}
-
-#searchButton{
-   background-color: map-get($map: c.$colors, $key: "Orange");
-    color:white;
-    border-radius: 10px;
-    font-weight: 700;  
+border-radius: 0.5rem;
 }
 
 </style>
