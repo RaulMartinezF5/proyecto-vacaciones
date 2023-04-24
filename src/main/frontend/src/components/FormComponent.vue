@@ -64,79 +64,89 @@ const workplaceRules = [
 
 const createUser = async () => {
 
-    const payload = new CreateUserPayload(dni.value,name.value,surnames.value,email.value,adminStore.randomPassword(),vacationDays.value,position.value,role.value, workplace.value, startDay.value,finishDay.value)
-    
-    console.log(payload.password);
-    await adminStore.createUser(payload)
+  const payload = new CreateUserPayload(dni.value, name.value, surnames.value, email.value, adminStore.randomPassword(), vacationDays.value, position.value, role.value, workplace.value, startDay.value, finishDay.value)
+
+  console.log(payload.password);
+  await adminStore.createUser(payload)
+
 }
 
-const submitForm = async () => {
-  if (
-    name.value &&
-    surnames.value &&
-    dni.value &&
-    email.value &&
-    vacationDays.value &&
-    position.value &&
-    role.value &&
-    workplace.value &&
-    startDay.value &&
-    finishDay.value
-  ) {
-    await createUser()
+
+
+function resetForm() {
+  this.name = '';
+  this.surnames = '';
+  this.dni = '';
+  this.email = '';
+  this.vacationDays = '';
+  this.startDay = '';
+  this.finishDay = '';
+  this.position = '';
+  this.role = '';
+  this.workplace = '';
+
+  if (resetSelects) {
+    this.$nextTick(() => {
+      this.$refs.positionSelect.model = null;
+      this.$refs.roleSelect.model = null;
+      this.$refs.workplaceSelect.model = null;
+    });
   }
 }
+
+
+
 </script>
 
 <template>
-    <v-form @keyup.enter="submitForm()">
+    <v-form ref="form" >
 
-    <div class="container">
-        <div class="input-wrapper"> <v-text-field color="#FF4700" label="Nombre" variant="solo" v-model="name" :rules="nameRules">
-            </v-text-field></div>
+      <div class="container">
+    <div class="input-wrapper"> <v-text-field color="#FF4700" label="Nombre" variant="solo" v-model="name" :rules="nameRules">
+        </v-text-field></div>
 
-        <div class="input-wrapper"><v-text-field color="#FF4700" label="Apellidos" variant="solo" v-model="surnames" :rules="surnamesRules">
-            </v-text-field></div>
+    <div class="input-wrapper"><v-text-field color="#FF4700" label="Apellidos" variant="solo" v-model="surnames" :rules="surnamesRules">
+        </v-text-field></div>
 
-        <div class="input-wrapper"> <v-text-field color="#FF4700" label="DNI/NIE/Pasaporte" variant="solo" v-model="dni" :rules="dniRules">
-            </v-text-field></div>
+    <div class="input-wrapper"> <v-text-field color="#FF4700" label="DNI/NIE/Pasaporte" variant="solo" v-model="dni" :rules="dniRules">
+        </v-text-field></div>
 
-        <div class="input-wrapper"><v-text-field color="#FF4700" label="Correo electrónico" variant="solo" v-model="email" :rules="emailRules">
-            </v-text-field></div>
+    <div class="input-wrapper"><v-text-field color="#FF4700" label="Correo electrónico" variant="solo" v-model="email" :rules="emailRules">
+        </v-text-field></div>
 
-        <div class="input-wrapper"> <v-text-field color="#FF4700" label="Cantidad de Vacaciones" variant="solo"
-                v-model="vacationDays"> </v-text-field></div>
+    <div class="input-wrapper"> <v-text-field color="#FF4700" label="Cantidad de Vacaciones" variant="solo"
+            v-model="vacationDays"> </v-text-field></div>
 
-        <div class="input-wrapper"><v-select color="#FF4700" label="Posición" variant="solo"
-                :items="['Formador', 'Coformador', 'Responsable de Promoción']" v-model="position" :rules="positionRules"> </v-select></div>
+    <div class="input-wrapper"><v-select ref="positionSelect" color="#FF4700" label="Posición" variant="solo"
+            :items="['Formador', 'Coformador', 'Responsable de Promoción']" v-model="position" :rules="positionRules"> </v-select></div>
 
-        <div class="input-wrapper"><v-select color="#FF4700" label="Tipo de Usuario" variant="solo"
-                :items="['Responsable', 'Empleado', 'Admin']" v-model="role" :rules="roleRules"> </v-select></div>
+    <div class="input-wrapper"><v-select ref="roleSelect" color="#FF4700" label="Tipo de Usuario" variant="solo"
+            :items="['Responsable', 'Empleado', 'Admin']" v-model="role" :rules="roleRules"> </v-select></div>
 
-        <div class="input-wrapper"><v-select color="#FF4700" label="Lugar de trabajo" variant="solo"
-                :items="['Asturias', 'Madrid', 'Barcelona', 'Málaga', 'Sevilla', 'Norte']" v-model="workplace" :rules="workplaceRules"> </v-select>
-        </div>
-
-        <div class="input-wrapper"> <v-text-field color="#FF4700" label="Fecha de alta" variant="solo" type="date"
-                v-model="startDay"> </v-text-field></div>
-
-        <div class="input-wrapper"><v-text-field color="#FF4700" label="Fecha de baja" variant="solo" type="date"
-                v-model="finishDay"> </v-text-field></div>
+    <div class="input-wrapper"><v-select ref="workplaceSelect"  color="#FF4700" label="Lugar de trabajo" variant="solo"
+            :items="['Asturias', 'Madrid', 'Barcelona', 'Málaga', 'Sevilla', 'Norte']" v-model="workplace" :rules="workplaceRules"> </v-select>
     </div>
-    <div v-if="view != 'create'" class="button-zone">
-        <div class="button-wrapper">
-            <ButtonComponent :type="'warning'" :button="'EDITAR'" />
-        </div>
-        <div class="button-wrapper">
-            <ButtonComponent :type="'reject'" :button="'DAR DE BAJA'" />
-        </div>
+
+    <div class="input-wrapper"> <v-text-field color="#FF4700" label="Fecha de alta" variant="solo" type="date"
+            v-model="startDay"> </v-text-field></div>
+
+    <div class="input-wrapper"><v-text-field color="#FF4700" label="Fecha de baja" variant="solo" type="date"
+            v-model="finishDay"> </v-text-field></div>
+</div>
+<div v-if="view != 'create'" class="button-zone">
+    <div class="button-wrapper">
+        <ButtonComponent :type="'warning'" :button="'EDITAR'" />
     </div>
-    <div v-if="view === 'create'" class="button-zone">
-        <div class="button-wrapper">
-            <ButtonComponent :button="'CREAR'" @click="createUser()"/>
-        </div>
+    <div class="button-wrapper">
+        <ButtonComponent :type="'reject'" :button="'DAR DE BAJA'" />
     </div>
-    </v-form>
+</div>
+<div v-if="view === 'create'" class="button-zone">
+    <div class="button-wrapper">
+        <ButtonComponent :button="'CREAR'" @click="createUser(), resetForm()" :disabled="!name || !surnames || !dni || !email || !position || !role || !workplace"/>
+    </div>
+</div>
+</v-form>
 </template>
 
 <style lang="scss" scoped>
