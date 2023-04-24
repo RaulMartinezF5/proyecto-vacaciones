@@ -2,21 +2,24 @@
 import UserListComponent from '../../components/UserListComponent.vue';
 import SearchBar from '../../components/SearchBar.vue';
 import { useAdminStore } from '../../stores/adminStore';
-import { onBeforeMount, computed , ref } from 'vue';
+import { onBeforeMount, computed , ref , onMounted } from 'vue';
 
-const adminStore = useAdminStore()
+const adminStore = useAdminStore();
+
 onBeforeMount(async () => {
     await adminStore.listAllUsers()
-})
+});
 
-const searchQuery = ref("") 
+const searchQuery = ref("") ;
+const users = adminStore.allUsers ;
 
 const filteredUsers = computed(() => {
-  if (!searchQuery.value) return adminStore.allUsers
-  return adminStore.allUsers.filter(user => 
-    user['name'].toLowerCase().includes(searchQuery.value.toLowerCase())
-  )
-})
+  if (!searchQuery.value) return users
+  console.log("entra en la computada");
+  return users.filter(console.log("entra en la computada 2"),user => 
+  user['name'].toLowerCase().includes(searchQuery.value.toLowerCase()))
+
+});
 </script>
 
 <template>

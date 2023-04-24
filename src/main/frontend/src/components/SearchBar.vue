@@ -9,6 +9,7 @@ const props = defineProps({
 const emit = defineEmits(["update:queryValue"]);
 
 const searchQuery = ref(props.queryValue);
+
 watch(searchQuery, newValue => {
   emit("update:queryValue", newValue);
 });
@@ -17,8 +18,7 @@ watch(searchQuery, newValue => {
 
 <template>
     <v-form width="900" class="d-flex flex-row justify-center mb-7">
-        <v-text-field v-model="searchTerm" density="compact" variant="solo" label="Buscar usuario"
-          append-inner-icon="mdi-magnify" ></v-text-field>
+      <input v-model="searchQuery" type="text" placeholder="Filter users..."/>
     </v-form> 
 
 </template>
