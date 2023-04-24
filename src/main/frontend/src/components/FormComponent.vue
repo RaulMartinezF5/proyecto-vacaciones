@@ -64,14 +64,16 @@ const workplaceRules = [
 
 const createUser = async () => {
 
-    const payload = new CreateUserPayload(dni.value,name.value,surnames.value,email.value,adminStore.randomPassword(),vacationDays.value,position.value,role.value, workplace.value, startDay.value,finishDay.value)
-    
-    console.log(payload.password);
-    await adminStore.createUser(payload)
+  const payload = new CreateUserPayload(dni.value, name.value, surnames.value, email.value, adminStore.randomPassword(), vacationDays.value, position.value, role.value, workplace.value, startDay.value, finishDay.value)
+
+  console.log(payload.password);
+  await adminStore.createUser(payload)
+
 }
 
 
-function resetForm(resetSelects = false) {
+
+function resetForm() {
   this.name = '';
   this.surnames = '';
   this.dni = '';
@@ -100,35 +102,35 @@ function resetForm(resetSelects = false) {
     <v-form ref="form" >
 
       <div class="container">
-    <div class="input-wrapper"> <v-text-field id="name-input" class="reset" color="#FF4700" label="Nombre" variant="solo" v-model="name" :rules="nameRules">
+    <div class="input-wrapper"> <v-text-field color="#FF4700" label="Nombre" variant="solo" v-model="name" :rules="nameRules">
         </v-text-field></div>
 
-    <div class="input-wrapper"><v-text-field id="surnames-input" class="reset" color="#FF4700" label="Apellidos" variant="solo" v-model="surnames" :rules="surnamesRules">
+    <div class="input-wrapper"><v-text-field color="#FF4700" label="Apellidos" variant="solo" v-model="surnames" :rules="surnamesRules">
         </v-text-field></div>
 
-    <div class="input-wrapper"> <v-text-field id="dni-input" class="reset" color="#FF4700" label="DNI/NIE/Pasaporte" variant="solo" v-model="dni" :rules="dniRules">
+    <div class="input-wrapper"> <v-text-field color="#FF4700" label="DNI/NIE/Pasaporte" variant="solo" v-model="dni" :rules="dniRules">
         </v-text-field></div>
 
-    <div class="input-wrapper"><v-text-field id="email-input" class="reset" color="#FF4700" label="Correo electrónico" variant="solo" v-model="email" :rules="emailRules">
+    <div class="input-wrapper"><v-text-field color="#FF4700" label="Correo electrónico" variant="solo" v-model="email" :rules="emailRules">
         </v-text-field></div>
 
-    <div class="input-wrapper"> <v-text-field id="vacation-input" class="reset" color="#FF4700" label="Cantidad de Vacaciones" variant="solo"
+    <div class="input-wrapper"> <v-text-field color="#FF4700" label="Cantidad de Vacaciones" variant="solo"
             v-model="vacationDays"> </v-text-field></div>
 
-    <div class="input-wrapper"><v-select ref="positionSelect" id="position-select" class="reset" color="#FF4700" label="Posición" variant="solo"
+    <div class="input-wrapper"><v-select ref="positionSelect" color="#FF4700" label="Posición" variant="solo"
             :items="['Formador', 'Coformador', 'Responsable de Promoción']" v-model="position" :rules="positionRules"> </v-select></div>
 
-    <div class="input-wrapper"><v-select ref="roleSelect" id="role-select" class="reset" color="#FF4700" label="Tipo de Usuario" variant="solo"
+    <div class="input-wrapper"><v-select ref="roleSelect" color="#FF4700" label="Tipo de Usuario" variant="solo"
             :items="['Responsable', 'Empleado', 'Admin']" v-model="role" :rules="roleRules"> </v-select></div>
 
-    <div class="input-wrapper"><v-select ref="workplaceSelect" id="workplace-select" class="reset" color="#FF4700" label="Lugar de trabajo" variant="solo"
+    <div class="input-wrapper"><v-select ref="workplaceSelect"  color="#FF4700" label="Lugar de trabajo" variant="solo"
             :items="['Asturias', 'Madrid', 'Barcelona', 'Málaga', 'Sevilla', 'Norte']" v-model="workplace" :rules="workplaceRules"> </v-select>
     </div>
 
-    <div class="input-wrapper"> <v-text-field id="start-date-input" class="reset" color="#FF4700" label="Fecha de alta" variant="solo" type="date"
+    <div class="input-wrapper"> <v-text-field color="#FF4700" label="Fecha de alta" variant="solo" type="date"
             v-model="startDay"> </v-text-field></div>
 
-    <div class="input-wrapper"><v-text-field id="finish-date-input" class="reset" color="#FF4700" label="Fecha de baja" variant="solo" type="date"
+    <div class="input-wrapper"><v-text-field color="#FF4700" label="Fecha de baja" variant="solo" type="date"
             v-model="finishDay"> </v-text-field></div>
 </div>
 <div v-if="view != 'create'" class="button-zone">
