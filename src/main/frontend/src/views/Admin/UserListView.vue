@@ -3,12 +3,12 @@ import UserListComponent from '../../components/UserListComponent.vue';
 import SearchBar from '../../components/SearchBar.vue';
 import { useAdminStore } from '../../stores/adminStore';
 import { onBeforeMount, computed , ref , onMounted } from 'vue';
-
+import { useRouter } from 'vue-router'
 const adminStore = useAdminStore();
 
 onBeforeMount(async () => {
     await adminStore.listAllUsers()
-});
+})
 
 const searchQuery = ref("") ;
 const users = adminStore.allUsers ;
@@ -20,6 +20,11 @@ const filteredUsers = computed(() => {
   user['name'].toLowerCase().includes(searchQuery.value.toLowerCase()))
 
 });
+const router = useRouter()
+
+function navigateToUserInfoView(user) {
+  router.push({ name: 'userDetailsView', params: { document: user.id }})
+}
 </script>
 
 <template>
@@ -29,7 +34,7 @@ const filteredUsers = computed(() => {
         <SearchBar v-model="searchQuery"/>
         <div class="user-list-wrapper">
             <UserListComponent v-for="(user, key) of filteredUsers" :key="index"
-                :school="adminStore.SchoolOfUser[key]" :profile="user"></UserListComponent>
+                :school="adminStore.SchoolOfUser[key]" :profile="user" @click="navigateToUserInfoView(user)"></UserListComponent>
         </div>
     </div>
 </template>
