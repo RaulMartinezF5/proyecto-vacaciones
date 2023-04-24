@@ -143,7 +143,7 @@ function resetForm() {
 </div>
 <div v-if="view === 'create'" class="button-zone">
     <div class="button-wrapper">
-        <ButtonComponent :button="'CREAR'" @click="createUser(), resetForm(resetSelects = false)" :disabled="!name || !surnames || !dni || !email || !position || !role || !workplace"/>
+        <ButtonComponent :button="'CREAR'" @click="createUser(), resetForm()" :disabled="!name || !surnames || !dni || !email || !position || !role || !workplace"/>
     </div>
 </div>
 </v-form>
