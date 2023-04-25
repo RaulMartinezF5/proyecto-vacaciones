@@ -17,22 +17,7 @@ const login = async(username, password)=>{
     router.push({name: 'LayoutSession'})
   }
 }
-/* const validate = () => ({
-  name: "",
-  nameRules: [
-    (value) => {
-      if (value?.length > 3) return true;
-      return "must be contains at least 3 characters";
-    },
-  ],
-  password: "",
-  passwordRules: [
-    (value) => {
-      if (/[0-9]/.test(value)) return true;
-      return "password nust be contains digits";
-    },
-  ],
-}); */
+
 
 </script>
 <template>
