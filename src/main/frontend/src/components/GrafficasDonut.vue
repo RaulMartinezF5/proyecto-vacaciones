@@ -7,53 +7,27 @@ import { ref, defineProps } from "vue";
 ChartJS.register(Title, Tooltip, Legend, ArcElement);
  
 const props = defineProps({
-  type: Object,
- 
+  graph: Object,
 });
 
 
 const donut = ref(null);
 
-const data = {
-  labels: ["Gijon", "Aviles", "Bali"],
-  datasets: [
-    {
-      label: "Vacaciones",
-      cutout: "10%",
-      data: {
-        type: Object,
-        required : true
-      },
-      backgroundColor: [
-        "rgb(255, 99, 132)",
-        "rgb(54, 162, 235)",
-        "rgb(255, 205, 86)",
-      ],
-      
-      hoverOffset: 4,
-    },
-  ],
-};
+
 
 const options = {
+  type:Object,
   responsive: true,
-  aspectRatio: 4,
+  aspectRatio: 1.2,
 };
 
-// onMounted(() => {
-//   console.log("montado");
-//   const chart = new ChartJS(donut.value, {
-//     type: "pie",
-//     data: data,
-//     options: options,
-//   });
-// });
+
 </script>
 
 <template>
   <div class="about">
     <!--aqui podemos cambiar data por donugut-->
-    <Pie :data="data" :options="options" />
+    <Pie :data="graph" :options="options" />
   </div>
 </template>
 
