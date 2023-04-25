@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { reactive, ref } from 'vue';
 import ButtonComponent from './ButtonComponent.vue';
 
 const responsableDocument = ref('')
@@ -29,12 +29,11 @@ const props = defineProps({
     }
 })
 
-
-
 </script>
 <template>
     <div class="create-teams-wrapper">
         <div class="input-zone">
+
             <select v-model="responsableDocument" name="responsables" id="responsables" @change="responsableEmit()">
                 <option v-for="responsable of responsables" :value="`${responsable.document}`">{{ `${responsable.profile.firstName} ${responsable.profile.lastName}` }}</option>
             </select>
@@ -48,7 +47,7 @@ const props = defineProps({
             </ul>
         </div>
         <div class="button-zone">
-            <ButtonComponent :button="'Añadir'"/>
+            <ButtonComponent  :button="'Añadir'"/>
         </div>
     </div>
 </template>
