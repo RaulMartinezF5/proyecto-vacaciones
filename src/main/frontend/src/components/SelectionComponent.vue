@@ -34,10 +34,10 @@ const props = defineProps({
     <div class="create-teams-wrapper">
         <div class="input-zone">
 
-            <select v-model="responsableDocument" name="responsables" id="responsables" @change="responsableEmit()">
+            <select v-model="responsableDocument" placeholer="Responsable" name="responsables" id="responsables" @change="responsableEmit()">
                 <option v-for="responsable of responsables" :value="`${responsable.document}`">{{ `${responsable.profile.firstName} ${responsable.profile.lastName}` }}</option>
             </select>
-            <select v-model="employeDocument" name="employes" id="employes" @change="employeEmit()">
+            <select v-model="employeDocument" placeholder="Empleados" name="employes" id="employes" @change="employeEmit()">
                 <option v-for="employe of employes" :value="employe.document">{{ `${employe.profile.firstName} ${employe.profile.lastName}`}}</option>
             </select>
         </div>
@@ -67,8 +67,9 @@ const props = defineProps({
         select {
             width: 80%;
             text-align: center;
-            border: 2px map-get($map: $colors, $key: "Orange") solid;
-            border-radius: 10px;
+            height: 4vh;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            border-radius: 5px;
         }
     }
 
@@ -76,8 +77,8 @@ const props = defineProps({
         width: 80%;
         height: 40vh;
         @include flexDisplay(column, center, center);
-        border: 2px map-get($map: $colors, $key: "Orange") solid;
-        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        border-radius: 5px;
     }
 
     .button-zone{
