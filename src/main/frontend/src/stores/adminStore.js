@@ -24,12 +24,34 @@ export const useAdminStore = defineStore('adminStore',{
 
             console.log(response.status);
         },
-        async editUser(payload, username){
+        async editUser(payload, document){
             const repository = new Repository('admin')
 
             const service = repository.chooseAdminService()
 
-            const response = await service.editUser(payload, username)
+            const response = await service.editUser(payload, document)
+
+            await this.listAllUsers()
+            await this.listAllRawUsers()
+              
+        },
+        async fireUser(document){
+            const repository = new Repository('admin')
+
+            const service = repository.chooseAdminService()
+
+            const response = await service.fireUser(document)
+
+            await this.listAllUsers()
+            await this.listAllRawUsers()
+              
+        },
+        async restoreUser(document){
+            const repository = new Repository('admin')
+
+            const service = repository.chooseAdminService()
+
+            const response = await service.restoreUser(document)
 
             await this.listAllUsers()
             await this.listAllRawUsers()
@@ -170,6 +192,8 @@ export const useAdminStore = defineStore('adminStore',{
             this.employesOfResponsable = response
         },
         async findTemporalUser(idProfile){
+
+            await this.listAllRawUsers()
 
             const repository = new Repository('admin')
 

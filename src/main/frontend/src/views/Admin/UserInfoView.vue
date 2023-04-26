@@ -8,6 +8,7 @@ const route = useRoute()
 const adminStore = useAdminStore()
 const adviceEdit = ref(false)
 const adviceUserFired = ref(false)
+const adviceUserRestore = ref(false)
 
 onBeforeMount(async () => {
     await adminStore.findTemporalUser(parseInt(route.params.document))
@@ -23,6 +24,23 @@ const editUserExist = async (emit) => {
     }, 2000);
 }
 
+const fireUserExist = async (emit)=>{
+    await adminStore.fireUser(emit)
+    await adminStore.findTemporalUser(parseInt(route.params.document))
+    adviceUserFired.value = true
+    setTimeout(() => {
+        adviceUserFired.value = false
+    }, 2000);
+}
+
+const restoreUserExist = async (emit)=>{
+    await adminStore.restoreUser(emit)
+    await adminStore.findTemporalUser(parseInt(route.params.document))
+    adviceUserRestore.value = true
+    setTimeout(() => {
+        adviceUserRestore.value = false
+    }, 2000);
+}
 </script>
 
 <template>
@@ -32,12 +50,15 @@ const editUserExist = async (emit) => {
             <v-alert v-if="adviceEdit == true" type="success" title="Usuario editado" width="30%"></v-alert>
         </transition>
         <transition>
-            <v-alert v-if="adviceUserFired == true" type="warnning" title="Usuario editado" width="30%"></v-alert>
+            <v-alert v-if="adviceUserFired == true" type="warning" title="Usuario dado de baja" width="30%"></v-alert>
+        </transition>
+        <transition>
+            <v-alert v-if="adviceUserRestore == true" type="info" title="Usuario restaurado" width="30%"></v-alert>
         </transition>
 
         <div class="form-wrapper">
 
-            <FormComponent @emit-edit-user="editUserExist" :user="adminStore.temporalUserInfo" :view="'userDetails'" />
+            <FormComponent @emit-restore-user="restoreUserExist" @emit-fire-user="fireUserExist" @emit-edit-user="editUserExist" :user="adminStore.temporalUserInfo" :view="'userDetails'" />
         </div>
     </div>
 </template>

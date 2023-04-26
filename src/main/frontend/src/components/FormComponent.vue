@@ -84,7 +84,7 @@ const workplaceRules = [
   (value) => !!value || 'Lugar de trabajo es necesario.'
 ]
 
-const emits = defineEmits(['emitEditUser'])
+const emits = defineEmits(['emitEditUser', 'emitFireUser', 'emitRestoreUser'])
 
 
 
@@ -103,6 +103,14 @@ const editUser = async ()=>{
   emits('emitEditUser', payload)
 
   enableEditUser.value = true
+}
+
+const fireUser = ()=> {
+  emits('emitFireUser', props.user.document)
+}
+
+const restoreUser = ()=>{
+  emits('emitRestoreUser', props.user.document)
 }
 
 const editAction = ()=>{
@@ -173,8 +181,11 @@ const resetForm = ()=> {
     <div v-if="enableEditUser == true" class="button-wrapper">
         <ButtonComponent :type="'warning'" :button="'EDITAR'" @click="editAction()"/>
     </div>
-    <div v-if="enableEditUser == true" class="button-wrapper">
-        <ButtonComponent :type="'reject'" :button="'DAR DE BAJA'" />
+    <div v-if="enableEditUser == true && user.contractedUser != 'inactive'" class="button-wrapper">
+        <ButtonComponent :type="'reject'" :button="'DAR DE BAJA'" @click="fireUser()" />
+    </div>
+    <div v-if="enableEditUser == true && user.contractedUser == 'inactive'" class="button-wrapper">
+        <ButtonComponent :type="'accept'" :button="'DAR DE ALTA'" @click="restoreUser()" />
     </div>
     <div v-if="enableEditUser == false" class="button-wrapper">
         <ButtonComponent :type="'warning'" :button="'CONFIRMAR'" @click="editUser()"/>

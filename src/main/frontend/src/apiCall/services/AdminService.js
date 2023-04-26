@@ -13,6 +13,18 @@ export default class AdminService {
 
         return getBody
     }
+    async fireUser(document){
+        axios.defaults.withCredentials == true
+        const response = axios.put(this.baseUrl + `/fireUser/${document}`)
+
+        const getBody = await response;
+    }
+    async restoreUser(document){
+        axios.defaults.withCredentials == true
+        const response = axios.put(this.baseUrl + `/restoreUser/${document}`)
+
+        const getBody = await response;
+    }
     async editUser(payload, document){
         axios.defaults.withCredentials = true
         const response = axios.put(this.baseUrl + `/modifyUser/${document}`, payload)
