@@ -165,7 +165,7 @@ const resetForm = ()=> {
             :items="['Responsable', 'Empleado', 'Admin']" v-model="role" :rules="roleRules"> </v-select></div>
 
     <div class="input-wrapper"><v-select :disabled="enableEditUser" ref="workplaceSelect"  color="#FF4700" label="Lugar de trabajo" variant="solo"
-            :items="['Asturias', 'Madrid', 'Barcelona', 'Málaga', 'Sevilla', 'Norte']" v-model="workplace" :rules="workplaceRules"> </v-select>
+            :items="['Asturias', 'Madrid', 'Barcelona', 'Malaga', 'Sevilla', 'Norte']" v-model="workplace" :rules="workplaceRules"> </v-select>
     </div>
 
     <div class="input-wrapper"> <v-text-field :disabled="enableEditUser" color="#FF4700" label="Fecha de alta" variant="solo" type="date"
