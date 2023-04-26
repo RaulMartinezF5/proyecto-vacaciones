@@ -3,4 +3,13 @@ export default class ResponsableService{
     constructor(){
         this.baseUrl = 'http://localhost:8080/api/responsable'
     }
+
+    async changeRequestState(document, idRequest, state){
+        axios.defaults.withCredentials = true
+        const response = axios.put(this.baseUrl + `/request/${idRequest}/user/${document}/${state}`)
+
+        const getStatus = (await response).status
+
+        return getStatus
+    }
 }

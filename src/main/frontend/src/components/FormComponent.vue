@@ -84,17 +84,27 @@ const workplaceRules = [
   (value) => !!value || 'Lugar de trabajo es necesario.'
 ]
 
-const emits = defineEmits(['emitEditUser', 'emitFireUser', 'emitRestoreUser'])
+const emits = defineEmits(['emitEditUser', 'emitFireUser', 'emitRestoreUser', 'emitCreateUser'])
 
-
+const resetForm = ()=> {
+  name.value = '';
+  surnames.value = '';
+  dni.value = '';
+  email.value = '';
+  vacationDays.value = '';
+  startDay.value = '';
+  finishDay.value = '';
+  position.value = '';
+  role.value = '';
+  workplace.value = '';
+}
 
 const createUser = async () => {
 
   const payload = new CreateUserPayload(dni.value, name.value, surnames.value, email.value, adminStore.randomPassword(), vacationDays.value, position.value, role.value, workplace.value, startDay.value, finishDay.value)
-
   console.log(payload.password);
-  await adminStore.createUser(payload)
-
+  emits('emitCreateUser', payload)
+  resetForm()
 }
 
 const editUser = async ()=>{
@@ -117,26 +127,7 @@ const editAction = ()=>{
   (enableEditUser.value == false )? enableEditUser.value = true : enableEditUser.value = false
 }
 
-const resetForm = ()=> {
-  name.value = '';
-  surnames.value = '';
-  dni.value = '';
-  email.value = '';
-  vacationDays.value = '';
-  startDay.value = '';
-  finishDay.value = '';
-  position.value = '';
-  role.value = '';
-  workplace.value = '';
 
-  if (resetSelects) {
-    this.$nextTick(() => {
-      this.$refs.positionSelect.model = null;
-      this.$refs.roleSelect.model = null;
-      this.$refs.workplaceSelect.model = null;
-    });
-  }
-}
 
 
 
@@ -196,7 +187,7 @@ const resetForm = ()=> {
 </div>
 <div v-if="view === 'create'" class="button-zone">
     <div class="button-wrapper">
-        <ButtonComponent :button="'CREAR'" @click="createUser(), resetForm()" :disabled="!name || !surnames || !dni || !email || !position || !role || !workplace"/>
+        <ButtonComponent :button="'CREAR'" @click="createUser()" :disabled="!name || !surnames || !dni || !email || !position || !role || !workplace"/>
     </div>
 </div>
 </v-form>
