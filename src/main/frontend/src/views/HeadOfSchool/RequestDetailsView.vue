@@ -3,10 +3,10 @@ import RequestDescription from '../../components/RequestDescription.vue';
 import iconArrowLeft from '@/assets/img/iconArrowLeft.png';
 import { onBeforeMount, onUpdated, reactive, ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { useAdminStore } from '../../stores/adminStore';
+import { useResposableStore } from '../../stores/responsableStore';
 import { useRoute } from 'vue-router';
 
-const respoStore = useAdminStore()
+const respoStore = useResposableStore()
 const route = useRoute()
 const userDocument = route.params.document
 const idRequest = route.params.idRequest
