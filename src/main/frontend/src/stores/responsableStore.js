@@ -1,13 +1,15 @@
 import { useRouter } from 'vue-router';
 import { defineStore } from 'pinia';
 import Repository from '../apiCall/Repository';
+import {useAuthStore} from '../stores/authStore'
 
 
 export const useResposableStore = defineStore('responsableStore', {
   state: () => ({
     allRequests: [],
     allEmployes: [], 
-    temporalUser: {}
+    temporalUser: {},
+    temporalInfoRequest: {}
   }),
   actions: {
     async listAllRequests(document) {
@@ -39,11 +41,16 @@ export const useResposableStore = defineStore('responsableStore', {
       this.allEmployes = allEmployes
     },
     async changeStateOfRequest(document, idRequest, state){
+      const authStore = useAuthStore()
       const repository = new Repository('responsable')
 
       const service = repository.chooseResponsableService()
 
       const response = await service.changeRequestState(document, idRequest, state)
+
+     await this.listAllEmployes(authStore.username)
+     await this.listAllRequests(authStore.username)
+
     },
     findUserOfRequest(idRequest){
       
@@ -51,8 +58,24 @@ export const useResposableStore = defineStore('responsableStore', {
           if(employe.requests.find(request => request.id == idRequest)) this.temporalUser = employe
       }
     },
-    requestExistInUsers(idRequest){
-       return  this.allEmployes.find(employe => employe.requests.includes(idRequest))
+    async createARequestDetail(idRequest){
+      const authStore = useAuthStore()
+      await this.listAllEmployes(authStore.username)
+      await this.listAllRequests(authStore.username)
+
+      this.findUserOfRequest(idRequest) 
+
+      const temporal ={
+        
+          name: `${this.temporalUser.profile.firstName} ${this.temporalUser.profile.lastName}`,
+          requestUser: this.allRequests.find(request => request.id == idRequest),
+          schoolOfUser: 'school',
+          userDocument: this.temporalUser.document
+      
+      }
+      this.temporalInfoRequest = temporal
+      
+
     }
   }
 });
