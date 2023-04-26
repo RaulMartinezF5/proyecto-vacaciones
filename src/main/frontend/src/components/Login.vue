@@ -52,21 +52,19 @@ const login = async(username, password)=>{
   }
 
   .form__name {
-    margin: 40px;
+    margin: 7%;
     border-radius: 12px;
   }
 
   .form__pass {
-    margin: 40px;
+    margin: 7%;
   }
 
   .btn {
     display: flex;
     justify-content: center;
     width: 100%;
-    padding-bottom: 50px;
-
-
+    margin-bottom: 9%;
   }
 }
 </style>

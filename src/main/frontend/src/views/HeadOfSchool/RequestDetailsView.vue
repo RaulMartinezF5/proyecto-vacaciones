@@ -7,9 +7,6 @@ import RequestDescription from '../../components/RequestDescription.vue';
         <RequestDescription class="RequestDescription"/>
 
     </div>
-
-
-
 </template>
 
 <style scoped lang="scss">

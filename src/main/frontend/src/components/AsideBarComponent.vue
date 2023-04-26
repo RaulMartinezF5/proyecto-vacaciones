@@ -4,9 +4,7 @@ import ButtonComponent from './ButtonComponent.vue';
 import { computed } from 'vue';
 
 
-
 const authStore = useAuthStore();
-
 
 
 const props = defineProps(

@@ -3,7 +3,6 @@ import { Pie } from "vue-chartjs";
 import { Chart as ChartJS,Title, Tooltip, Legend,  ArcElement } from "chart.js";
 import { ref } from "vue";
 
-//recuerda mirar los elementos que conforman la grafica,  importarlos y luego aplicarlo   en register
 ChartJS.register(Title, Tooltip, Legend, ArcElement);
  
 const props = defineProps({
@@ -12,7 +11,6 @@ const props = defineProps({
 
 
 const donut = ref(null);
-
 
 
 const options = {
@@ -26,7 +24,6 @@ const options = {
 
 <template>
   <div class="about">
-    <!--aqui podemos cambiar data por donugut-->
     <Pie :data="graph" :options="options" />
   </div>
 </template>

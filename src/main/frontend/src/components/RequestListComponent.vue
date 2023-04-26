@@ -33,9 +33,6 @@ const props = defineProps(
     justify-content: space-around;
     align-items: center;
     margin-block: 2vh;
-}
-
-
 
 p {
     margin-block: 2vh;
@@ -44,5 +41,6 @@ p {
 
 .workerName {
     font-size: 4vh;
+}
 }
 </style>

@@ -1,5 +1,4 @@
 <script setup>
-import iconArrowLeft from '@/assets/img/iconArrowLeft.png';
 import ButtonComponent from '../../components/ButtonComponent.vue';
 import {ref ,onBeforeMount} from 'vue';
 import GrafficaLine from '../../components/GrafficaLine.vue';
@@ -13,14 +12,11 @@ const adminstore = useAdminStore ();
 const authstore = useAuthStore();
 
 
-
 onBeforeMount(() => {
     adminstore.listAllRequests();
   
 })
 
-
-    
 
 const schoolsName = ref([]);
 const valuesSchool = ref([]);
@@ -50,7 +46,6 @@ const schoolsData = () =>{
   return quatitySchool
 
 }
-
 
        
 const labels= schoolsData();
@@ -82,13 +77,7 @@ const datas = {
   }]
 };
 
-    
-
-  
-
-
 </script>
-
 
 <template>
     <div class="mainContainer">
@@ -140,10 +129,6 @@ const datas = {
     .microheader {
         display: flex;
         justify-content: center;
-        .button-arrow{
-            position: absolute;
-            left: 24%;
-        }
     }
     .buttons {
         display: flex;

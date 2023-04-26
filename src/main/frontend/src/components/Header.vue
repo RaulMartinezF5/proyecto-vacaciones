@@ -32,7 +32,6 @@ function updateTime() {
   const seconds = ('0' + currentDate.getSeconds()).slice(-2);
 
   if (hour === 0) {
-    // Si la hora es 0, actualizamos la fecha y reiniciamos la hora a 0
     date.value = new Date().toLocaleDateString('es-ES', { weekday: 'long', day: '2-digit', month: 'long', year: 'numeric' });
     hour = 0;
   }

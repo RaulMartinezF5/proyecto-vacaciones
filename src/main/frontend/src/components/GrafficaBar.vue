@@ -1,10 +1,9 @@
 <script setup>
 import { Bar } from "vue-chartjs";
 import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale, } from "chart.js";
-import { ref,onMounted } from 'vue';
+import { ref } from 'vue';
 
 ChartJS.register(CategoryScale,LinearScale,BarElement,Title,Tooltip,Legend);
-import {Chart} from 'chart.js';
 
 
 const props = defineProps({
@@ -12,7 +11,6 @@ const props = defineProps({
 });
 
 const bar = ref(null);
-
 
 
 const options = {
@@ -27,114 +25,5 @@ const options = {
 <template>
   <Bar :data="graph" :options="options" />
  
-<div>
-
-
-</div>
 </template>
 <style lang="scss" scoped></style>
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
