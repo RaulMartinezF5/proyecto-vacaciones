@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,9 +36,18 @@ public class AuthController {
 
         Map<String, String> json = new HashMap<>();
 
+        String role = auth.getAuthorities().iterator().next().toString();
+
+        if(auth.getAuthorities().size() > 1){
+            for (GrantedAuthority authority : auth.getAuthorities()) {
+                System.out.println(authority.getAuthority());
+                if(authority.getAuthority().equals("ROLE_RESPONSABLE")) role = authority.getAuthority();
+            }
+        }
+
         json.put("message", "logged");
         json.put("username", auth.getName());
-        json.put("role", auth.getAuthorities().iterator().next().toString());
+        json.put("role", role);
 
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(json);
     }

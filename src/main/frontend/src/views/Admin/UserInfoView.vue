@@ -14,21 +14,19 @@ import FormComponent from '../../components/FormComponent.vue';
     </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped >
 
 h1 {
     text-align: center;
     margin-top: 3vh;
 }
 
-.form-wrapper {
+.form-wrapper{
     width: 100%;
     height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-
     row-gap: 2vh;
 
 }

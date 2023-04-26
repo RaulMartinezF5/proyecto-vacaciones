@@ -36,9 +36,19 @@ public class AdminCreateTeamsService {
     public List<User> listUsers(String document){
         List<User> allUsers = userRepository.findAll();
 
-        allUsers.removeIf(user -> user.getDocument()==document);
+
+        allUsers.removeIf(user -> user.getDocument().equals(document));
 
         return allUsers;
+    }
+
+    public Set<User> listEmployesOfResponsable(String document){
+        User userDB = userRepository.findByDocument(document).orElseThrow();
+
+
+        Set<User> employes = userDB.getEmployes();
+
+        return employes;
     }
 
     public List<User> listAllResponsables(){

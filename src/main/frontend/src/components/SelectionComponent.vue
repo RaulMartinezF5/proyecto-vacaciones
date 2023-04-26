@@ -1,6 +1,19 @@
 <script setup>
+import { reactive, ref } from 'vue';
 import ButtonComponent from './ButtonComponent.vue';
 
+const responsableDocument = ref('')
+const employeDocument = ref('')
+const emits = defineEmits(['emitEmploye'],['emitResponsable'] )
+
+const employeEmit = ()=>{ 
+
+    emits('emitEmploye',employeDocument.value)
+}
+const responsableEmit = ()=>{
+
+    emits('emitResponsable', responsableDocument.value)
+}
 const props = defineProps({
     employes: {
         type: Array,
@@ -16,32 +29,25 @@ const props = defineProps({
     }
 })
 
-const emits = defineEmits(['selecEmploye', 'selectResponsable'])
-
-const emitResponsable = (document) => {
-    emits('selectResponsable', document)
-}
-const emitEmploye = (document) => {
-    emits('selecEmploye', document)
-}
 </script>
 <template>
     <div class="create-teams-wrapper">
         <div class="input-zone">
-            <select name="responsables" id="responsables" @select="emitResponsable">
-                <option v-for="responsable of responsables" :value="responsable">{{ responsable }}</option>
+
+            <select v-model="responsableDocument" placeholer="Responsable" name="responsables" id="responsables" @change="responsableEmit()">
+                <option v-for="responsable of responsables" :value="`${responsable.document}`">{{ `${responsable.profile.firstName} ${responsable.profile.lastName}` }}</option>
             </select>
-            <select name="employes" id="employes" @select="emitEmploye">
-                <option v-for="employe of employes" :value="employe">{{ employe }}</option>
+            <select v-model="employeDocument" placeholder="Empleados" name="employes" id="employes" @change="employeEmit()">
+                <option v-for="employe of employes" :value="employe.document">{{ `${employe.profile.firstName} ${employe.profile.lastName}`}}</option>
             </select>
         </div>
         <div class="list-zone">
             <ul>
-                <li v-for="employe of employesOfResponsable">{{ employe }}</li>
+                <li v-for="employe of employesOfResponsable">{{ `${employe.profile.firstName} ${employe.profile.lastName}` }}</li>
             </ul>
         </div>
         <div class="button-zone">
-            <ButtonComponent :button="'Añadir'"/>
+            <ButtonComponent  :button="'Añadir'"/>
         </div>
     </div>
 </template>
@@ -61,8 +67,9 @@ const emitEmploye = (document) => {
         select {
             width: 80%;
             text-align: center;
-            border: 2px map-get($map: $colors, $key: "Orange") solid;
-            border-radius: 10px;
+            height: 4vh;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            border-radius: 5px;
         }
     }
 
@@ -70,8 +77,8 @@ const emitEmploye = (document) => {
         width: 80%;
         height: 40vh;
         @include flexDisplay(column, center, center);
-        border: 2px map-get($map: $colors, $key: "Orange") solid;
-        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        border-radius: 5px;
     }
 
     .button-zone{

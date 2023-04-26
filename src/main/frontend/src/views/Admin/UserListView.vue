@@ -2,17 +2,16 @@
 import UserListComponent from '../../components/UserListComponent.vue';
 import SearchBar from '../../components/SearchBar.vue';
 import { useAdminStore } from '../../stores/adminStore';
-import { onBeforeMount, computed, ref, onMounted } from 'vue';
+import { onBeforeMount, computed, ref} from 'vue';
 import { useRouter } from 'vue-router'
 
 const router = useRouter();
 const adminStore = useAdminStore();
 const searchQuery = ref("");
-const users = adminStore.allUsers;
 
 const filteredUsers = computed(() => {
-    if (!searchQuery.value) return users
-    return users.filter((user) =>
+    if (!searchQuery.value) return adminStore.allUsers
+    return adminStore.allUsers.filter((user) =>
         user.firstName.toLowerCase().includes(searchQuery.value.toLowerCase()))
 });
 

@@ -21,6 +21,7 @@ onBeforeMount( () => {
 const acceptRequest = async () => {
     await adminStore.changeStateOfRequest(userDocument, idRequest, 'Accept')
     OneRequest = adminStore.infoRequest(idRequest)
+    
 }
 
 const rejectRequest = async () => {
@@ -47,7 +48,7 @@ const backTo = () => {
             </h1>
         </div>
         <div class="request-space">
-            <RequestDescription :request="OneRequest" @accept-emit="acceptRequest" @reject-emit="rejectRequest()"/>
+            <RequestDescription :request="adminStore.IndividualRequest" @accept-emit="acceptRequest" @reject-emit="rejectRequest()"/>
         </div>
     </div>
 </template>
