@@ -9,11 +9,14 @@ const router = useRouter();
 const adminStore = useAdminStore();
 const searchQuery = ref("");
 
-const filteredUsers = computed(() => {
+
+const filteredActiveUsers = computed(() => {
     if (!searchQuery.value) return adminStore.allUsers
     return adminStore.allUsers.filter((user) =>
         user.firstName.toLowerCase().includes(searchQuery.value.toLowerCase()))
 });
+
+
 
 const find = (parameter)=>{
     searchQuery.value= parameter;
@@ -26,6 +29,7 @@ function navigateToUserInfoView(user) {
 
 onBeforeMount(async () => {
     await adminStore.listAllUsers()
+    await adminStore.listAllRawUsers()
 })
 
 </script>
@@ -35,7 +39,7 @@ onBeforeMount(async () => {
     <div class="d-flex flex-column">
         <SearchBar v-model=searchQuery @update:query-value="find" />
         <div class="user-list-wrapper">
-            <UserListComponent v-for="(user, key) of filteredUsers" :key="index" :school="adminStore.SchoolOfUser[key]"
+            <UserListComponent v-for="(user, key) of filteredActiveUsers" :key="index" :school="adminStore.SchoolOfUser[key]"
                 :profile="user" @click="navigateToUserInfoView(user)"></UserListComponent>
         </div>
     </div>
