@@ -1,7 +1,7 @@
 <script setup>
 import { Pie } from "vue-chartjs";
 import { Chart as ChartJS,Title, Tooltip, Legend,  ArcElement } from "chart.js";
-import { ref, defineProps } from "vue";
+import { ref } from "vue";
 
 //recuerda mirar los elementos que conforman la grafica,  importarlos y luego aplicarlo   en register
 ChartJS.register(Title, Tooltip, Legend, ArcElement);

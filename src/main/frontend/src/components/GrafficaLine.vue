@@ -1,7 +1,7 @@
 <script setup>
 import { Line } from 'vue-chartjs';
 // import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
-import { ref, defineProps, onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 import Chart from 'chart.js/auto';
 
 // ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)

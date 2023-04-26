@@ -3,10 +3,6 @@ import { useAuthStore } from '../stores/authStore';
 import ButtonComponent from './ButtonComponent.vue';
 import { computed, ref } from 'vue';
 
-function uploadPhoto() {
-    let fileInput = document.getElementById("photo-upload");
-    let file = fileInput.files[0];
-}
 
 
 const authStore = useAuthStore();
@@ -51,10 +47,7 @@ const emitRoute = (navigation) => {
             <img src="../assets/img/user-default-icon.png" alt="user default icon">
 
             <h1>{{ userRole }}</h1>
-            <div class="inputPhoto"><input type="file" name="photo" id="photo-upload"  accept="image/*"></div>
-            <div class="buttonPhoto">
-                <ButtonComponent :button="'AÑADIR'"/>
-            </div>
+            
         </div>
 
         <div v-if="test == 'ROLE_USER'" class="user-info-zone">
@@ -100,6 +93,12 @@ const emitRoute = (navigation) => {
                 <div class="nav-button-wrapper">
                     <ButtonComponent @click="emitRoute('userListView')" :button="'USUARIOS'" />
                 </div>
+                <div class="nav-button-wrapper">
+                    <ButtonComponent @click="emitRoute('createTeamsView')" :button="'CREAR EQUIPOS'" />
+                </div>
+                <div class="nav-button-wrapper">
+                    <ButtonComponent @click="emitRoute('firedUsersView')" :button="'USUARIOS DE BAJA'" />
+                </div>
             </div>
         </div>
     </aside>
@@ -127,7 +126,7 @@ aside {
 
     .navigation-zone {
         width: 100%;
-        @include positionGrid(7, 1, 11, 1);
+        @include positionGrid(5, 1, 11, 1);
         display: flex;
         flex-direction: column;
         align-items: center;
