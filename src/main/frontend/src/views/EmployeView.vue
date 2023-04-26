@@ -17,15 +17,13 @@ onBeforeMount(async () => {
 })
 
 const createRequest = async (element) => {
-    /* if(typeOfRequest.value === '') return
-    if(typeOfRequest.value === 'Permiso' && cause.value === '') return */
+
     if(typeOfRequest.value === 'Vacaciones') cause.value = 'Vacaciones'
     let payload = new CreateRequestPayload(element.issue, 'Default', element.startDate, element.endDate, typeOfRequest.value, cause.value, element.days)
     
 
     userStore.createRequest(payload, authStore.username)
-
-    
+ 
 }
 
 onUpdated(async () => {

@@ -1,5 +1,5 @@
 <script setup>
-import { reactive, ref } from 'vue';
+import { ref } from 'vue';
 import ButtonComponent from './ButtonComponent.vue';
 
 const responsableDocument = ref('')
@@ -85,4 +85,5 @@ const props = defineProps({
         width: 50%;
         border-radius: 10px;
     }
-}</style>
+}
+</style>

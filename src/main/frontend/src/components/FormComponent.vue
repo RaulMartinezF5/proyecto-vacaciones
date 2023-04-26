@@ -6,7 +6,6 @@ import ButtonComponent from '../components/ButtonComponent.vue';
 import EditProfilePayload from '../apiCall/payloads/EditProfilePayload';
 
 
-
 const adminStore = useAdminStore()
 
 
@@ -137,8 +136,6 @@ const resetForm = ()=> {
     });
   }
 }
-
-
 
 </script>
 
