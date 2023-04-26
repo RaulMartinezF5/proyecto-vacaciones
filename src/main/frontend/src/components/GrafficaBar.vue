@@ -21,7 +21,6 @@ const options = {
 
 </script>
 
-
 <template>
   <Bar :data="graph" :options="options" />
  

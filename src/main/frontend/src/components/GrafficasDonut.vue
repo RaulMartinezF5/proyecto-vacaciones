@@ -13,6 +13,7 @@ const props = defineProps({
 const donut = ref(null);
 
 
+
 const options = {
   type:Object,
   responsive: true,
@@ -28,4 +29,4 @@ const options = {
   </div>
 </template>
 
-<style></style>
+<style lang="scss" scoped></style>

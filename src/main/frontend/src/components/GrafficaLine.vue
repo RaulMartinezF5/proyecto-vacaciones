@@ -1,12 +1,14 @@
 <script setup>
 import { Line } from 'vue-chartjs';
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+import Chart from 'chart.js/auto';
 
 const props = defineProps({
   graph: Object,
 });
 
 const line = ref(null);
+
 
   const  options = {
     type:Object,
@@ -17,14 +19,12 @@ const line = ref(null);
         }
       }
     }
-
 </script>
 
 <template>
   <div class="about">
     <Line :data="graph" :options="options"/>
 
- 
   </div>
 </template>
 
