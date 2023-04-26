@@ -124,7 +124,6 @@ const invertedDate = computed(() => {
 
 
 
-
 .comment-section {
     width: 100%;
     display: flex;
@@ -134,7 +133,6 @@ const invertedDate = computed(() => {
 }
 .textarea {
     padding: 2%;
-
 
 }
 .buttons-section {

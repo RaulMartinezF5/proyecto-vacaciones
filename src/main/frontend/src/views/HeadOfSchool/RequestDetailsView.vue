@@ -44,9 +44,6 @@ const rejectRequest = async () =>{
         </div>
 
     </div>
-
-
-
 </template>
 
 <style scoped lang="scss">

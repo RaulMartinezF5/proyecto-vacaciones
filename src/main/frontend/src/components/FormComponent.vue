@@ -6,7 +6,6 @@ import ButtonComponent from '../components/ButtonComponent.vue';
 import EditProfilePayload from '../apiCall/payloads/EditProfilePayload';
 
 
-
 const adminStore = useAdminStore()
 
 
@@ -126,8 +125,6 @@ const restoreUser = ()=>{
 const editAction = ()=>{
   (enableEditUser.value == false )? enableEditUser.value = true : enableEditUser.value = false
 }
-
-
 
 
 

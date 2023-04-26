@@ -1,7 +1,7 @@
 <script setup>
 import RequestDescription from '../../components/RequestDescription.vue';
 import iconArrowLeft from '@/assets/img/iconArrowLeft.png';
-import { onBeforeMount, onUpdated, reactive, ref } from 'vue';
+import { onBeforeMount, reactive } from 'vue';
 import { useRouter } from 'vue-router';
 import { useAdminStore } from '../../stores/adminStore';
 import { useRoute } from 'vue-router';

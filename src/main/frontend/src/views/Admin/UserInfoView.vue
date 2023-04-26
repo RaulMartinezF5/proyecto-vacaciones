@@ -1,7 +1,7 @@
 <script setup>
 import FormComponent from '../../components/FormComponent.vue';
 import { useRoute } from 'vue-router';
-import { computed, onBeforeMount, ref } from 'vue';
+import { onBeforeMount, ref } from 'vue';
 import { useAdminStore } from '../../stores/adminStore';
 
 const route = useRoute()

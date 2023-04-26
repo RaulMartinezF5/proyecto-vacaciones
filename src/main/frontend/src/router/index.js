@@ -23,7 +23,6 @@ const router = createRouter({
           component: () => import('../layouts/userLayout/UserLayout.vue'),
           meta: { requiresAuth: true },
           children: [
-            // aqui es donde deben ir todas las vistas que tiene el usuario
             {
               path: 'myRequests',
               name: 'myRequests',
@@ -38,7 +37,6 @@ const router = createRouter({
           component: () => import('../layouts/ResponsableLayout/ResponsableLayout.vue'),
           meta: { requiresAuth: true },
           children: [
-            // aqui es donde deben ir todas las vistas que tiene el responsable
             {
               path: 'requestList',
               name: 'requestListView',
@@ -56,7 +54,13 @@ const router = createRouter({
               name: 'employeResponsableView',
               component: () => import('../views/EmployeView.vue'),
               meta: { requiresAuth: true }
-            }
+            },
+            {
+              path: 'inactiveUsers',
+              name: 'firedUsersView',
+              component: () => import('../views/Admin/InactiveUsers.vue'),
+              meta: { requiresAuth: true }
+              }
           ]
         },
         {

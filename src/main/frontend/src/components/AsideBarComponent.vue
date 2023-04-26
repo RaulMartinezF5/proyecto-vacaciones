@@ -1,12 +1,10 @@
 <script setup>
 import { useAuthStore } from '../stores/authStore';
 import ButtonComponent from './ButtonComponent.vue';
-import { computed, ref } from 'vue';
-
+import { computed } from 'vue';
 
 
 const authStore = useAuthStore();
-
 
 
 const props = defineProps(

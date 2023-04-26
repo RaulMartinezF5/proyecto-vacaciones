@@ -1,12 +1,10 @@
 <script setup>
-import { ref, watch } from "vue";
-// import dayjs from "dayjs";
+import { ref } from "vue";
 
 const startDate = ref("")
 const endDate = ref("")
 
 
-/* const nonWorkingDays = ref(["Saturday", "Sunday"]); */
 const remainingWorkingDays = ref(0);
 
 const emit = defineEmits(['emitVacationDays'])
@@ -35,42 +33,15 @@ const calculate = () => {
     }
     
     return requestBasicData
-    /*  if(!startDate.value || !endDate.value){
-         remainingWorkingDays.value = 0;
-         return;
-     }
- 
-     let remainingDays = 0;
-     let date = dayjs(startDate.value);
- 
-     while(date.isBefore(dayjs(endDate.value))){
-         if(!nonWorkingDays.value.includes(date.format("dddd"))){
-             remainingDays++;
- 
-         }
-         date = date.add(1,"day");
-     }
- 
-     remainingWorkingDays.value = remainingDays; */
+
 };
 
-/*
-watch(startDate, calculate);
-watch(endDate, calculate);
-
-
-const setSelectedDates = (start, end) => {
-    startDate.value = start;
-    endDate.value = end;
-      calculate(); 
-};*/
 </script>
 <template>
     <div class="dates-wrapper">
         <input class="date-info" type="date" v-model="startDate">
         <input class="date-info" type="date" v-model="endDate" @input="emitVacationDays()">
     </div>
-    <!-- <p> {{ remainingWorkingDays }}</p> -->
 </template>
 
 <style lang="scss" scoped>

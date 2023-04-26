@@ -1,5 +1,4 @@
 <script setup>
-import { computed } from 'vue';
 const props = defineProps({
     message: {
         type: String,
@@ -22,7 +21,6 @@ const props = defineProps({
 <style lang="scss" scoped>
 .v-alert {
     color:black
-    
 
 }
 
