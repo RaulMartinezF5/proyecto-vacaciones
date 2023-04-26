@@ -1,18 +1,27 @@
 <script setup>
 import StateIndicator from './StateIndicator.vue';
 
-const props = defineProps(
-    {
+const props = defineProps({
         request: {
             type: Object,
         },
-    }
-)
+    })
+
+
+
+const emits = defineEmits(['emitRequestDetails'])
+
+const emitRequestDetails = () => {
+  emits('emitRequestDetails', {
+    userDocument: props.request.userDocument,
+    requestId: props.request.requestUser.id
+  })
+}
 
 </script>
 
 <template>
-    <div class="request-wrapper">
+    <div class="request-wrapper"  @click="emitRequestDetails()">
                 <p class="workerName">{{ request.workerName }}</p>
                 <p class="date">{{ request.startDate }} - {{ request.finishDate }}</p>                 
                 <p class="days">Días de vacaciones: {{ request.days }} </p>
