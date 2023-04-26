@@ -44,4 +44,5 @@ p {
 
 .workerName {
     font-size: 4vh;
-}</style>
+}
+</style>
