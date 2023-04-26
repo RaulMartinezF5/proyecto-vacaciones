@@ -4,7 +4,9 @@ import Repository from "../apiCall/Repository";
 export const useAdminStore = defineStore('adminStore',{
     state: ()=>({
         allUsers: [],
+        allInactiveUsers: [],
         SchoolOfUser: [],
+        SchoolOfInactiveUser:[],
         allRequests: [],
         IndividualRequest: {},
         responsables: [],
@@ -71,7 +73,7 @@ export const useAdminStore = defineStore('adminStore',{
             const schools = []
             for (const user of data) {
                 
-                if(user.profile != undefined) {
+                if(user.profile != undefined && user.contractedUser != 'inactive') {
                     profiles.push(user.profile)
                     schools.push(await service.schoolOfUser(user.document))
                 }
@@ -79,6 +81,30 @@ export const useAdminStore = defineStore('adminStore',{
 
             this.SchoolOfUser = schools
             this.allUsers = profiles
+            this.listAllInactiveUsers()
+        },
+        async listAllInactiveUsers(){
+            const repository = new Repository('admin')
+
+            const service = repository.chooseAdminService()
+
+            const response = await service.listAllUsers()
+
+            console.log(response.status)
+
+            const data = response.data
+            const profiles = []
+            const schools = []
+            for (const user of data) {
+                
+                if(user.profile != undefined && user.contractedUser == 'inactive') {
+                    profiles.push(user.profile)
+                    schools.push(await service.schoolOfUser(user.document))
+                }
+            }
+
+            this.SchoolOfInactiveUser = schools
+            this.allInactiveUsers = profiles
         },
         async listAllRawUsers(){
             const repository = new Repository('admin')
