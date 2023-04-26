@@ -13,6 +13,14 @@ export default class AdminService {
 
         return getBody
     }
+    async editUser(payload, document){
+        axios.defaults.withCredentials = true
+        const response = axios.put(this.baseUrl + `/modifyUser/${document}`, payload)
+
+        const getBody = await response
+
+        return getBody
+    }
     async listAllUsers() {
         axios.defaults.withCredentials = true
         const response = axios.get(this.baseUrl + `/allusers`)

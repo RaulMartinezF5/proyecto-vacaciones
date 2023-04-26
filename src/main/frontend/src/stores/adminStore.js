@@ -9,7 +9,9 @@ export const useAdminStore = defineStore('adminStore',{
         IndividualRequest: {},
         responsables: [],
         allUsersWithoutResponsable: [],
-        employesOfResponsable: []
+        employesOfResponsable: [],
+        temporalUserInfo: {}, 
+        allRawUsers: []
     }),
     actions:{
         async createUser(payload){
@@ -21,6 +23,17 @@ export const useAdminStore = defineStore('adminStore',{
             const response = await service.createUser(payload)
 
             console.log(response.status);
+        },
+        async editUser(payload, username){
+            const repository = new Repository('admin')
+
+            const service = repository.chooseAdminService()
+
+            const response = await service.editUser(payload, username)
+
+            await this.listAllUsers()
+            await this.listAllRawUsers()
+              
         },
         async listAllUsers(){
             const repository = new Repository('admin')
@@ -44,6 +57,25 @@ export const useAdminStore = defineStore('adminStore',{
 
             this.SchoolOfUser = schools
             this.allUsers = profiles
+        },
+        async listAllRawUsers(){
+            const repository = new Repository('admin')
+
+            const service = repository.chooseAdminService()
+
+            const response = await service.listAllUsers()
+
+            const data = response.data
+            const usersNotUndefinedProfile = []
+
+            for (const user of data) {
+                
+                if(user.profile != undefined) {
+                    usersNotUndefinedProfile.push(user)
+                }
+            }
+            
+            this.allRawUsers = usersNotUndefinedProfile
         },
         async listAllRequests(){
             const repository = new Repository('admin')
@@ -113,6 +145,7 @@ export const useAdminStore = defineStore('adminStore',{
             for (const user of response) {
                 
                 if(user.profile != undefined) {
+                    user.aaaa = 'hola'
                     allEmployes.push(user)
                 }
             }
@@ -135,6 +168,16 @@ export const useAdminStore = defineStore('adminStore',{
             const response = await service.listAllEmployesOfResponsable(document)
 
             this.employesOfResponsable = response
+        },
+        async findTemporalUser(idProfile){
+
+            const repository = new Repository('admin')
+
+            const service = repository.chooseAdminService()
+            const profileFinded = this.allRawUsers.find(user => user.profile.id == idProfile)
+
+            this.temporalUserInfo = profileFinded
+            this.temporalUserInfo.schoolOfUser = await service.schoolOfUser(this.temporalUserInfo.document)
         },
         randomPassword(){
             const randomPass = Math.random().toString(36).slice(2)

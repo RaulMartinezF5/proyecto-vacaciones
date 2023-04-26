@@ -6,14 +6,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.vacaciones.models.Profile;
+import com.vacaciones.models.School;
 import com.vacaciones.models.User;
 import com.vacaciones.payLoads.CreateUserPayload;
 import com.vacaciones.repositories.ProfileRepository;
+import com.vacaciones.repositories.SchoolRepository;
 import com.vacaciones.repositories.UserRepository;
 import com.vacaciones.services.baseServices.AdminService;
 
 @Service
 public class ProfileModificationsService implements AdminService<CreateUserPayload, String> {
+
+    @Autowired
+    private SchoolRepository schoolRepository;
 
     @Autowired
     private UserRepository userRepository;
@@ -42,6 +47,8 @@ public class ProfileModificationsService implements AdminService<CreateUserPaylo
         User userDB = userRepository.findByDocument(id).orElseThrow();
 
         Profile profileDB = modifyProfile(userDB.getProfile(), entity);
+
+        modifySchooOfUser(userDB, entity.getLocation());
 
         userDB.setProfile(profileDB);
 
@@ -83,6 +90,36 @@ public class ProfileModificationsService implements AdminService<CreateUserPaylo
         userDB.setContractedUser("active");
 
         userRepository.save(userDB);
+    }
+
+    private void modifySchooOfUser(User userDB, String schoolName){
+        /*  */
+        removeUserOfSchools(userDB);
+        
+        School schoolOfUserDB = schoolRepository.findByName(schoolName).orElseThrow();
+
+        schoolOfUserDB.addProfile(userDB.getProfile());
+
+        schoolRepository.save(schoolOfUserDB);
+
+    }
+    private void removeUserOfSchools(User userDB){
+        List<School> allShools = schoolRepository.findAll();
+        
+        for (School school : allShools) {
+            if(userExistInSchool(school.getProfiles(), userDB.getProfile().getId())){
+                school.getProfiles().remove(userDB.getProfile());
+                schoolRepository.save(school);
+            } 
+        }
+    }
+    private boolean userExistInSchool(List<Profile> profilesOfSchool, Long id){
+
+        for (Profile profile : profilesOfSchool) {
+            if(profile.getId() == id) return true;
+        }
+
+        return false;
     }
 
 }

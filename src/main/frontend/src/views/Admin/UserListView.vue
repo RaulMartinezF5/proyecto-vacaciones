@@ -26,6 +26,7 @@ function navigateToUserInfoView(user) {
 
 onBeforeMount(async () => {
     await adminStore.listAllUsers()
+    await adminStore.listAllRawUsers()
 })
 
 </script>
