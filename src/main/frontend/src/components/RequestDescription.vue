@@ -1,11 +1,10 @@
 <script setup>
 import ButtonComponent from './ButtonComponent.vue';
 import StateIndicator from './StateIndicator.vue';
-import { onUpdated } from 'vue';
-import { useAdminStore } from '../stores/adminStore';
 import { useRoute } from 'vue-router';
+import { computed } from "vue";
 
-const adminStore = useAdminStore()
+
 const route = useRoute()
 const userDocument = route.params.document
 const idRequest = route.params.idRequest
@@ -17,9 +16,7 @@ const props = defineProps({
 })
 
 
-
 const emits = defineEmits(['acceptEmit'],['rejectEmit'])
-
 
 const acceptEmit = ()=>{
     emits('acceptEmit', 'Accept')
@@ -28,15 +25,19 @@ const acceptEmit = ()=>{
 const rejectEmit = ()=>{
     emits('rejectEmit', 'Reject')
 }
-const fake = {
-    name: "iyan",
-    nameschool: "AST",
-    date: "2015-12-16",
-    description: "Lorem Ips dolor sit am",
-    days: 5,
-    checked: "Raul",
-    state: null,
-};
+
+
+const invertedDate = computed(() => {
+  const startDateParts = props.request.requestUser.startDate.split('-');
+  startDateParts.reverse();
+  const newStartDate = startDateParts.join('/');
+
+  const endDateParts = props.request.requestUser.endDate.split('-');
+  endDateParts.reverse();
+  const newEndDate = endDateParts.join('/');
+
+  return `${newStartDate} - ${newEndDate}`;
+});
 
 
 </script>
@@ -53,7 +54,7 @@ const fake = {
             </div>
 
             <div class="texto">
-                <p id="fecha"> {{ request.requestUser.startDate }} {{ request.requestUser.endDate }}</p>
+                <p id="fecha"> {{ invertedDate }} </p>
                 <p id="comentario"> {{ request.requestUser.issue }}</p>
             </div>
             <div class="comment-section" v-if="request.requestUser.state == 'Default'">
