@@ -1,3 +1,5 @@
+import axios from "axios"
+
 export default class ResponsableService{
     baseUrl
     constructor(){
@@ -12,12 +14,19 @@ export default class ResponsableService{
 
         return getStatus
     }
-    async allRequest(idResponsable){
-        const response = axios.get(this.baseUrl + `/allTeamRequests/${idResponsable}` , {withCredentials: true});
+    async listAllRequestS(document){
+        axios.defaults.withCredentials = true
+        const response = axios.get(this.baseUrl + `/allTeamRequests/${document}`);
         const getBody = await response;
         return getBody.data;
     
     
+    }
+    async listAllEmployes(document){
+        axios.defaults.withCredentials = true
+        const response = axios.get(this.baseUrl + `/allEmployesofResponsable/${document}`);
+        const getBody = await response;
+        return getBody.data;
     }
 }
      

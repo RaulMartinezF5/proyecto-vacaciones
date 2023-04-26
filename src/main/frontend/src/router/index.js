@@ -44,8 +44,8 @@ const router = createRouter({
               meta: { requiresAuth: true }
             },
             {
-              path: 'requestDetails',
-              name: 'requestDetailsView',
+              path: 'requestDetails/employe/:document/request/:idRequest',
+              name: 'requestDetailsofResponsableView',
               component: () => import('../views/HeadOfSchool/RequestDetailsView.vue'),
               meta: { requiresAuth: true }
             },
