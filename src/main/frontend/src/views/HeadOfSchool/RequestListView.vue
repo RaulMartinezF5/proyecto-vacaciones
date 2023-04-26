@@ -2,19 +2,19 @@
 import iconArrowLeft from '@/assets/img/iconArrowLeft.png';
 import RequestListComponent from '../../components/RequestListComponent.vue';
 import { useRouter } from 'vue-router';
-import { useAdminStore } from '../../stores/adminStore';
+import { useResposableStore } from '../../stores/responsableStore';
 import { onBeforeMount,onUpdated } from 'vue';
 
 import { reactive,ref } from 'vue';
 import { useRoute } from 'vue-router';
 
 
-const respoStore = useAdminStore();
+const respoStore = useResposableStore();
 const router = useRouter();
 const route = useRoute()
 
 onBeforeMount(() =>{
-    respoStore.listAllRequests();
+    respoStore.allRequest();
 })
 
 const navigateTo = (info) =>{
@@ -22,27 +22,16 @@ const navigateTo = (info) =>{
 }
 
 onUpdated(async () =>{
-    await respoStore.listAllRequests()
+    await respoStore.allRequest()
 })
 
 
-
-
-// const request = ref([
-//     {
-//         workerName: "fake",
-//         date: '16/12/2023 - 1/1/2024',
-//         days: 7
-//     },
-   
-
-// ]);
-
-
-
 const back = () =>{
+
     router.push({name: 'requestListView'})
 }
+
+
 
 </script>
 
@@ -54,14 +43,10 @@ const back = () =>{
         </nav>
         <div class="componentList">
             <ul>
-
-                
-                <li v-for="request of respoStore.allRequests" :key="index">
+                <li v-for="request of respoStore.allRequest" :key="index">
                     <RequestListComponent   @emit-request-details="navigateTo" :request="request" />
                 </li>
             </ul>
-            <!-- <CardHistorial /> -->
-
         </div>
     </div>
 </template>
@@ -94,3 +79,10 @@ li {
 }
 
 </style>
+
+
+
+           
+
+
+                
