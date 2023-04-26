@@ -13,7 +13,7 @@ const idRequest = route.params.idRequest
 const router = useRouter()
 let OneRequest = reactive({})
 
-onBeforeMount( () => {
+onBeforeMount(() => {
 
     OneRequest = adminStore.infoRequest(idRequest)
 })
